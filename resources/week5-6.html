@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning - Complete Study Guide | IITM BS</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f1a;
+    --bg2: #161625;
+    --bg3: #1e1e32;
+    --card: #1a1a2e;
+    --border: #2e2e4a;
+    --accent1: #ff6b6b;
+    --accent2: #ffd93d;
+    --accent3: #6bcb77;
+    --accent4: #4d96ff;
+    --accent5: #c77dff;
+    --text: #e8e8f0;
+    --text2: #a0a0c0;
+    --code-bg: #12121f;
+    --highlight: #ff6b6b22;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3e 50%, #0f0f1a 100%);
+    border-bottom: 2px solid var(--accent4);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at center, #4d96ff0a 0%, transparent 60%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent4), var(--accent5));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #4d96ff 50%, #c77dff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    color: var(--text2);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--accent2), #ff9500);
+    color: #000;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px #ffd93d40;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── NAV ── */
+  .toc {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 40px auto;
+    max-width: 1100px;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  .toc h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all .2s;
+  }
+  .toc a:hover { border-color: var(--accent4); color: var(--accent4); background: #4d96ff10; }
+  .toc-num {
+    background: var(--accent4);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── STEPS ── */
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 24px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .step-pill {
+    background: linear-gradient(135deg, var(--accent1), #ff9500);
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 18px;
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 3px 12px #ff6b6b40;
+  }
+  .step-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 800;
+    color: #fff;
+  }
+  .step-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 1100px;
+    margin: 0 auto 32px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+  .card-accent-red   { border-left: 4px solid var(--accent1); }
+  .card-accent-yellow{ border-left: 4px solid var(--accent2); }
+  .card-accent-green { border-left: 4px solid var(--accent3); }
+  .card-accent-blue  { border-left: 4px solid var(--accent4); }
+  .card-accent-purple{ border-left: 4px solid var(--accent5); }
+
+  .card h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h4 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin: 18px 0 8px;
+  }
+  .card p { color: var(--text2); margin-bottom: 10px; }
+  .card ul, .card ol { padding-left: 22px; color: var(--text2); }
+  .card li { margin-bottom: 6px; }
+
+  /* ── CODE BLOCKS ── */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    margin: 14px 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  code {
+    font-family: 'Fira Code', monospace;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 12.5px;
+    color: var(--accent3);
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead tr { background: var(--bg3); }
+  th {
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--accent4);
+    border-bottom: 2px solid var(--accent4);
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+  }
+  tr:hover td { background: #ffffff05; }
+  .t-true  { color: var(--accent3); font-weight: 700; }
+  .t-false { color: var(--accent1); font-weight: 700; }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .box {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .box-red    { background: #ff6b6b15; border: 1px solid #ff6b6b40; }
+  .box-yellow { background: #ffd93d15; border: 1px solid #ffd93d40; }
+  .box-green  { background: #6bcb7715; border: 1px solid #6bcb7740; }
+  .box-blue   { background: #4d96ff15; border: 1px solid #4d96ff40; }
+  .box-purple { background: #c77dff15; border: 1px solid #c77dff40; }
+
+  .box strong { color: #fff; }
+
+  /* ── TOPIC HEADER ── */
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 36px 0 18px;
+  }
+  .topic-num {
+    background: linear-gradient(135deg, var(--accent4), var(--accent5));
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 16px;
+    min-width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px #4d96ff40;
+    flex-shrink: 0;
+  }
+  .topic-header h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(17px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #fff;
+  }
+
+  /* ── FORMULA ── */
+  .formula-box {
+    background: linear-gradient(135deg, #12121f, #1a1a32);
+    border: 1px solid var(--accent4);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 14px 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 13.5px;
+    color: #e8e8f0;
+    line-height: 2;
+  }
+  .formula-label {
+    font-family: 'Baloo 2', cursive;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent4);
+    margin-bottom: 8px;
+  }
+
+  /* ── TRICK BOX ── */
+  .trick {
+    background: linear-gradient(135deg, #ffd93d10, #ff950010);
+    border: 1px solid var(--accent2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .trick::before {
+    content: '🧠 TRICK: ';
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  /* ── RULE BOXES ── */
+  .golden-rule {
+    background: linear-gradient(135deg, #ffd93d18, #ff6b6b08);
+    border: 2px solid var(--accent2);
+    border-radius: 12px;
+    padding: 16px 22px;
+    margin: 14px 0;
+    font-weight: 600;
+    color: #fff;
+    font-size: 15px;
+  }
+  .golden-rule::before {
+    content: '🔑 ';
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 8px 0 8px 32px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 14px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '□';
+    position: absolute;
+    left: 0;
+    color: var(--accent4);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ── PREDICTION CARD ── */
+  .predict-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg3);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+  }
+  .predict-topic { flex: 1; font-size: 14px; color: var(--text); }
+  .predict-marks {
+    background: var(--accent4);
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── CHARACTER CARD ── */
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .char-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: all .25s;
+  }
+  .char-card:hover { transform: translateY(-3px); border-color: var(--accent4); }
+  .char-emoji { font-size: 28px; margin-bottom: 8px; }
+  .char-name {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--accent4);
+    margin-bottom: 4px;
+  }
+  .char-desc { font-size: 12px; color: var(--text2); line-height: 1.4; }
+
+  /* ── STORY FLOW ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 18px 0;
+  }
+  .flow-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .flow-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .flow-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent4);
+    flex-shrink: 0;
+    margin-top: 4px;
+    box-shadow: 0 0 8px var(--accent4);
+  }
+  .flow-connector {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--accent4), var(--accent5));
+    min-height: 30px;
+  }
+  .flow-content {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    flex: 1;
+    font-size: 14px;
+    color: var(--text2);
+  }
+  .flow-content strong { color: var(--accent2); }
+  .flow-content .problem { color: var(--accent1); font-size: 12px; }
+
+  /* ── Q&A SECTION ── */
+  .qa-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .qa-question {
+    font-family: 'Baloo 2', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .qa-q-badge {
+    background: var(--accent2);
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .qa-answer {
+    background: var(--code-bg);
+    border-left: 3px solid var(--accent3);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* ── MISTAKE CARD ── */
+  .mistake-item {
+    background: var(--bg3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+  }
+  .mistake-wrong {
+    color: var(--accent1);
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .mistake-right {
+    color: var(--accent3);
+    font-size: 13.5px;
+  }
+  .mistake-wrong::before { content: '❌ '; }
+  .mistake-right::before { content: '✅ '; }
+
+  /* ── FINAL BOX ── */
+  .final-box {
+    background: linear-gradient(135deg, #1a1a3e, #2a1a3e);
+    border: 2px solid var(--accent5);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin: 40px 0;
+  }
+  .final-box h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .tip-card {
+    background: #ffffff08;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .tip-card strong { display: block; color: var(--accent3); margin-bottom: 6px; font-size: 14px; }
+
+  /* ── COMPARISON GRID ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  @media(max-width:600px){ .comp-grid{grid-template-columns:1fr;} }
+  .comp-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .comp-box h5 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--accent4);
+  }
+
+  /* ── PRIORITY BADGE ── */
+  .priority-high   { color: var(--accent1); font-weight: 700; }
+  .priority-medium { color: var(--accent2); font-weight: 700; }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    color: var(--text2);
+    font-size: 13px;
+    text-decoration: none;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    transition: color .2s;
+  }
+  .back-top:hover { color: var(--accent4); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    .hero { padding: 40px 20px; }
+    .card { padding: 20px; }
+    .qa-item { padding: 18px; }
+    .step-header { padding: 24px 16px 12px; }
+    .toc { margin: 20px 12px; padding: 20px; }
+    .container { padding: 0 12px; }
+  }
+
+  /* ── SECTION SEPARATOR ── */
+  .section-sep {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent4), transparent);
+    margin: 48px 0;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  em { color: var(--accent2); font-style: normal; font-weight: 600; }
+  strong { color: #fff; }
+
+  /* animations */
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .card, .qa-item, .toc {
+    animation: fadeInUp .4s ease both;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="hero" id="top">
+  <div class="hero-badge">IITM BS · Deep Learning · Week 5 & 6</div>
+  <h1>Complete Study Guide 📚</h1>
+  <p>Hinglish mein — Simple, Clear aur Exam-Ready! Beginners ke liye perfect.</p>
+  <div class="score-badge">🎯 Target: 100/100</div>
+</div>
+
+<!-- ══════════════════ TABLE OF CONTENTS ══════════════════ -->
+<nav class="toc" id="toc">
+  <h2>📋 Table of Contents</h2>
+  <div class="toc-grid">
+    <a href="#step1"><span class="toc-num">1</span> STEP 1 — Overview &amp; Story</a>
+    <a href="#top10"><span class="toc-num">2</span> Top 10 Exam Topics</a>
+    <a href="#step2"><span class="toc-num">3</span> STEP 2 — Topic by Topic</a>
+    <a href="#t1"><span class="toc-num">4</span> Sparse vs Dense Features</a>
+    <a href="#t2"><span class="toc-num">5</span> AdaGrad</a>
+    <a href="#t3"><span class="toc-num">6</span> RMSProp</a>
+    <a href="#t4"><span class="toc-num">7</span> Adam Optimizer</a>
+    <a href="#t5"><span class="toc-num">8</span> Bias Correction</a>
+    <a href="#t6"><span class="toc-num">9</span> AdaDelta</a>
+    <a href="#t7"><span class="toc-num">10</span> L2 Regularization</a>
+    <a href="#t8"><span class="toc-num">11</span> Adam vs MGD</a>
+    <a href="#t9"><span class="toc-num">12</span> LR Schedulers</a>
+    <a href="#t10"><span class="toc-num">13</span> AdaMax</a>
+    <a href="#step3"><span class="toc-num">14</span> STEP 3 — Exam Questions</a>
+    <a href="#step4"><span class="toc-num">15</span> STEP 4 — Cheat Sheet</a>
+    <a href="#final"><span class="toc-num">16</span> Last Minute Tips</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     STEP 1
+══════════════════════════════════════════ -->
+<div class="step-header" id="step1">
+  <div class="step-pill">STEP 1</div>
+  <div class="step-title">Overview — Ek Story Ki Tarah Samjho</div>
+</div>
+<hr class="step-divider">
+
+<div class="container">
+
+  <div class="card card-accent-blue">
+    <h3>🗺️ Yeh Subject Hai Kya? (5 Minute Story)</h3>
+    <p>Socho tum ek <em>treasure hunt</em> khel rahe ho.</p>
+    <ul>
+      <li>Tumhara <strong>treasure = minimum loss</strong> (model ka best performance)</li>
+      <li>Tumhare paas ek <strong>map = Loss Surface</strong> (ek mountain jaisa landscape)</li>
+      <li>Tumhe <strong>mountain ke neeche utarna hai</strong> = minimum dhundhna hai</li>
+      <li>Tum <strong>steps lete ho neeche ki taraf = Gradient Descent</strong></li>
+    </ul>
+    <div class="box box-red" style="margin-top:16px">
+      <strong>Problem:</strong> Mountain pe andhera hai. Bahut bada step lo → doosri taraf chale jao! Bahut chota step lo → saari zindagi lagegi! <br>
+      Isliye <strong>Step Size = Learning Rate (η)</strong> — yahi sabse bada problem hai!
+    </div>
+  </div>
+
+  <!-- Characters -->
+  <div class="card card-accent-purple">
+    <h3>🎭 Characters of Our Story</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <div class="char-emoji">🚶</div>
+        <div class="char-name">Simple GD</div>
+        <div class="char-desc">Same step size hamesha. Dense features ke liye zyada updates, sparse ke liye kam.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-emoji">📈</div>
+        <div class="char-name">AdaGrad</div>
+        <div class="char-desc">Har parameter ka alag step size. Problem: Step size sirf ghatta hai, kabhi badhta nahi.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-emoji">⚡</div>
+        <div class="char-name">RMSProp</div>
+        <div class="char-desc">AdaGrad ka smart version. Thoda oscillate karta hai beginning mein.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-emoji">🦸</div>
+        <div class="char-name">Adam</div>
+        <div class="char-desc">Hero! Momentum + RMSProp dono. Default choice aaj kal.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-emoji">🔧</div>
+        <div class="char-name">AdaDelta</div>
+        <div class="char-desc">No learning rate set karna padta. Smart adaptation.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-emoji">💎</div>
+        <div class="char-name">AdaMax</div>
+        <div class="char-desc">Adam ka variant, max norm use karta hai L2 ki jagah.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Flow -->
+  <div class="card card-accent-green">
+    <h3>📖 Complete Story Flow</h3>
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+        <div class="flow-content"><strong>PROBLEM:</strong> Sparse features ko kam updates milte hain → Weight sahi se train nahi hota</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-line"><div class="flow-dot" style="background:var(--accent3)"></div><div class="flow-connector" style="background:linear-gradient(to bottom,var(--accent3),var(--accent2))"></div></div>
+        <div class="flow-content"><strong>SOLUTION 1 — AdaGrad:</strong> Update history dekh ke step size adjust karo <div class="problem">❌ New Problem: Step size sirf ghatta hai, zero ho jaata hai</div></div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-line"><div class="flow-dot" style="background:var(--accent2)"></div><div class="flow-connector" style="background:linear-gradient(to bottom,var(--accent2),var(--accent5))"></div></div>
+        <div class="flow-content"><strong>SOLUTION 2 — RMSProp:</strong> Exponential moving average use karo <div class="problem">❌ New Problem: Initial learning rate set karna mushkil hai</div></div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-line"><div class="flow-dot" style="background:var(--accent5)"></div><div class="flow-connector" style="background:linear-gradient(to bottom,var(--accent5),var(--accent1))"></div></div>
+        <div class="flow-content"><strong>SOLUTION 3 — AdaDelta:</strong> Khud set karo adaptively <div class="problem">❌ Want best of everything</div></div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-line"><div class="flow-dot" style="background:var(--accent1)"></div></div>
+        <div class="flow-content" style="border-color:var(--accent1)"><strong>🏆 BEST SOLUTION — Adam:</strong> Momentum + RMSProp + Bias Correction. Default choice!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pizza analogy -->
+  <div class="card card-accent-yellow">
+    <h3>🍕 Real Life Analogy — Pizza Shop</h3>
+    <div class="comp-grid">
+      <div class="comp-box">
+        <h5>📱 Dense Feature</h5>
+        <p style="font-size:14px;color:var(--text2)">Tumhara Phone — Har roz use karte ho. Zyada use → Learning rate kam karo. <em>Cheese in pizza!</em></p>
+      </div>
+      <div class="comp-box">
+        <h5>☂️ Sparse Feature</h5>
+        <p style="font-size:14px;color:var(--text2)">Umbrella — Kabhi kabhi use hoti hai. Kam use → Learning rate zyada rakho. <em>Truffle in pizza!</em></p>
+      </div>
+    </div>
+    <div class="trick">AdaGrad bhi yehi karta hai — Zyada use = zyada decay, Kam use = kam decay!</div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════ TOP 10 ══════════════════ -->
+<hr class="section-sep" id="top10">
+<div class="step-header">
+  <div class="step-pill">TOP 10</div>
+  <div class="step-title">Exam Mein Zaroor Aayenge</div>
+</div>
+<hr class="step-divider">
+
+<div class="container">
+  <div class="card card-accent-red">
+    <h3>🔥 High Priority Topics</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Topic</th><th>Priority</th><th>Marks</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Sparse vs Dense Features — Contour plots se identify karna</td><td class="priority-high">🔥 HIGH</td><td>2-3</td></tr>
+          <tr><td>2</td><td>AdaGrad Update Rule — Formula + η₆ calculate karna</td><td class="priority-high">🔥 HIGH</td><td>4-5</td></tr>
+          <tr><td>3</td><td>RMSProp vs AdaGrad — Difference kya hai</td><td class="priority-high">🔥 HIGH</td><td>3</td></tr>
+          <tr><td>4</td><td>Adam Algorithm — Full update rule + Bias Correction</td><td class="priority-high">🔥 HIGH</td><td>4</td></tr>
+          <tr><td>5</td><td>Gradient Descent Trajectory — Kaun sa algorithm kaisa move karta hai</td><td class="priority-high">🔥 HIGH</td><td>2</td></tr>
+          <tr><td>6</td><td>AdaDelta — No η₀ kyun chahiye</td><td class="priority-medium">⭐ MED</td><td>3</td></tr>
+          <tr><td>7</td><td>AdaMax — L2 norm ki jagah max norm kyun</td><td class="priority-medium">⭐ MED</td><td>2</td></tr>
+          <tr><td>8</td><td>L2 Regularization — Training/Test error pe effect</td><td class="priority-medium">⭐ MED</td><td>3</td></tr>
+          <tr><td>9</td><td>Bias Correction in Adam — Mathematical reason</td><td class="priority-medium">⭐ MED</td><td>4</td></tr>
+          <tr><td>10</td><td>Learning Rate Schedulers — CLR, Cosine Annealing</td><td class="priority-medium">⭐ MED</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     STEP 2 — TOPICS
+══════════════════════════════════════════ -->
+<hr class="section-sep" id="step2">
+<div class="step-header">
+  <div class="step-pill">STEP 2</div>
+  <div class="step-title">Topic by Topic — Detail Mein</div>
+</div>
+<hr class="step-divider">
+
+<div class="container">
+
+  <!-- ── TOPIC 1 ── -->
+  <div class="topic-header" id="t1">
+    <div class="topic-num">1</div>
+    <h2>Sparse vs Dense Features + Contour Plots</h2>
+  </div>
+
+  <div class="card card-accent-blue">
+    <h3>📘 Simple Explanation</h3>
+    <div class="comp-grid">
+      <div class="comp-box">
+        <h5>Dense Feature</h5>
+        <p style="font-size:14px;color:var(--text2)">Zyada baar <strong>non-zero</strong> value aati hai. Gradient frequently update hota hai.</p>
+      </div>
+      <div class="comp-box">
+        <h5>Sparse Feature</h5>
+        <p style="font-size:14px;color:var(--text2)">Zyada baar <strong>ZERO</strong> value aati hai. Gradient rarely update hota hai.</p>
+      </div>
+    </div>
+    <div class="box box-blue" style="margin-top:14px">
+      <strong>🏫 Real Life Example — School Attendance:</strong><br>
+      "Present" bolna = Dense (Roz aate ho) | "Absent" bolna = Sparse (Kabhi kabhi aate ho)
+    </div>
+  </div>
+
+  <div class="card card-accent-yellow">
+    <h3>📊 Contour Plot — EXAM KA SABSE IMPORTANT RULE!</h3>
+    <pre>     w₂
+      |
+    4 |    ___
+      |   /   \
+    0 |  | MIN |----→  w₁ axis pe LAMBA = w₁ DENSE
+      |   \___/             (zyada updates)
+   -4 |
+      |________________ w₁
+         -4    0    4</pre>
+    <div class="golden-rule">LAMBA ELLIPSE jis axis pe → Us axis ka feature DENSE hai</div>
+    <div class="golden-rule">CHOTA ELLIPSE jis axis pe → Us axis ka feature SPARSE hai</div>
+    <div class="trick">LAMBA = LABORIOUS = Dense kaam karta hai 😄</div>
+    <h4>Exam Mein Kaise Dekhen:</h4>
+    <ul>
+      <li><strong>Figure A</strong> — w₁ axis pe lamba ellipse → x₁ is DENSE, x₂ is SPARSE ✅</li>
+      <li><strong>Figure B</strong> — w₂ axis pe lamba ellipse → x₁ is SPARSE, x₂ is DENSE ✅</li>
+    </ul>
+  </div>
+
+  <!-- ── TOPIC 2 ── -->
+  <div class="topic-header" id="t2">
+    <div class="topic-num">2</div>
+    <h2>AdaGrad — Adaptive Gradient</h2>
+  </div>
+
+  <div class="card card-accent-green">
+    <h3>📘 Simple Explanation</h3>
+    <p><em>"Jo parameter zyada update hua, uski learning rate kam karo"</em></p>
+    <p><em>"Jo parameter kam update hua, uski learning rate zyada rakho"</em></p>
+    <div class="box box-green">
+      <strong>🍕 Pizza Shop Analogy:</strong><br>
+      Cheese = Dense (har pizza mein) → learning rate ghatti jaati hai<br>
+      Truffle = Sparse (kabhi kabhi) → learning rate zyada maintain hoti hai
+    </div>
+  </div>
+
+  <div class="card card-accent-blue">
+    <h3>📐 Formula</h3>
+    <div class="formula-label">AdaGrad Update Rule</div>
+    <div class="formula-box">Step 1:  v<sub>t</sub> = v<sub>t-1</sub> + (∇w<sub>t</sub>)²        ← Gradient squared add karo
+
+Step 2:  w<sub>t+1</sub> = w<sub>t</sub> - (η / √(v<sub>t</sub> + ε)) × ∇w<sub>t</sub>   ← Update karo</div>
+    <div class="box box-blue" style="margin-top:12px">
+      <strong>Key Points:</strong><br>
+      • <strong>vt</strong> = Sum of all past squared gradients (hamesha badhta rehta hai)<br>
+      • <strong>η</strong> = Initial learning rate (typically 0.1)<br>
+      • <strong>ε</strong> = Very small number (1e-8) → Division by zero rokne ke liye<br>
+      • <strong>Effective LR</strong> = η / √vt → Sirf GHATTA hai, kabhi badhta nahi!
+    </div>
+    <div class="trick">v sirf BADHTA hai → η sirf GHATTA hai — AdaGrad ka curse!</div>
+  </div>
+
+  <div class="card card-accent-yellow">
+    <h3>🔢 Numerical Solve Karna — Template</h3>
+    <p style="color:var(--text2);font-size:14px;">Given: ∇wt = [1, 0.9, 0.6, 0.01, 0.1, 0.2, 0.5, 0.55, 0.56], v₋₁ = 0, ε = 0, η₋₁ = 0.1 | Find η₆</p>
+    <pre>FORMULA: vt = vt-1 + (∇wt)²   |   ηt = 0.1/√vt
+
+t=0: v₀ = 0 + (1)²    = 1.0000  →  η₀ = 0.1/√1.0000 = 0.1000
+t=1: v₁ = 1 + (0.9)²  = 1.8100  →  η₁ = 0.1/√1.8100 ≈ 0.0743
+t=2: v₂ = 1.81+(0.6)² = 2.1700  →  η₂ = 0.1/√2.1700 ≈ 0.0679
+t=3: v₃ = 2.17+(0.01)²= 2.1701  →  η₃ = 0.1/√2.1701 ≈ 0.0679
+t=4: v₄ = 2.17+(0.1)² = 2.1801  →  η₄ = 0.1/√2.1801 ≈ 0.0677
+t=5: v₅ = 2.18+(0.2)² = 2.2201  →  η₅ = 0.1/√2.2201 ≈ 0.0671
+t=6: v₆ = 2.22+(0.5)² = 2.4701  →  η₆ = 0.1/√2.4701 ≈ 0.063 ✓
+
+FINAL ANSWER: η₆ ≈ 0.063</pre>
+    <div class="golden-rule">SHORTCUT: vn = Σ(∇wt)² from t=0 to n (bas saare squared gradients add karo!)</div>
+  </div>
+
+  <!-- ── TOPIC 3 ── -->
+  <div class="topic-header" id="t3">
+    <div class="topic-num">3</div>
+    <h2>RMSProp — AdaGrad ka Upgrade</h2>
+  </div>
+
+  <div class="card card-accent-purple">
+    <h3>📘 Simple Explanation</h3>
+    <div class="box box-red">
+      <strong>AdaGrad ki Problem:</strong> vt hamesha badhta rehta hai → η basically ZERO ho jaata hai → Learning ruk jaati hai!
+    </div>
+    <div class="box box-green" style="margin-top:12px">
+      <strong>RMSProp ka Solution:</strong> "Purani history ko thoda bhool jao" — Exponential Moving Average use karo!
+    </div>
+    <div class="box box-blue" style="margin-top:12px">
+      <strong>🎬 Real Life Example:</strong><br>
+      AdaGrad = Poori zindagi ke marks add karo (10th se abhi tak) → Average bahut low<br>
+      RMSProp = Sirf last 3 exams consider karo → More relevant!
+    </div>
+  </div>
+
+  <div class="card card-accent-blue">
+    <h3>📐 Formula</h3>
+    <div class="formula-box">v<sub>t</sub> = β × v<sub>t-1</sub> + (1-β) × (∇w<sub>t</sub>)²
+
+w<sub>t+1</sub> = w<sub>t</sub> - (η/√(v<sub>t</sub> + ε)) × ∇w<sub>t</sub></div>
+    <h4>Key Difference from AdaGrad:</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>AdaGrad</th><th>RMSProp</th></tr></thead>
+        <tbody>
+          <tr><td>vt = vt-1 + (∇wt)²</td><td>vt = <strong>β</strong>vt-1 + <strong>(1-β)</strong>(∇wt)²</td></tr>
+          <tr><td>vt sirf badhta hai ↑</td><td>vt badh aur ghatt DONO sakta hai ↕</td></tr>
+          <tr><td>Learning rate sirf ghatti hai</td><td>Learning rate INCREASE bhi ho sakti hai!</td></tr>
+          <tr><td>β = 1 (implicit)</td><td>β = 0.9 (typical)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="trick">RMS = Ruk Mat Stop → Learning rate ruk ke zero nahi hoti! 😄</div>
+  </div>
+
+  <!-- ── TOPIC 4 ── -->
+  <div class="topic-header" id="t4">
+    <div class="topic-num">4</div>
+    <h2>Adam — The HERO 🦸</h2>
+  </div>
+
+  <div class="card card-accent-red">
+    <h3>📘 Simple Explanation</h3>
+    <div class="golden-rule">Adam = Momentum + RMSProp + Bias Correction</div>
+    <div class="box box-blue" style="margin-top:12px">
+      <strong>🚗 Car Analogy:</strong><br>
+      <strong>Momentum (mt):</strong> Steering wheel ka previous direction yaad rakhna<br>
+      <strong>RMSProp (vt):</strong> Speed limiter — steep road pe slow, flat pe fast<br>
+      <strong>Bias Correction:</strong> Gaadi cold start pe suddenly fast nahi chalti
+    </div>
+  </div>
+
+  <div class="card card-accent-blue">
+    <h3>📐 Full Formula — 5 Steps</h3>
+    <div class="formula-label">Adam Update Rule (Exam Mein Likhna Zaroori!)</div>
+    <div class="formula-box">Step 1: m<sub>t</sub> = β₁×m<sub>t-1</sub> + (1-β₁)×∇w<sub>t</sub>        ← Momentum
+
+Step 2: m̂<sub>t</sub> = m<sub>t</sub> / (1 - β₁ᵗ)             ← Bias correction for m
+
+Step 3: v<sub>t</sub> = β₂×v<sub>t-1</sub> + (1-β₂)×(∇w<sub>t</sub>)²     ← RMSProp part
+
+Step 4: v̂<sub>t</sub> = v<sub>t</sub> / (1 - β₂ᵗ)             ← Bias correction for v
+
+Step 5: w<sub>t+1</sub> = w<sub>t</sub> - (η/√(v̂<sub>t</sub>+ε)) × m̂<sub>t</sub>  ← Final update</div>
+    <div class="box box-yellow" style="margin-top:12px">
+      <strong>Default Values — HAMESHA YAAD RAKHO:</strong><br>
+      β₁ = 0.9 (momentum) | β₂ = 0.999 (RMSProp) | ε = 1e-8 | η = 0.001
+    </div>
+  </div>
+
+  <!-- ── TOPIC 5 ── -->
+  <div class="topic-header" id="t5">
+    <div class="topic-num">5</div>
+    <h2>Bias Correction — Kyun Zaroori Hai?</h2>
+  </div>
+
+  <div class="card card-accent-yellow">
+    <h3>📘 Simple Explanation</h3>
+    <p>Jab hum start karte hain, <code>m₀ = 0</code> aur <code>v₀ = 0</code>. Is wajah se pehle kuch steps mein <em>bahut badi learning rate</em> mil jaati hai!</p>
+    <div class="box box-blue" style="margin-top:12px">
+      <strong>🌡️ AC Analogy:</strong><br>
+      Without bias correction: AC start hote hi full blast → Room over-cool!<br>
+      With bias correction: Dhire dhire temperature adjust → Comfortable!
+    </div>
+  </div>
+
+  <div class="card card-accent-blue">
+    <h3>📐 Mathematical Proof</h3>
+    <pre>WITHOUT bias correction:
+v₀ = 0.999×0 + 0.001×(0.1)² = 0.00001
+η_eff = 1/√0.00001 = 316.22  ← BAHUT BADA! 😱
+
+WITH bias correction:
+v̂₀ = 0.00001 / (1-0.999) = 0.00001/0.001 = 0.01
+η_eff = 1/√0.01 = 10  ← Controlled! ✅
+
+PROOF (3 lines):
+E[mt] = E[∇w] × (1 - β₁ᵗ)
+E[mt/(1-β₁ᵗ)] = E[∇w]
+∴ m̂t = mt/(1-β₁ᵗ) is UNBIASED! ✓</pre>
+    <div class="trick">Bias Correction = Training Wheels on Cycle → Shuru mein support chahiye!</div>
+  </div>
+
+  <!-- ── TOPIC 6 ── -->
+  <div class="topic-header" id="t6">
+    <div class="topic-num">6</div>
+    <h2>AdaDelta — No Learning Rate Needed!</h2>
+  </div>
+
+  <div class="card card-accent-green">
+    <h3>📘 Simple Explanation</h3>
+    <p>RMSProp ki problem: Initial η₀ set karna mushkil. AdaDelta bolti hai: <em>"Main khud η figure out kar lungi!"</em></p>
+    <div class="formula-label">AdaDelta Update Rule</div>
+    <div class="formula-box">Step 1: v<sub>t</sub> = β×v<sub>t-1</sub> + (1-β)×(∇w<sub>t</sub>)²
+Step 2: Δw<sub>t</sub> = -(√(u<sub>t-1</sub>+ε) / √(v<sub>t</sub>+ε)) × ∇w<sub>t</sub>
+Step 3: w<sub>t+1</sub> = w<sub>t</sub> + Δw<sub>t</sub>
+Step 4: u<sub>t</sub> = β×u<sub>t-1</sub> + (1-β)×(Δw<sub>t</sub>)²</div>
+    <div class="box box-green" style="margin-top:12px">
+      <strong>Key Points:</strong><br>
+      • <strong>Numerator</strong> = Past weight changes ka history (ut)<br>
+      • <strong>Denominator</strong> = Past gradients ka history (vt)<br>
+      • <strong>Ratio</strong> automatically meaningful scale deta hai<br>
+      • <strong>No η₀ required!</strong>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 7 ── -->
+  <div class="topic-header" id="t7">
+    <div class="topic-num">7</div>
+    <h2>L2 Regularization</h2>
+  </div>
+
+  <div class="card card-accent-red">
+    <h3>📘 Simple Explanation</h3>
+    <p>Weights ko bahut bada hone se rokta hai!</p>
+    <div class="formula-box">Loss with L2 = Original Loss + λ × Σ(w²)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Statement</th><th>True/False</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Training error badhta hai</td><td class="t-true">TRUE ✅</td><td>Penalty add ki, perfect fit nahi hoga</td></tr>
+          <tr><td>Test error ghatta hai</td><td class="t-true">TRUE ✅</td><td>Overfitting rokta hai, better generalization</td></tr>
+          <tr><td>Model complexity ghatti hai</td><td class="t-true">TRUE ✅</td><td>Small weights = simpler model</td></tr>
+          <tr><td>Weights exactly zero ho jaate hain</td><td class="t-false">FALSE ❌</td><td>L1 karta hai yeh, L2 nahi!</td></tr>
+          <tr><td>Training error ghatta hai</td><td class="t-false">FALSE ❌</td><td>L2 typically training error badhata hai</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="trick">L2 = Shrinks weights (CLOSE to zero) | L1 = Drives weights (EXACTLY to zero)</div>
+  </div>
+
+  <!-- ── TOPIC 8 ── -->
+  <div class="topic-header" id="t8">
+    <div class="topic-num">8</div>
+    <h2>Adam vs MGD — Parabola f(w) = w²</h2>
+  </div>
+
+  <div class="card card-accent-purple">
+    <h3>📘 Results (Default β values, 10 iterations)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Statement</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>MGD moves past the minimum because of added momentum</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>Adam moves past the minimum because of added momentum</td><td class="t-false">FALSE ❌</td></tr>
+          <tr><td>Adam doesn't move past minimum because of adaptive learning rate</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>MGD is closer to the minimum than Adam, after 10 iterations</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>Adam is closer to the minimum than MGD, after 10 iterations</td><td class="t-false">FALSE ❌</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="trick">MGD = Race car — tez jaata hai, brake late lagata hai | Adam = Smart car — speed automatically adjust karta hai</div>
+  </div>
+
+  <!-- ── TOPIC 9 ── -->
+  <div class="topic-header" id="t9">
+    <div class="topic-num">9</div>
+    <h2>Learning Rate Schedulers</h2>
+  </div>
+
+  <div class="card card-accent-yellow">
+    <h3>📘 Types of Schedulers</h3>
+    <div class="comp-grid">
+      <div class="comp-box">
+        <h5>1. Step Decay</h5>
+        <p style="font-size:13px;color:var(--text2)">Har N epochs baad learning rate ek factor se multiply karo.<br><code>η = η × 0.1</code> (har 30 epochs baad)</p>
+      </div>
+      <div class="comp-box">
+        <h5>2. Exponential Decay</h5>
+        <p style="font-size:13px;color:var(--text2)">Exponentially ghatta hai.<br><code>η = η₀ × e^(-kt)</code></p>
+      </div>
+      <div class="comp-box">
+        <h5>3. Cyclical LR (CLR)</h5>
+        <p style="font-size:13px;color:var(--text2)">Learning rate ek range ke beech upar-neeche chalti rehti hai. Saddle points se escape!</p>
+      </div>
+      <div class="comp-box">
+        <h5>4. Cosine Annealing</h5>
+        <p style="font-size:13px;color:var(--text2)"><code>ηt = ηmin + (ηmax-ηmin)/2 × (1 + cos(π×t/T))</code><br>T iterations ke baad phir ηmax se start → "Warm Restart"</p>
+      </div>
+    </div>
+    <div class="box box-yellow" style="margin-top:14px">
+      <strong>🎡 Analogy:</strong> CLR = Jhula (swing) — upar jaata hai, neeche aata hai, phir upar!<br>
+      Saddle point ek plateau ki tarah hai — flat area jahan simple GD ruk jaata hai, CLR escape karta hai!
+    </div>
+  </div>
+
+  <!-- ── TOPIC 10 ── -->
+  <div class="topic-header" id="t10">
+    <div class="topic-num">10</div>
+    <h2>AdaMax — Max Norm Instead of L2</h2>
+  </div>
+
+  <div class="card card-accent-blue">
+    <h3>📘 Simple Explanation</h3>
+    <div class="comp-grid">
+      <div class="comp-box">
+        <h5>Adam (L2 norm)</h5>
+        <div class="formula-box" style="font-size:12px;padding:12px">vt = β₂vt-1 + (1-β₂)(∇wt)²</div>
+      </div>
+      <div class="comp-box">
+        <h5>AdaMax (Max norm)</h5>
+        <div class="formula-box" style="font-size:12px;padding:12px">vt = max(β₂vt-1, |∇wt|)</div>
+      </div>
+    </div>
+    <div class="box box-green" style="margin-top:12px">
+      <strong>Key Advantage:</strong><br>
+      • Max norm zero bias nahi hoti → Bias correction NOT needed for vt!<br>
+      • Sparse features ke liye better!<br>
+      • Bias correction sirf mt ke liye chahiye (same as Adam)
+    </div>
+    <div class="trick">AdaMax = Maximum respect for biggest gradient!</div>
+  </div>
+
+  <!-- ── MASTER COMPARISON ── -->
+  <div class="card card-accent-green" style="margin-top:32px">
+    <h3>📊 Master Comparison Table — PHOTO KHEENCH LO!</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Algorithm</th><th>vt Formula</th><th>η₀ Needed?</th><th>Bias Correction?</th><th>LR Trend</th><th>Best For</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>AdaGrad</strong></td>
+            <td><code>vt-1 + (∇wt)²</code></td>
+            <td class="t-true">YES</td>
+            <td class="t-false">NO</td>
+            <td>Only ↓</td>
+            <td>Sparse data</td>
+          </tr>
+          <tr>
+            <td><strong>RMSProp</strong></td>
+            <td><code>β·vt-1 + (1-β)(∇wt)²</code></td>
+            <td class="t-true">YES</td>
+            <td class="t-false">NO</td>
+            <td>↑ or ↓</td>
+            <td>Non-stationary</td>
+          </tr>
+          <tr>
+            <td><strong>AdaDelta</strong></td>
+            <td>Same as RMSProp</td>
+            <td class="t-false">NO ✨</td>
+            <td class="t-false">NO</td>
+            <td>↑ or ↓</td>
+            <td>General use</td>
+          </tr>
+          <tr>
+            <td><strong>Adam</strong></td>
+            <td>mt + vt (both)</td>
+            <td class="t-true">YES</td>
+            <td class="t-true">YES (both)</td>
+            <td>↑ or ↓</td>
+            <td>Default choice 🏆</td>
+          </tr>
+          <tr>
+            <td><strong>AdaMax</strong></td>
+            <td><code>max(β₂vt-1, |∇wt|)</code></td>
+            <td class="t-true">YES</td>
+            <td>Only mt</td>
+            <td>↑ or ↓</td>
+            <td>Sparse features</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════════════════════════════
+     STEP 3 — EXAM QUESTIONS
+══════════════════════════════════════════ -->
+<hr class="section-sep" id="step3">
+<div class="step-header">
+  <div class="step-pill">STEP 3</div>
+  <div class="step-title">Exam Questions + Model Answers</div>
+</div>
+<hr class="step-divider">
+
+<div class="container">
+
+  <!-- Q1 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q1 · 3M</span>
+      Contour Plot Wala Question — True/False karo
+    </div>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:12px">Figure mein w₁ axis pe lamba ellipse hai. Which statements are TRUE?<br>(a) x₁ is sparse, x₂ is dense &nbsp; (b) x₁ is dense, x₂ is sparse &nbsp; (c) w₁ gets more updates than w₂</p>
+    <div class="qa-answer">Answer: (b) and (c) ✅
+
+Explanation:
+- Ellipse w₁ axis pe lamba hai → w₁ ko zyada updates milte hain
+- Zyada updates = Feature x₁ DENSE hai
+- Kam updates = Feature x₂ SPARSE hai
+- Dense feature ka gradient zyada baar non-zero hota hai
+- Isliye w₁ > w₂ updates
+
+Keywords: dense, sparse, gradient updates, non-zero, ellipse elongated</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q2 · 2M</span>
+      Gradient Descent Trajectory — True ya False?
+    </div>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:12px">w₁ = -6, w₂ = 0 se start karke GD chalate hain. Trajectory straight horizontal line hai. Claim sahi hai?</p>
+    <div class="qa-answer">Answer: FALSE ❌
+
+Explanation:
+- Figure mein x₁ dense hai aur x₂ sparse hai
+- Dense parameter (w₁) ko zyada updates milenge
+- Sparse parameter (w₂) ko kam updates milenge
+- Isliye trajectory STRAIGHT nahi hogi
+- w₁ zyada move karega, w₂ kam
+- Path curved/uneven hoga, straight nahi
+- Dense feature ki wajah se w₁ tezi se minimum ki taraf jaayega
+
+Keywords: dense parameter, sparse parameter, unequal updates, curved trajectory</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q3 · 2M</span>
+      AdaGrad Effective Learning Rate Graph — Kaun sa sahi hai?
+    </div>
+    <div class="qa-answer">Answer: Monotonically DECREASING graph (sirf ghatti hai) ✅
+
+Explanation:
+- AdaGrad mein: vt = vt-1 + (∇wt)²
+- vt hamesha BADHTA rehta hai (squared term add hota hai, kabhi subtract nahi)
+- Effective LR = η/√vt
+- vt badhta hai → 1/√vt ghatta hai
+- Isliye effective learning rate SIRF GHATTI HAI
+- Kabhi nahi badhti, chahe gradient zero bhi ho jaaye
+
+Graph: Smoothly decreasing curve — starting high, going to near zero
+(Decaying curve wala option select karo)</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q4 · 5M</span>
+      AdaGrad η₆ Calculate Karo — Numerical
+    </div>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:12px">∇wt = [1, 0.9, 0.6, 0.01, 0.1, 0.2, 0.5, 0.55, 0.56] | v₋₁ = 0, ε = 0, η₋₁ = 0.1 | Find η₆</p>
+    <div class="qa-answer">FORMULA: vt = vt-1 + (∇wt)²   |   ηt = η₋₁/√vt
+
+t=0: v₀ = 0 + 1²    = 1.0000   →  η₀ = 0.1/√1.0000 = 0.1000
+t=1: v₁ = 1 + 0.81  = 1.8100   →  η₁ = 0.1/√1.8100 ≈ 0.0743
+t=2: v₂ = 1.81+0.36 = 2.1700   →  η₂ = 0.1/√2.1700 ≈ 0.0679
+t=3: v₃ = 2.17+0.0001=2.1701   →  η₃ = 0.1/√2.1701 ≈ 0.0679
+t=4: v₄ = 2.17+0.01 = 2.1801   →  η₄ = 0.1/√2.1801 ≈ 0.0677
+t=5: v₅ = 2.18+0.04 = 2.2201   →  η₅ = 0.1/√2.2201 ≈ 0.0671
+t=6: v₆ = 2.22+0.25 = 2.4701   →  η₆ = 0.1/√2.4701 ≈ 0.063
+
+FINAL ANSWER: η₆ ≈ 0.063  ✓
+
+EXAM TIP: Formula likhna mat bhoolna! Marks milte hain formula ke bhi.</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q5 · 3M</span>
+      RMSProp vs AdaGrad Difference — Formulas ke saath
+    </div>
+    <div class="qa-answer">AdaGrad Update Rule:
+vt = vt-1 + (∇wt)²
+
+RMSProp Update Rule:
+vt = β×vt-1 + (1-β)×(∇wt)²
+
+Main Differences:
+
+1. DENOMINATOR GROWTH:
+   AdaGrad: vt hamesha badhta hai (monotonically increasing)
+   RMSProp: vt increase ya decrease dono kar sakta hai
+
+2. EFFECTIVE LEARNING RATE:
+   AdaGrad: Sirf ghatti hai (monotonically decreasing)
+   RMSProp: Increase, decrease ya constant reh sakti hai
+
+3. LONG TRAINING:
+   AdaGrad: After long training, LR → 0 (training ruk jaati hai!)
+   RMSProp: LR controlled rehti hai throughout
+
+4. β PARAMETER:
+   AdaGrad: Koi β nahi (ya β=1 implicitly)
+   RMSProp: β ∈ [0,1), typically β = 0.9
+
+Conclusion:
+RMSProp, AdaGrad ka improved version hai jo
+"ever-growing denominator" ki problem solve karta hai.</div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q6 · 4M</span>
+      RMSProp Numerical — η calculate karo
+    </div>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:12px">β = 0.9, v₋₁ = 0, ε = 0, η₋₁ = 0.1 | Find first few η values</p>
+    <div class="qa-answer">FORMULA: vt = β×vt-1 + (1-β)×(∇wt)²   →   β=0.9, (1-β)=0.1
+
+t=0: v₀ = 0.9×0 + 0.1×(1)²  = 0.1000   →  η₀ = 0.1/√0.1  = 0.316
+t=1: v₁ = 0.9×0.1+0.1×(0.9)²= 0.171    →  η₁ = 0.1/√0.171 = 0.242
+t=2: v₂ = 0.9×0.171+0.1×0.36= 0.1899   →  η₂ = 0.1/√0.1899= 0.229
+
+KEY OBSERVATION:
+RMSProp mein vt AdaGrad jitna nahi badhta
+Isliye: ηRMSProp > ηAdaGrad (same iterations ke baad)
+→ RMSProp learning jaldi nahi rokta!</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q7 · 3M</span>
+      Adam vs MGD — f(w) = w², 10 Iterations
+    </div>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:12px">β₁=0.9, β₂=0.999, β₁₋₁=0, β₂₋₁=0. Which statements are TRUE?</p>
+    <div class="qa-answer">Answer: (a) TRUE, (c) TRUE, (d) TRUE
+
+(a) TRUE - MGD moves past minimum:
+    Momentum ki wajah se, jab minimum pe pahunchta hai
+    tab bhi velocity hoti hai → minimum se aage nikal jaata hai
+    β₁ = 0.9 → high momentum → overshooting
+
+(b) FALSE - Adam does NOT move past minimum:
+    Adam ka adaptive learning rate automatically adjust hota hai
+    Minimum ke paas gradient chhota hota hai → step size bhi chhota
+    Isliye Adam minimum ke paas controlled rehta hai
+
+(c) TRUE - Correct explanation for Adam's behavior
+
+(d) TRUE - MGD is closer to minimum after 10 iterations:
+    Adam oscillate karta hai thoda near minimum
+    MGD with momentum direct path leta hai
+    10 iterations mein MGD actually minimum ke kaafi karib hota hai
+
+Note: Code likh ke verify kar sakte hain (question ka hint)</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q8 · 2M</span>
+      L(w,b) = 0.5w² + 5b² + 1 — Find L(w*, b*)
+    </div>
+    <div class="qa-answer">To find minimum, partial derivatives set to zero:
+
+∂L/∂w = 0.5 × 2w = w = 0  →  w* = 0
+∂L/∂b = 5 × 2b = 10b = 0  →  b* = 0
+
+L(w*, b*) = 0.5×(0)² + 5×(0)² + 1
+          = 0 + 0 + 1
+          = 1
+
+Answer: L(w*, b*) = 1  ✓
+
+Note: Minimum point (0,0) pe hai — yeh contour plot ke
+centre mein hoga. Constant term 1 isliye answer 1 aaya.</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q9 · 3M</span>
+      L2 Regularization ke Effects — True/False
+    </div>
+    <div class="qa-answer">Answer: (a) TRUE, (b) TRUE, (c) TRUE, (d) FALSE, (e) FALSE
+
+(a) TRUE - Training error INCREASES:
+    L2 adds penalty term λΣw² to loss function
+    Model cannot fit training data perfectly
+    Isliye training error thoda badhta hai (by design!)
+
+(b) TRUE - Test error DECREASES:
+    L2 prevents overfitting by penalizing large weights
+    Smaller weights → better generalization on unseen data
+    Hence test/validation error decreases
+
+(c) TRUE - Model complexity REDUCES:
+    L2 encourages smaller weights throughout
+    Less important weights shrink close to zero
+    Simpler model = less complexity = better generalization
+
+(d) FALSE - Weights NOT exactly zero:
+    L2 = weights ko zero ke CLOSE laata hai (shrinkage)
+    L1 = weights ko EXACTLY zero karta hai (sparsity)
+    This is the KEY difference!
+
+(e) FALSE - Training error does NOT decrease with L2
+
+Formula: L2 Loss = Original Loss + λ × Σwᵢ²</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q10 · 4M</span>
+      Bias Correction in Adam — Mathematical Justification
+    </div>
+    <div class="qa-answer">REASON FOR BIAS CORRECTION IN ADAM:
+
+1. PROBLEM (Initialization Bias):
+   m₀ = 0 aur v₀ = 0 initialize karte hain
+   m₁ = β₁×0 + (1-β₁)×∇w₁ = 0.1×∇w₁  ← bahut chhota!
+   
+2. EFFECT WITHOUT BIAS CORRECTION:
+   v₀ = 0.001×(0.1)² = 0.00001
+   η_eff = 1/√0.00001 = 316  ← BAHUT BADA → Unstable!
+
+3. MATHEMATICAL PROOF:
+   mt = (1-β₁) × Σ(β₁^(t-τ) × ∇wτ)
+   
+   Taking expectation (assuming stationary distribution):
+   E[mt] = E[∇w] × (1 - β₁ᵗ)   [Sum of GP with ratio β₁]
+   
+   We want E[m̂t] = E[∇w]
+   ∴ m̂t = mt / (1 - β₁ᵗ)   ← This is Bias Correction!
+
+4. EFFECT WITH BIAS CORRECTION:
+   v̂₀ = 0.00001/0.001 = 0.01
+   η_eff = 1/√0.01 = 10  ← Controlled! ✓
+
+CONCLUSION:
+Bias correction ensures initial steps stable rahen
+aur exponential moving average unbiased estimate de.
+"A lack of initialization bias correction would lead
+to initial steps that are much larger" — Adam paper</div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q11 · 3M</span>
+      AdaDelta — No η₀ Kyun Zaroori Nahi?
+    </div>
+    <div class="qa-answer">AdaDelta Algorithm:
+1. vt = β×vt-1 + (1-β)×(∇wt)²       ← past gradients
+2. Δwt = -(√(ut-1+ε)/√(vt+ε)) × ∇wt  ← weight update
+3. wt+1 = wt + Δwt
+4. ut = β×ut-1 + (1-β)×(Δwt)²        ← past weight changes
+
+WHY NO INITIAL LEARNING RATE NEEDED:
+
+In RMSProp: Δwt = -(η₀/√vt) × ∇wt
+            → η₀ constant hai, manually set karna padta hai
+
+In AdaDelta: Δwt = -(√ut-1/√vt) × ∇wt
+            → Numerator = past weight changes ka RMS
+            → Denominator = past gradients ka RMS
+            → Ratio automatically meaningful scale deta hai!
+            → No manual η₀ required!
+
+Key Insight:
+- ut tracks history of weight UPDATES (Δwt)
+- vt tracks history of GRADIENTS (∇wt)
+- √ut/√vt acts as adaptive learning rate automatically
+- This ratio is in correct units/scale automatically
+
+Benefit: Not sensitive to initial conditions, works across
+different problems without manual tuning of η₀</div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qa-item">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q12 · 2M</span>
+      CLR / Cosine Annealing — Kyun Useful Hai?
+    </div>
+    <div class="qa-answer">Cyclical Learning Rate (CLR) Useful Hai Kyunki:
+
+1. SADDLE POINT ESCAPE:
+   - Loss surfaces mein saddle points hote hain (flat areas)
+   - Monotonically decreasing LR saddle point pe STUCK ho jaati hai
+   - CLR mein LR increase bhi hoti hai → saddle point se ESCAPE possible!
+
+2. BETTER EXPLORATION + FINE-TUNING:
+   - High LR pe: Wide exploration (naya area dhundhna)
+   - Low LR pe: Fine-tuning near minimum
+   - Dono ka faida ek saath milta hai!
+
+3. FORMULA (Triangular CLR):
+   ηt = ηmin + (ηmax-ηmin) × max(0, 1-|t/μ - 2⌊1+t/2μ⌋+1|)
+   μ = step size (ek cycle ki half length)
+
+4. COSINE ANNEALING (Warm Restart):
+   ηt = ηmin + (ηmax-ηmin)/2 × (1 + cos(π×t/T))
+   T iterations ke baad ηmax se abrupt restart → "Warm Restart"
+
+CONCLUSION: CLR especially helpful hai jab loss surface
+mein saddle points ya plateaus hon. Monotonic decay
+wahan fail ho jaata hai.</div>
+  </div>
+
+  <!-- Definitions -->
+  <div class="card card-accent-purple" style="margin-top:32px">
+    <h3>📖 Important Definitions — Exam Mein Copy Karo!</h3>
+    <div class="box box-blue" style="margin-top:12px">
+      <strong>1. Sparse Feature:</strong><br>
+      "A feature is called sparse if its value is zero for most training examples, resulting in infrequent gradient updates for the corresponding weight."
+    </div>
+    <div class="box box-green" style="margin-top:10px">
+      <strong>2. Adaptive Learning Rate:</strong><br>
+      "A learning rate that automatically adjusts for each parameter based on the history of its gradients, giving larger updates to infrequent parameters and smaller updates to frequent ones."
+    </div>
+    <div class="box box-purple" style="margin-top:10px">
+      <strong>3. Adam Optimizer:</strong><br>
+      "Adam (Adaptive Moment Estimation) combines momentum and RMSProp, maintaining exponentially decaying averages of past gradients (mt) and squared gradients (vt), with bias correction to ensure unbiased estimates."
+    </div>
+    <div class="box box-yellow" style="margin-top:10px">
+      <strong>4. Bias Correction:</strong><br>
+      "The process of dividing the moving average estimates by (1-βᵗ) to correct the initialization bias towards zero, ensuring the expected value equals the true expected gradient."
+    </div>
+    <div class="box box-red" style="margin-top:10px">
+      <strong>5. L2 Regularization:</strong><br>
+      "A regularization technique that adds λ×Σw² penalty to the loss function, preventing overfitting by discouraging large weights, thereby improving generalization on unseen data."
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════════════════════════════
+     STEP 4 — CHEAT SHEET
+══════════════════════════════════════════ -->
+<hr class="section-sep" id="step4">
+<div class="step-header">
+  <div class="step-pill">STEP 4</div>
+  <div class="step-title">Cheat Sheet + Last Minute Revision</div>
+</div>
+<hr class="step-divider">
+
+<div class="container">
+
+  <!-- Master Formulas -->
+  <div class="card card-accent-blue">
+    <h3>📐 ALL FORMULAS — EK JAGAH</h3>
+    <pre>╔══════════════════════════════════════════════════════════╗
+║           ALL OPTIMIZER FORMULAS                        ║
+╠══════════════════════════════════════════════════════════╣
+║                                                          ║
+║  ADAGRAD:                                               ║
+║  vt = vt-1 + (∇wt)²                                    ║
+║  wt+1 = wt - (η/√(vt+ε)) × ∇wt                        ║
+║                                                          ║
+║  RMSPROP:                                               ║
+║  vt = β×vt-1 + (1-β)×(∇wt)²                           ║
+║  wt+1 = wt - (η/√(vt+ε)) × ∇wt                        ║
+║                                                          ║
+║  ADADELTA:                                              ║
+║  vt = β×vt-1 + (1-β)×(∇wt)²                           ║
+║  Δwt = -(√(ut-1+ε)/√(vt+ε)) × ∇wt                    ║
+║  wt+1 = wt + Δwt                                       ║
+║  ut = β×ut-1 + (1-β)×(Δwt)²                           ║
+║                                                          ║
+║  ADAM:                                                  ║
+║  mt = β₁×mt-1 + (1-β₁)×∇wt                            ║
+║  m̂t = mt/(1-β₁ᵗ)          ← BIAS CORRECTION (m)      ║
+║  vt = β₂×vt-1 + (1-β₂)×(∇wt)²                        ║
+║  v̂t = vt/(1-β₂ᵗ)          ← BIAS CORRECTION (v)      ║
+║  wt+1 = wt - (η/√(v̂t+ε)) × m̂t                        ║
+║                                                          ║
+║  ADAMAX:                                                ║
+║  mt = β₁×mt-1 + (1-β₁)×∇wt                            ║
+║  m̂t = mt/(1-β₁ᵗ)          ← BIAS CORRECTION (only m) ║
+║  vt = max(β₂×vt-1, |∇wt|)  ← MAX NORM (no BC!)        ║
+║  wt+1 = wt - (η/(vt+ε)) × m̂t                          ║
+║                                                          ║
+╠══════════════════════════════════════════════════════════╣
+║  DEFAULT VALUES (HAMESHA YAAD RAKHO!):                  ║
+║  β₁ = 0.9  │  β₂ = 0.999  │  ε = 1e-8  │  η = 0.001  ║
+╚══════════════════════════════════════════════════════════╝</pre>
+  </div>
+
+  <!-- Contour Rule -->
+  <div class="card card-accent-yellow">
+    <h3>📊 Contour Plot — 30 Second Rule</h3>
+    <pre>╔══════════════════════════════════════════╗
+║  ELLIPSE w₁ axis pe LAMBA               ║
+║         ↓                               ║
+║  w₁ ko ZYADA updates mile               ║
+║         ↓                               ║
+║  Feature x₁ = DENSE                    ║
+║  Feature x₂ = SPARSE                   ║
+╠══════════════════════════════════════════╣
+║  ELLIPSE w₂ axis pe LAMBA               ║
+║         ↓                               ║
+║  w₂ ko ZYADA updates mile              ║
+║         ↓                               ║
+║  Feature x₁ = SPARSE                   ║
+║  Feature x₂ = DENSE                    ║
+╚══════════════════════════════════════════╝</pre>
+  </div>
+
+  <!-- True/False Quick Ref -->
+  <div class="card card-accent-green">
+    <h3>⚡ True/False Quick Reference</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Statement</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>AdaGrad effective LR monotonically decreases</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>RMSProp LR can increase</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>AdaDelta needs initial learning rate</td><td class="t-false">FALSE ❌</td></tr>
+          <tr><td>Adam uses bias correction for both mt and vt</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>AdaMax needs bias correction for vt</td><td class="t-false">FALSE ❌</td></tr>
+          <tr><td>L2 regularization increases training error</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>L2 regularization decreases test error</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>L2 drives weights exactly to zero</td><td class="t-false">FALSE ❌</td></tr>
+          <tr><td>L1 drives weights exactly to zero</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>Sparse feature gets more gradient updates</td><td class="t-false">FALSE ❌</td></tr>
+          <tr><td>Dense feature corresponds to elongated ellipse axis</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>MGD overshoots minimum due to momentum</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>Adam overshoots minimum</td><td class="t-false">FALSE ❌</td></tr>
+          <tr><td>CLR helps escape saddle points</td><td class="t-true">TRUE ✅</td></tr>
+          <tr><td>vt in AdaGrad never decreases</td><td class="t-true">TRUE ✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5 Golden Rules -->
+  <div class="card card-accent-red">
+    <h3>🔑 5 Golden Rules — Hamesha Kaam Aayenge!</h3>
+    <div class="golden-rule">RULE 1: "LAMBA ELLIPSE = DENSE FEATURE" — Contour plot mein jis axis pe ellipse lamba hai, us axis ka feature DENSE hai</div>
+    <div class="golden-rule">RULE 2: "ADAGRAD SIRF GHATTA HAI" — AdaGrad mein effective LR sirf decrease hoti hai, kabhi increase nahi hoti</div>
+    <div class="golden-rule">RULE 3: "RMSPROP = ADAGRAD + FORGETTING" — RMSProp exponential moving average use karta hai, past ko completely nahi yaad rakhta</div>
+    <div class="golden-rule">RULE 4: "ADAM = MOMENTUM + RMSPROP + BIAS FIX" — Adam = mt (momentum) + vt (RMSProp) + bias correction dono ke liye</div>
+    <div class="golden-rule">RULE 5: "L2 SHRINKS, L1 KILLS" — L2 weights ko ZERO ke PAAS laata hai | L1 weights ko EXACTLY ZERO kar deta hai</div>
+  </div>
+
+  <!-- Memory Tricks -->
+  <div class="card card-accent-purple">
+    <h3>🧠 Memory Tricks — ARDA Method</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Letter</th><th>Algorithm</th><th>Trick</th></tr></thead>
+        <tbody>
+          <tr><td style="font-size:22px;font-weight:800;color:var(--accent1)">A</td><td><strong>AdaGrad</strong></td><td>"Aaram se chalti hai, phir ROOK jaati hai" — LR zero ho jaati hai</td></tr>
+          <tr><td style="font-size:22px;font-weight:800;color:var(--accent3)">R</td><td><strong>RMSProp</strong></td><td>"Ruk Mat Stop! Flexible rehti hai" — LR fluctuate kar sakti hai</td></tr>
+          <tr><td style="font-size:22px;font-weight:800;color:var(--accent2)">D</td><td><strong>AdaDelta</strong></td><td>"Dil se kaam karti hai, khud decide karti hai" — No η₀ needed</td></tr>
+          <tr><td style="font-size:22px;font-weight:800;color:var(--accent4)">A</td><td><strong>Adam</strong></td><td>"All-rounder! Sab ka combination!" — Default choice 🏆</td></tr>
+          <tr><td style="font-size:22px;font-weight:800;color:var(--accent5)">M</td><td><strong>AdaMax</strong></td><td>"Maximum respect for biggest gradient!" — max norm</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Common Mistakes -->
+  <div class="card card-accent-red">
+    <h3>🚨 Common Mistakes — Mat Karna!</h3>
+    <div class="mistake-item">
+      <div class="mistake-wrong">"AdaGrad mein LR increase ho sakti hai"</div>
+      <div class="mistake-right">"AdaGrad mein LR sirf decrease hoti hai — vt hamesha badhta hai"</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-wrong">"L2 regularization weights exactly zero karta hai"</div>
+      <div class="mistake-right">"L1 exactly zero, L2 sirf close to zero (shrinkage)"</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-wrong">"Adam mein bias correction sirf mt ke liye hai"</div>
+      <div class="mistake-right">"Bias correction DONO mt aur vt ke liye hai — dono divide hote hain"</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-wrong">"AdaMax mein vt ke liye bhi bias correction chahiye"</div>
+      <div class="mistake-right">"Max norm zero bias nahi hoti, so sirf mt ke liye BC chahiye"</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-wrong">Numerical mein β = 0.9 ko ignore karna (AdaGrad ka formula use karna)</div>
+      <div class="mistake-right">Check karo pehle — AdaGrad (no β) ya RMSProp (β hai)?</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-wrong">"Lamba ellipse = Sparse feature"</div>
+      <div class="mistake-right">"Lamba ellipse = DENSE feature (zyada updates milte hain)"</div>
+    </div>
+  </div>
+
+  <!-- Exam Pattern Prediction -->
+  <div class="card card-accent-yellow" id="final">
+    <h3>🏆 Predicted Exam Pattern</h3>
+    <div class="predict-item">
+      <div class="predict-topic">📊 Q1-Q2: Contour plot — Sparse/Dense identify karo</div>
+      <div class="predict-marks">3 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">📉 Q3: Effective LR graph identify karo</div>
+      <div class="predict-marks">2 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">🔢 Q4: AdaGrad η₆ numerical calculate karo</div>
+      <div class="predict-marks">5 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">🔢 Q5-Q6: RMSProp numerical</div>
+      <div class="predict-marks">4 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">⚡ Q7: Adam vs MGD comparison</div>
+      <div class="predict-marks">3 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">📐 Q8: L(w*,b*) minimum find karo</div>
+      <div class="predict-marks">2 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">✅ Q9: L2 regularization effects True/False</div>
+      <div class="predict-marks">3 Marks</div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-topic">📖 Q10: Bias correction explanation</div>
+      <div class="predict-marks">4 Marks</div>
+    </div>
+    <div class="box box-yellow" style="margin-top:16px">
+      <strong>Total: ~26 Marks Coverage in Preparation! 🎯</strong>
+    </div>
+  </div>
+
+  <!-- Exam Writing Tips -->
+  <div class="card card-accent-green">
+    <h3>✍️ Exam Answer Writing Tips</h3>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <strong>📝 Formula Pehle</strong>
+        Har numerical mein pehle formula likhna. Marks milte hain formula ke bhi!
+      </div>
+      <div class="tip-card">
+        <strong>📊 Step by Step</strong>
+        t=0, t=1, t=2... clearly likho. Intermediate values dikhao.
+      </div>
+      <div class="tip-card">
+        <strong>🎯 Conclusion</strong>
+        "Therefore η₆ = 0.063" ya "Hence AdaGrad better for sparse" type conclusion hamesha likho.
+      </div>
+      <div class="tip-card">
+        <strong>🔑 Keywords</strong>
+        Dense, sparse, adaptive, monotonically, bias correction, exponential moving average use karo.
+      </div>
+      <div class="tip-card">
+        <strong>✏️ Diagram</strong>
+        Contour plot sketch karo jahan possible ho. Arrow dikhao trajectory ka.
+      </div>
+      <div class="tip-card">
+        <strong>⏱️ Easy Pehle</strong>
+        Pehle easy/short questions karo. Confidence ke saath aage badho!
+      </div>
+    </div>
+  </div>
+
+  <!-- Revision Checklist -->
+  <div class="card card-accent-blue">
+    <h3>✅ Last 30 Minutes Revision Checklist</h3>
+    <ul class="checklist">
+      <li>Contour plot rule yaad hai? (LAMBA = DENSE)</li>
+      <li>AdaGrad formula yaad hai? (vt = vt-1 + grad²)</li>
+      <li>RMSProp formula yaad hai? (vt = β×vt-1 + (1-β)×grad²)</li>
+      <li>Adam ke 5 steps yaad hain? (mt, m̂t, vt, v̂t, update)</li>
+      <li>Default values yaad hain? (β₁=0.9, β₂=0.999, ε=1e-8)</li>
+      <li>Bias correction kyun? (Initial zero bias, large initial steps rokne ke liye)</li>
+      <li>L2 vs L1 difference? (Close to 0 vs Exactly 0)</li>
+      <li>AdaDelta — no η₀ kyun? (Numerator = weight change history)</li>
+      <li>CLR kyun useful? (Saddle point escape)</li>
+      <li>Numerical solve karna aata hai? (η = η₋₁/√vt)</li>
+    </ul>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════ FINAL MOTIVATION ══════════════════ -->
+<div style="padding:0 24px 60px; max-width:1100px; margin:0 auto;">
+  <div class="final-box">
+    <h2>🎯 Ready Ho! 100/100 Zaroor Milega!</h2>
+    <div style="color:var(--text2);font-size:15px;line-height:1.8;margin-bottom:24px">
+      <strong style="color:var(--accent3)">Formulas ✅</strong> &nbsp;·&nbsp;
+      <strong style="color:var(--accent3)">Concepts ✅</strong> &nbsp;·&nbsp;
+      <strong style="color:var(--accent3)">Tricks ✅</strong> &nbsp;·&nbsp;
+      <strong style="color:var(--accent3)">Common Mistakes ✅</strong> &nbsp;·&nbsp;
+      <strong style="color:var(--accent3)">Model Answers ✅</strong>
+    </div>
+    <div style="background:#ffffff08;border-radius:12px;padding:20px;display:inline-block;text-align:left;max-width:400px">
+      <p style="font-family:'Fira Code',monospace;font-size:13px;color:var(--text2);line-height:2">
+        Story Yaad Hai: Sparse → AdaGrad → RMSProp → AdaDelta → <span style="color:var(--accent3);font-weight:700">ADAM! 🏆</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<a href="#top" class="back-top">↑ Back to Top</a>
+
+</body>
+</html>

@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning — Exam Study Guide 🔥</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e2a;
+    --card: #1e2230;
+    --border: #2a2f42;
+    --accent1: #ff6b35;
+    --accent2: #ffd166;
+    --accent3: #06d6a0;
+    --accent4: #118ab2;
+    --accent5: #ef476f;
+    --accent6: #a855f7;
+    --text: #e8eaf0;
+    --text2: #9aa0b8;
+    --text3: #6b7290;
+    --code-bg: #0a0c12;
+    --green: #06d6a0;
+    --red: #ef476f;
+    --yellow: #ffd166;
+    --orange: #ff6b35;
+    --blue: #118ab2;
+    --purple: #a855f7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: linear-gradient(135deg, #0d0f14 0%, #13161e 40%, #1a1020 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,107,53,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,107,53,0.15);
+    border: 1px solid rgba(255,107,53,0.4);
+    color: var(--accent1);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 5vw, 52px);
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--accent1); }
+  .hero-sub {
+    color: var(--text2);
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  /* ── NAV / TOC ── */
+  .toc {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .toc a {
+    color: var(--text2);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { color: var(--accent1); border-color: var(--accent1); background: rgba(255,107,53,0.08); }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 64px 0 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent1);
+    background: rgba(255,107,53,0.12);
+    border: 1px solid rgba(255,107,53,0.3);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .section-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--text);
+  }
+
+  /* ── TOPIC HEADER ── */
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 44px 0 20px;
+  }
+  .topic-icon {
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .topic-header h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent2);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .card-orange { border-left: 3px solid var(--accent1); }
+  .card-green  { border-left: 3px solid var(--accent3); }
+  .card-blue   { border-left: 3px solid var(--accent4); }
+  .card-purple { border-left: 3px solid var(--accent6); }
+  .card-red    { border-left: 3px solid var(--accent5); }
+  .card-yellow { border-left: 3px solid var(--accent2); }
+
+  /* ── STORY BLOCKS ── */
+  .story-block {
+    background: linear-gradient(135deg, var(--bg3), var(--card));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .story-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent3);
+    margin-bottom: 8px;
+  }
+  .story-block p, .story-block blockquote {
+    color: var(--text);
+    font-style: normal;
+  }
+
+  /* ── CODE BLOCKS ── */
+  pre, .code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 22px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.8;
+    overflow-x: auto;
+    color: #a8b4d4;
+    margin: 16px 0;
+    white-space: pre;
+  }
+  .kw { color: var(--accent3); }
+  .cm { color: var(--text3); font-style: italic; }
+  .hl { color: var(--accent2); }
+  .bad { color: var(--accent5); }
+  .good { color: var(--accent3); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 500px;
+  }
+  thead th {
+    background: var(--bg3);
+    color: var(--text2);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody td { padding: 11px 16px; color: var(--text); vertical-align: top; }
+  tbody tr:last-child { border-bottom: none; }
+  .star5 { color: var(--accent2); }
+
+  /* ── BADGES / PILLS ── */
+  .badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .badge-green  { background: rgba(6,214,160,0.15); color: var(--green); border: 1px solid rgba(6,214,160,0.3); }
+  .badge-red    { background: rgba(239,71,111,0.15); color: var(--red); border: 1px solid rgba(239,71,111,0.3); }
+  .badge-yellow { background: rgba(255,209,102,0.15); color: var(--yellow); border: 1px solid rgba(255,209,102,0.3); }
+  .badge-blue   { background: rgba(17,138,178,0.15); color: var(--blue); border: 1px solid rgba(17,138,178,0.3); }
+  .badge-orange { background: rgba(255,107,53,0.15); color: var(--orange); border: 1px solid rgba(255,107,53,0.3); }
+  .badge-purple { background: rgba(168,85,247,0.15); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+
+  /* ── TRICK BOX ── */
+  .trick-box {
+    background: rgba(255,209,102,0.07);
+    border: 1px solid rgba(255,209,102,0.25);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .trick-box .trick-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+  .trick-box p { color: var(--text2); font-size: 14px; }
+
+  /* ── ANSWER BOX ── */
+  .answer-box {
+    background: rgba(6,214,160,0.06);
+    border: 1px solid rgba(6,214,160,0.25);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 12px 0;
+  }
+  .answer-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+
+  /* ── Q NUMBER ── */
+  .q-block { margin: 32px 0; }
+  .q-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--accent1);
+    background: rgba(255,107,53,0.12);
+    border: 1px solid rgba(255,107,53,0.3);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .q-block h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    background: var(--bg3);
+    padding: 12px 16px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent1);
+  }
+
+  /* ── KEYWORDS ── */
+  .kw-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-top: 10px;
+  }
+  .kw-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 8px;
+  }
+  .kw-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kw-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--accent4);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 7px 0;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { color: var(--green); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+  .cross-icon { color: var(--red); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+
+  /* ── FORMULA HIGHLIGHT ── */
+  .formula {
+    background: var(--code-bg);
+    border: 1px solid rgba(255,209,102,0.3);
+    border-radius: 6px;
+    padding: 18px 22px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    margin: 16px 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 16px 0;
+  }
+  .flow-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .flow-arr { color: var(--text3); font-size: 16px; }
+
+  /* ── SECTION LABEL ── */
+  .section-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .tag-red    { background: rgba(239,71,111,0.15); color: var(--red); border: 1px solid rgba(239,71,111,0.3); }
+  .tag-blue   { background: rgba(17,138,178,0.15); color: var(--blue); border: 1px solid rgba(17,138,178,0.3); }
+  .tag-green  { background: rgba(6,214,160,0.15); color: var(--green); border: 1px solid rgba(6,214,160,0.3); }
+
+  /* ── MISTAKES TABLE ── */
+  .mistake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media(max-width: 600px) { .mistake-grid { grid-template-columns: 1fr; } }
+  .mistake-item {
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .mistake-wrong { background: rgba(239,71,111,0.08); border: 1px solid rgba(239,71,111,0.25); }
+  .mistake-right { background: rgba(6,214,160,0.08); border: 1px solid rgba(6,214,160,0.25); }
+  .mistake-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ml-wrong { color: var(--red); }
+  .ml-right { color: var(--green); }
+
+  /* ── CHEAT SHEET BLOCKS ── */
+  .cheat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 20px 0; }
+  .cheat-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .cheat-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── EXAM LINES ── */
+  .exam-line {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent6);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: var(--text);
+    font-style: italic;
+  }
+  .exam-line-topic {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent6);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-style: normal;
+  }
+
+  /* ── FINAL BOX ── */
+  .final-box {
+    background: linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,209,102,0.08));
+    border: 2px solid rgba(255,107,53,0.4);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 60px;
+  }
+  .final-box h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent1);
+    margin-bottom: 12px;
+  }
+  .final-box p { color: var(--text2); font-size: 16px; }
+
+  /* ── GRID ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 48px 0;
+  }
+
+  p { margin-bottom: 8px; }
+  strong { color: var(--accent2); }
+  em { color: var(--text2); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.6s ease both; }
+  .hero > *:nth-child(2) { animation-delay: 0.1s; }
+  .hero > *:nth-child(3) { animation-delay: 0.2s; }
+  .hero > *:nth-child(4) { animation-delay: 0.3s; }
+
+  .steps-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .step-pill {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-pill span { color: var(--accent1); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero">
+  <div class="hero-badge">🤖 Expert Teacher Mode • Deep Learning Exam Prep</div>
+  <h1>Deep Learning<br><span>Week 7 + Week 8</span> Study Guide</h1>
+  <p class="hero-sub">Neural Networks • CNN • Activation Functions • Batch Normalization • Exam Ready 🔥</p>
+  <div class="steps-row">
+    <div class="step-pill"><span>STEP 1</span> Subject Overview</div>
+    <div class="step-pill"><span>STEP 2</span> Topic Deep Dive</div>
+    <div class="step-pill"><span>STEP 3</span> Model Answers</div>
+    <div class="step-pill"><span>STEP 4</span> Ultimate Cheat Sheet</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TOC NAV ═══════════════════ -->
+<nav class="toc">
+  <a href="#step1">Step 1: Overview</a>
+  <a href="#step2">Step 2: Topics</a>
+  <a href="#vgp">Vanishing Gradient</a>
+  <a href="#pretrain">Pre-training</a>
+  <a href="#sigmoid">Sigmoid</a>
+  <a href="#relu">ReLU & Variants</a>
+  <a href="#init">Weight Init</a>
+  <a href="#batchnorm">Batch Norm</a>
+  <a href="#cnn">CNN</a>
+  <a href="#step3">Step 3: Q&A</a>
+  <a href="#step4">Step 4: Cheat Sheet</a>
+</nav>
+
+<div class="page">
+
+<!-- ═══════════════════ STEP 1 ═══════════════════ -->
+<div id="step1">
+  <div class="section-header">
+    <span class="section-num">STEP 01</span>
+    <h2>Subject Ki Kahani — 5 Minutes Mein Sab Kuch! ⚡</h2>
+  </div>
+
+  <div class="story-block">
+    <div class="story-label">🌟 Ek Baar Ki Baat Hai...</div>
+    <p>Socho tumhara ek <strong>dimag (brain)</strong> hai. Usmein lakho neurons hain jo aapas mein connected hain. Scientists ne socha — <em>"Kya computer ko bhi aise train kar sakte hain?"</em></p>
+    <p style="margin-top:12px;">Toh unhone banaya → <strong>Neural Network 🧠</strong></p>
+  </div>
+
+  <!-- Story Chapters -->
+  <div class="card card-orange" style="margin-top:20px;">
+    <p style="color:var(--accent1);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">📖 STORY: Neural Network Ka Safar</p>
+
+    <div class="card" style="background:var(--bg3);margin-bottom:12px;">
+      <p style="color:var(--accent2);font-weight:600;">Chapter 1 — Problem Aayi 🚨</p>
+      <p style="color:var(--text2);margin-top:8px;">1986 mein backpropagation aaya. Log excited the. Par jab deep (bahut layers wala) network banaya toh... <strong>training ruk jaati thi!</strong> Gradients vanish ho jaate the. 20 saal tak koi solution nahi mila.</p>
+    </div>
+
+    <div class="card" style="background:var(--bg3);margin-bottom:12px;">
+      <p style="color:var(--accent2);font-weight:600;">Chapter 2 — Hero Aaya 🦸 (2006)</p>
+      <p style="color:var(--text2);margin-top:8px;">Hinton aur Salakhutdinov ne ek jugaad nikala — <strong>"Pehle unsupervised training karo, phir supervised!"</strong> — Matlab pehle bina labels ke seekho, phir labels se fine-tune karo. Isko bola <strong>Greedy Layerwise Pre-training.</strong></p>
+    </div>
+
+    <div class="card" style="background:var(--bg3);margin-bottom:12px;">
+      <p style="color:var(--accent2);font-weight:600;">Chapter 3 — Asli Revolution 💥</p>
+      <p style="color:var(--text2);margin-top:8px;">Phir aaya <strong>ReLU</strong> (activation function), <strong>Xavier initialization</strong> (weights kaise set karein), aur <strong>Batch Normalization</strong>. Inse deep learning <strong>rocket</strong> ban gayi!</p>
+    </div>
+
+    <div class="card" style="background:var(--bg3);">
+      <p style="color:var(--accent2);font-weight:600;">Chapter 4 — CNN Aaya 📸</p>
+      <p style="color:var(--text2);margin-top:8px;">Images ke liye special network banaya — <strong>Convolutional Neural Network (CNN)</strong>. Yeh images mein patterns dhundta hai jaise tumhara dimag dhundta hai.</p>
+    </div>
+  </div>
+
+  <!-- Top 10 Topics -->
+  <div class="topic-header">
+    <div class="topic-icon">🏆</div>
+    <h3>TOP 10 Exam Topics — Yeh Zaroor Aayenge!</h3>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Topic</th><th>Importance</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--accent1);font-family:'Space Mono',monospace;font-weight:700;">1</td><td><strong>Vanishing Gradient Problem</strong></td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">2</td><td>Greedy Layerwise Pre-training</td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">3</td><td>Sigmoid ke Problems</td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">4</td><td>ReLU &amp; Variants (Leaky, ELU, GELU)</td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">5</td><td>Dead Neuron Problem</td><td class="star5">⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">6</td><td>Xavier / He Weight Initialization</td><td class="star5">⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">7</td><td>Batch Normalization</td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">8</td><td>CNN — Convolution Operation</td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">9</td><td>Pooling (Max / Avg)</td><td class="star5">⭐⭐⭐⭐</td></tr>
+        <tr><td style="color:var(--text2);font-family:'Space Mono',monospace;">10</td><td>Output Size Formula (CNN)</td><td class="star5">⭐⭐⭐⭐⭐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Key Insight -->
+  <div class="trick-box" style="margin-top:24px;background:rgba(239,71,111,0.07);border-color:rgba(239,71,111,0.3);">
+    <div class="trick-label" style="color:var(--red);">🔑 Sabse Badi Baat Yaad Rakho</div>
+    <p style="color:var(--text);font-size:15px;"><strong>"Deep Learning = Gradients ka game hai!"</strong><br>
+    Agar gradients vanish ho gaye → network seekhna band kar deta hai.<br>
+    Humara goal → <strong style="color:var(--green);">Gradients healthy rakhna! ✅</strong></p>
+  </div>
+
+  <!-- Mental Map -->
+  <div class="topic-header"><div class="topic-icon">🗺️</div><h3>Quick Mental Map</h3></div>
+  <div class="flow">
+    <div class="flow-box" style="background:rgba(239,71,111,0.15);border-color:rgba(239,71,111,0.3);color:var(--red);">Deep Network Problems</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">Vanishing Gradient</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box" style="background:rgba(6,214,160,0.1);border-color:rgba(6,214,160,0.3);">Solutions</div>
+  </div>
+  <div class="flow" style="margin-top:-8px;">
+    <div class="flow-box">1. Pre-training (2006)</div>
+    <div class="flow-arr">+</div>
+    <div class="flow-box">2. Better Activations (ReLU)</div>
+    <div class="flow-arr">+</div>
+    <div class="flow-box">3. Xavier Initialization</div>
+    <div class="flow-arr">+</div>
+    <div class="flow-box">4. Batch Normalization</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ STEP 2 ═══════════════════ -->
+<div id="step2">
+  <div class="section-header">
+    <span class="section-num">STEP 02</span>
+    <h2>Topic by Topic — Deep Dive! 🔥</h2>
+  </div>
+
+  <!-- ── TOPIC 1: VGP ── -->
+  <div id="vgp">
+    <div class="topic-header">
+      <div class="topic-icon">🌊</div>
+      <h3>TOPIC 1: Vanishing Gradient Problem</h3>
+    </div>
+
+    <div class="story-block">
+      <div class="story-label">🏠 Real Life Example — Whisper Game!</div>
+      <p>Socho tumhara ghar <strong>10 manzil ka</strong> hai. Tumhare papa ne 10th floor pe bola — <em>"Chai banana!"</em></p>
+      <p style="margin-top:8px;">Message 10th → 9th → 8th → ... → 1st floor tak jaata hai. Par har floor pe message <strong>thoda chota</strong> hota jaata hai.</p>
+      <p style="margin-top:8px;">1st floor pe pahunchte pahunchte message ho gaya — <strong style="color:var(--red);">"...chai?" 😵</strong></p>
+      <p style="margin-top:12px;"><strong>Yahi Vanishing Gradient hai!</strong></p>
+    </div>
+
+<pre><span class="cm">// Technical Version</span>
+<span class="hl">Gradient</span> = "Kitna update karna hai weights ko"
+
+Deep network mein:
+Layer 10 ← Layer 9 ← Layer 8 ← ... ← Layer 1
+           (Backprop is direction mein jaata hai)
+
+<span class="cm">// Problem:</span>
+Sigmoid ka derivative = <span class="bad">max 0.25</span> hota hai
+
+Toh 10 layers mein:
+0.25 × 0.25 × 0.25 × ... (10 baar) = <span class="bad">0.000001 💀</span>
+
+Itna chota gradient → Weight update <span class="bad">ZERO</span> ho gaya
+→ Network seekhna <span class="bad">BAND!</span></pre>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 Trick to Remember</div>
+      <p><strong>"V.G.P = Very Gradient Poor"</strong><br>Jitni zyada layers → Utna zyada vanish! Sigmoid = VGP ka villain! 😈</p>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 2: PRE-TRAINING ── -->
+  <div id="pretrain" style="margin-top:40px;">
+    <div class="topic-header">
+      <div class="topic-icon">⛰️</div>
+      <h3>TOPIC 2: Greedy Layerwise Pre-training</h3>
+    </div>
+
+    <div class="story-block">
+      <div class="story-label">🏔️ Mount Everest Analogy</div>
+      <p>Socho tumhe <strong>Mount Everest</strong> chadhna hai.</p>
+      <p style="margin-top:8px;"><span class="badge badge-red">❌ Wrong Way</span> Seedha top pe jump karo (fail!)</p>
+      <p style="margin-top:6px;"><span class="badge badge-green">✅ Right Way</span> Pehle base camp, phir Camp 1, phir Camp 2... step by step!</p>
+      <p style="margin-top:12px;"><strong>Yahi Pre-training hai!</strong></p>
+    </div>
+
+<pre><span class="hl">STEP 1:</span> Layer 1 ko train karo <span class="cm">(Unsupervised)</span>
+        Input X → Hidden H1 → Reconstruct X back
+        <span class="cm">(Autoencoder jaisa!)</span>
+
+<span class="hl">STEP 2:</span> Layer 1 freeze karo ❄️
+        Layer 2 ko train karo
+        H1 → H2 → Reconstruct H1
+
+<span class="hl">STEP 3:</span> Continue jab tak last hidden layer...
+
+<span class="hl">STEP 4:</span> Output layer add karo
+        Ab POORA network fine-tune karo
+        <span class="cm">(Supervised — with labels)</span></pre>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Pre-training ke BINA</th><th>Pre-training ke SAATH</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Training</strong></td><td style="color:var(--red);">Converge nahi hoti</td><td style="color:var(--green);">Converge hoti hai ✅</td></tr>
+          <tr><td><strong>Weights</strong></td><td style="color:var(--red);">Random / Bad</td><td style="color:var(--green);">Meaningful ✅</td></tr>
+          <tr><td><strong>Result</strong></td><td style="color:var(--red);">Fail</td><td style="color:var(--green);">Better accuracy ✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-blue" style="margin-top:16px;">
+      <p style="color:var(--accent4);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Pre-training Kyun Kaam Karta Hai? (2 Reasons)</p>
+      <p><strong>Reason 1 — Better Optimization:</strong> Network ko ek achhi starting position milti hai weight space mein. Good region se start → Easy to find minimum!</p>
+      <p style="margin-top:10px;"><strong>Reason 2 — Better Regularization:</strong> Unsupervised objective ek constraint ki tarah kaam karta hai. Weights sirf wahi values lete hain jo data ko achhi tarah represent karein!</p>
+    </div>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 Trick to Remember</div>
+      <p><strong>"Pre-training = Warm-up exercise"</strong><br>Gym jaane se pehle warm-up karte hain → Injury nahi hoti. Pre-training se pehle → Training fail nahi hoti! 💪</p>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 3: SIGMOID ── -->
+  <div id="sigmoid" style="margin-top:40px;">
+    <div class="topic-header">
+      <div class="topic-icon">📉</div>
+      <h3>TOPIC 3: Sigmoid Ki Problems (BAHUT IMPORTANT!)</h3>
+    </div>
+
+    <div class="formula">σ(x) = 1 / (1 + e<sup>-x</sup>) &nbsp;&nbsp;|&nbsp;&nbsp; Output: 0 to 1 &nbsp;&nbsp;|&nbsp;&nbsp; Max Derivative: <strong>0.25</strong></div>
+
+    <p style="color:var(--accent5);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;margin:20px 0 12px;">❌ 3 BADI PROBLEMS:</p>
+
+    <div class="card card-red">
+      <p style="color:var(--red);font-weight:700;margin-bottom:10px;">Problem 1: Vanishing Gradient (Saturation)</p>
+<pre style="margin-top:0;">Jab x bahut bada ya bahut chota ho:
+σ(x) ≈ 0  ya  σ(x) ≈ 1
+
+Derivative = σ(x)(1-σ(x)) ≈ 0 × 1 = <span class="bad">0 💀</span>
+
+Neuron "saturate" ho gaya!
+= Gradient vanish!   = Weight update nahi!   = DEAD TRAINING!</pre>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">🏠 <em>Example: Volume knob 0 ya 100 pe stuck ho jaaye — aur adjust nahi kar sakte!</em></p>
+    </div>
+
+    <div class="card card-red">
+      <p style="color:var(--red);font-weight:700;margin-bottom:10px;">Problem 2: Not Zero-Centered (Zigzag Problem)</p>
+<pre style="margin-top:0;">Sigmoid output: HAMESHA positive (0 to 1)
+→ Gradients bhi hamesha same sign ke honge
+→ Ya sab positive, ya sab negative
+→ Optimal point pe SEEDHA nahi ja sakte
+→ ZIGZAG path lena padta hai!
+→ Slow convergence! 🐢</pre>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">🏠 <em>Example: Car mein sirf LEFT turn allow ho ya sirf RIGHT — destination tak seedha jaoge? Nahi! Zigzag hi karoge!</em></p>
+    </div>
+
+    <div class="card card-red">
+      <p style="color:var(--red);font-weight:700;margin-bottom:10px;">Problem 3: Computationally Expensive</p>
+      <p>e<sup>-x</sup> calculate karna = CPU/GPU time lagta hai. Deep network mein = Millions of calculations = <strong style="color:var(--red);">Bahut slow! ⏰</strong></p>
+    </div>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 Trick — Sigmoid Ki 3 Burai</div>
+      <p><strong>"SZE"</strong> = <strong>S</strong>aturation (gradient vanish) + <strong>Z</strong>igzag (not zero-centered) + <strong>E</strong>xpensive (computation)<br><em>"Sigmoid Zyada Expensive"</em> 😄</p>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 4: ReLU ── -->
+  <div id="relu" style="margin-top:40px;">
+    <div class="topic-header">
+      <div class="topic-icon">⚡</div>
+      <h3>TOPIC 4: ReLU aur Uske Bhai-Behen! (MOST IMPORTANT)</h3>
+    </div>
+
+    <div class="card card-green">
+      <p style="color:var(--green);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;margin-bottom:10px;">ReLU — THE HERO! 🦸</p>
+      <div class="formula" style="text-align:left;">f(x) = max(0, x)<br><br>x &gt; 0 → output = x<br>x &lt; 0 → output = 0</div>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">🏠 <em>Example: Salary rule — "Agar profit hua toh bonus milega, loss hua toh 0 milega"</em></p>
+    </div>
+
+    <!-- Comparison table -->
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Sigmoid</th><th>ReLU</th></tr></thead>
+        <tbody>
+          <tr><td>Saturation</td><td><span class="badge badge-red">Haan ❌</span></td><td>Sirf negative side pe</td></tr>
+          <tr><td>Zero-centered</td><td><span class="badge badge-red">Nahi ❌</span></td><td><span class="badge badge-red">Nahi ❌</span></td></tr>
+          <tr><td>Speed</td><td><span class="badge badge-red">Slow ❌</span></td><td><span class="badge badge-green">FAST ✅</span></td></tr>
+          <tr><td>Gradient vanish?</td><td><span class="badge badge-red">Haan ❌</span></td><td><span class="badge badge-green">Positive mein Nahi ✅</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Dead Neuron -->
+    <div class="card card-red" style="margin-top:20px;">
+      <p style="color:var(--red);font-weight:700;margin-bottom:12px;">☠️ ReLU Ki EK Problem: DEAD NEURON!</p>
+<pre>Kab hota hai?
+Large learning rate → Large gradient →
+Bias update bahut zyada negative ho gaya!
+
+w1×x1 + w2×x2 + b &lt; 0
+
+ReLU output = <span class="bad">0</span>
+Backprop gradient = <span class="bad">0</span>
+Weights update = <span class="bad">ZERO</span>
+Neuron PERMANENTLY DEAD! 💀</pre>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">🏠 <em>Example: Tube light ek baar fuse ho gayi — ab chahe kitna bhi switch karo, jalegi nahi!</em></p>
+      <p style="margin-top:12px;"><strong>Fix:</strong> Bias ko 0.01 se initialize karo (positive!) ya <strong>Leaky ReLU</strong> use karo!</p>
+    </div>
+
+    <!-- ReLU Variants -->
+    <p style="color:var(--accent2);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;margin:24px 0 16px;">ReLU KE BHAI-BEHEN (Variants):</p>
+
+    <div class="cheat-grid">
+      <div class="cheat-block">
+        <div class="cheat-title">1️⃣ Leaky ReLU</div>
+<pre style="font-size:11.5px;">f(x) = x        (if x &gt; 0)
+f(x) = 0.1x     (if x ≤ 0)
+
+Faida: Negative side pe bhi
+       thoda gradient aata hai!
+= Neuron KABHI NAHI MAREGA! 💪</pre>
+      </div>
+      <div class="cheat-block">
+        <div class="cheat-title">2️⃣ Parametric ReLU (PReLU)</div>
+<pre style="font-size:11.5px;">f(x) = x        (if x &gt; 0)
+f(x) = αx       (if x ≤ 0)
+
+α = learnable parameter!
+Network khud seekhta hai
+best α kya hai!</pre>
+      </div>
+      <div class="cheat-block">
+        <div class="cheat-title">3️⃣ ELU</div>
+<pre style="font-size:11.5px;">f(x) = x              (if x &gt; 0)
+f(x) = a(e^x - 1)    (if x ≤ 0)
+
+Faida: Zero-centered outputs!
+Nuksan: e^x → Thoda expensive</pre>
+      </div>
+      <div class="cheat-block">
+        <div class="cheat-title">4️⃣ GELU ⭐ (Transformers!)</div>
+<pre style="font-size:11.5px;">GELU(x) ≈ x × σ(1.702x)
+
+→ BERT, GPT jaise
+  TRANSFORMERS mein!
+→ Modern AI mein
+  SABSE POPULAR!</pre>
+      </div>
+      <div class="cheat-block">
+        <div class="cheat-title">5️⃣ SWISH</div>
+<pre style="font-size:11.5px;">f(x) = x × σ(βx)
+
+Google ne automatic
+search se dhundha!
+β = learnable ya fixed
+(1.702 = GELU)</pre>
+      </div>
+      <div class="cheat-block">
+        <div class="cheat-title">6️⃣ Maxout</div>
+<pre style="font-size:11.5px;">f(x) = max(w1x+b1, w2x+b2, ...)
+
+Faida: ReLU aur Leaky ReLU
+       dono ko generalize!
+Nuksan: Parameters k times
+        badh jaate hain!</pre>
+      </div>
+    </div>
+
+    <!-- Comparison Mega Table -->
+    <div class="table-wrap" style="margin-top:20px;">
+      <table>
+        <thead><tr><th>Activation</th><th>Saturation</th><th>Zero-Centered</th><th>Dead Neuron?</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sigmoid</strong></td><td><span class="badge badge-red">Haan ❌</span></td><td><span class="badge badge-red">Nahi ❌</span></td><td>Nahi</td><td>Old networks</td></tr>
+          <tr><td><strong>Tanh</strong></td><td><span class="badge badge-red">Haan ❌</span></td><td><span class="badge badge-green">Haan ✅</span></td><td>Nahi</td><td>RNN/LSTM</td></tr>
+          <tr><td><strong>ReLU</strong></td><td>Positive nahi ✅</td><td><span class="badge badge-red">Nahi ❌</span></td><td><span class="badge badge-red">Haan ❌</span></td><td><span class="badge badge-orange">CNN 👑</span></td></tr>
+          <tr><td><strong>Leaky ReLU</strong></td><td><span class="badge badge-green">Nahi ✅</span></td><td>Almost ✅</td><td><span class="badge badge-green">Nahi ✅</span></td><td>General</td></tr>
+          <tr><td><strong>GELU</strong></td><td><span class="badge badge-green">Nahi ✅</span></td><td>Almost ✅</td><td><span class="badge badge-green">Nahi ✅</span></td><td><span class="badge badge-purple">Transformers 👑</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 Variants Yaad Karne Ka</div>
+      <p><strong>"L</strong>eaky <strong>P</strong>aani <strong>E</strong>k <strong>G</strong>lass <strong>S</strong>e Milta hai" = <strong>L</strong>eaky, <strong>P</strong>arametric, <strong>E</strong>LU, <strong>G</strong>ELU, <strong>S</strong>WISH</p>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 5: WEIGHT INIT ── -->
+  <div id="init" style="margin-top:40px;">
+    <div class="topic-header">
+      <div class="topic-icon">⚖️</div>
+      <h3>TOPIC 5: Weight Initialization</h3>
+    </div>
+
+<pre><span class="bad">Agar weights bahut BADE initialize karo:</span>
+→ Sigmoid saturate hoga immediately
+→ Gradients vanish! 💀
+
+<span class="bad">Agar weights ZERO initialize karo:</span>
+→ Sab neurons same kaam karenge
+→ Network kuch nahi seekhega! 💀
+
+<span class="good">Solution: SMART initialization!</span></pre>
+
+    <div class="two-col">
+      <div class="card card-blue">
+        <p style="color:var(--blue);font-weight:700;margin-bottom:10px;">Xavier Initialization (Glorot)</p>
+<pre style="font-size:12px;">Range: [-1/√n, +1/√n]
+Variance: 2/(n_in + n_out)
+
+n = number of inputs to layer</pre>
+        <p style="margin-top:10px;"><span class="badge badge-blue">Kab Use Karo</span> Sigmoid ya Tanh ke saath</p>
+      </div>
+      <div class="card card-green">
+        <p style="color:var(--green);font-weight:700;margin-bottom:10px;">He Initialization</p>
+<pre style="font-size:12px;">Variance: 2/n_in</pre>
+        <p style="margin-top:10px;"><span class="badge badge-green">Kab Use Karo</span> ReLU ke saath! ✅</p>
+      </div>
+    </div>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 Trick to Remember</div>
+      <p><strong>"Xavier = Sigmoid ka dost"</strong> &nbsp;|&nbsp; <strong>"He = ReLU ka dost"</strong><br>(He ne ReLU ke liye specially banaya tha!)</p>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 6: BATCH NORM ── -->
+  <div id="batchnorm" style="margin-top:40px;">
+    <div class="topic-header">
+      <div class="topic-icon">📊</div>
+      <h3>TOPIC 6: Batch Normalization (BAHUT IMPORTANT!)</h3>
+    </div>
+
+    <div class="story-block">
+      <div class="story-label">💡 Problem Kya Thi?</div>
+      <p>Deep network mein har layer ka input distribution badalta rehta hai training ke time. Isko bolte hain <strong>Internal Covariate Shift.</strong></p>
+      <p style="margin-top:8px;">🏠 <em>Example: Socho tumhara school har mahine syllabus change kar de — tum kabhi properly prepare nahi kar sakte! Yahi hota hai neural network ke saath!</em></p>
+    </div>
+
+<pre><span class="hl">ALGORITHM (4 Steps):</span>
+
+Given: Mini-batch B = {x₁, x₂, ..., xₘ}
+
+<span class="kw">Step 1:</span> Batch Mean calculate karo
+        μ_B = (1/m) Σ xᵢ
+
+<span class="kw">Step 2:</span> Batch Variance calculate karo
+        σ²_B = (1/m) Σ (xᵢ - μ_B)²
+
+<span class="kw">Step 3:</span> Normalize karo
+        x̂ᵢ = (xᵢ - μ_B) / √(σ²_B + ε)
+        (ε = small number to avoid division by zero)
+
+<span class="kw">Step 4:</span> Scale aur Shift karo
+        yᵢ = <span class="hl">γ</span> × x̂ᵢ + <span class="hl">β</span>
+        (<span class="hl">γ, β = learnable parameters!</span>)</pre>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Faida</th><th>Explanation</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-green">✅ Higher LR</span></td><td>Stable training — higher learning rates use kar sakte hain</td></tr>
+          <tr><td><span class="badge badge-green">✅ Less Sensitive</span></td><td>Weight initialization pe less sensitive</td></tr>
+          <tr><td><span class="badge badge-green">✅ Regularization</span></td><td>Dropout ki zaroorat kam</td></tr>
+          <tr><td><span class="badge badge-green">✅ Faster</span></td><td>Jaldi seekhta hai — faster convergence</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 Trick to Remember</div>
+      <p><strong>"Batch Norm = Gym instructor"</strong><br>Sab students ko same level pe laata hai pehle, phir train karta hai! Na koi bahut aage, na bahut peeche — sab normalized! 💪</p>
+    </div>
+  </div>
+
+  <!-- ── TOPIC 7: CNN ── -->
+  <div id="cnn" style="margin-top:40px;">
+    <div class="topic-header">
+      <div class="topic-icon">📸</div>
+      <h3>TOPIC 7: CNN — Convolutional Neural Network</h3>
+    </div>
+
+    <div class="card card-orange">
+      <p style="color:var(--accent1);font-weight:700;margin-bottom:10px;">Kyun Chahiye CNN?</p>
+      <p>Normal neural network mein: 100×100 image = <strong>10,000 pixels = 10,000 inputs = bahut zyada parameters! Slow aur inefficient!</strong></p>
+      <p style="margin-top:10px;">CNN solution: <span class="badge badge-green">Shared weights</span> <span class="badge badge-blue">Local connectivity</span> <span class="badge badge-purple">Much less parameters!</span></p>
+    </div>
+
+    <div class="story-block" style="margin-top:16px;">
+      <div class="story-label">🔦 Torch / Flashlight Analogy</div>
+      <p>Socho tumhare paas ek chhoti si <strong>torch (kernel/filter)</strong> hai. Tum us torch ko image ke upar slide karte ho left-right, upar-neeche. Har jagah jo light padti hai, woh region ka "feature" pata chalta hai! <strong>Yahi convolution hai!</strong></p>
+    </div>
+
+    <!-- CNN Formula — STAR! -->
+    <div class="formula" style="margin-top:20px;font-size:16px;">
+      ⭐ OUTPUT SIZE FORMULA ⭐<br><br>
+      Output = ((N − F + 2P) / S) + 1<br><br>
+      <span style="font-size:12px;color:var(--text2);">N = Input size &nbsp;|&nbsp; F = Filter size &nbsp;|&nbsp; P = Padding &nbsp;|&nbsp; S = Stride</span>
+    </div>
+
+    <div class="card card-green">
+      <p style="color:var(--green);font-weight:700;margin-bottom:10px;">Example from Assignment:</p>
+<pre style="font-size:12px;margin-top:0;">Width:  Input=4, Filter=2, Stride=2, Padding=0
+= ((4-2+0)/2) + 1 = <span class="good">2 ✅</span>
+
+Height: Input=3, Filter=1, Stride=2, Padding=0
+= ((3-1+0)/2) + 1 = <span class="good">2 ✅</span>
+
+Output: <span class="good">2×2 ✅</span></pre>
+    </div>
+
+    <!-- Pooling -->
+    <div class="card card-purple" style="margin-top:16px;">
+      <p style="color:var(--purple);font-weight:700;margin-bottom:10px;">Pooling Kya Hota Hai?</p>
+<pre style="font-size:12px;margin-top:0;">Image ko SHRINK karta hai (downsampling)
+Important features RETAIN karta hai
+
+<span class="kw">Max Pooling:</span>  Har region ka MAX value lo
+<span class="kw">Avg Pooling:</span>  Har region ka AVERAGE value lo
+
+Example (2×2 Max Pooling):
+[1, 3]
+[5, 2]  →  5   (maximum value!)
+(4 values se 1 value!)</pre>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">🏠 <em>Exam notes mein se sirf most important points nikalna = Max Pooling!</em></p>
+    </div>
+
+    <!-- CNN Architecture -->
+    <div style="margin-top:20px;">
+      <p style="color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">CNN Architecture (Typical):</p>
+      <div class="flow" style="flex-direction:column;align-items:flex-start;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <div class="flow-box">Input Image</div><div class="flow-arr">→</div>
+          <div class="flow-box" style="background:rgba(255,107,53,0.15);border-color:rgba(255,107,53,0.3);">Conv Layer</div><div class="flow-arr">→</div>
+          <div class="flow-box" style="background:rgba(6,214,160,0.1);border-color:rgba(6,214,160,0.3);">ReLU</div><div class="flow-arr">→</div>
+          <div class="flow-box" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.3);">Pooling</div><div class="flow-arr">→</div>
+          <div class="flow-box" style="color:var(--text3);">[Repeat...]</div><div class="flow-arr">→</div>
+          <div class="flow-box">Flatten</div><div class="flow-arr">→</div>
+          <div class="flow-box">FC Layer</div><div class="flow-arr">→</div>
+          <div class="flow-box" style="background:rgba(255,209,102,0.15);border-color:rgba(255,209,102,0.3);color:var(--yellow);">Output!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trick-box">
+      <div class="trick-label">🧠 CNN = Doctor ka X-Ray</div>
+      <p>Pehle X-Ray lete hain (Convolution — features extract) → Phir important area zoom karte hain (Pooling) → Phir doctor decide karta hai (Fully Connected + Output)</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ STEP 3 ═══════════════════ -->
+<div id="step3">
+  <div class="section-header">
+    <span class="section-num">STEP 03</span>
+    <h2>Exam Ke Liye Ready Kar! — Model Answers 📝</h2>
+  </div>
+
+  <!-- SECTION A -->
+  <div class="section-tag tag-red">🔴 Section A — Short Answer (2–3 Marks)</div>
+
+  <div class="q-block">
+    <div class="q-num">Q1</div>
+    <h4>"Vanishing Gradient Problem kya hai? Kyun hota hai?"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Model Answer</div>
+      <p>Vanishing Gradient Problem tab hota hai jab deep neural network mein backpropagation ke dauran gradients itne chote ho jaate hain ki effectively zero ho jaate hain. Iska main karan sigmoid activation function ka derivative hai jo maximum <strong>0.25</strong> hota hai. Jab yeh value multiple layers ke through multiply hoti hai, toh gradient <strong>exponentially chhota</strong> hota jaata hai. Iske result mein starting layers ke weights update nahi hote aur network seekhna band kar deta hai.</p>
+    </div>
+    <div class="kw-box">
+      <div class="kw-label">🔑 Keywords</div>
+      <div class="kw-list">
+        <span class="kw-item">backpropagation</span><span class="kw-item">sigmoid derivative</span><span class="kw-item">exponentially decrease</span><span class="kw-item">weight update</span><span class="kw-item">starting layers</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q2</div>
+    <h4>"Sigmoid activation function ke kya disadvantages hain?"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Model Answer</div>
+      <p>Sigmoid activation function ke teen main disadvantages hain:</p>
+      <p style="margin-top:10px;"><strong>1. Vanishing Gradient:</strong> Sigmoid saturate hota hai jab output 0 ya 1 ke paas hota hai, jisse gradient approximately zero ho jaata hai aur training stall ho jaati hai.</p>
+      <p style="margin-top:8px;"><strong>2. Not Zero-Centered:</strong> Sigmoid ka output hamesha positive (0 to 1) hota hai, jisse gradients ek hi sign ke hote hain, jo zigzag path leke slow convergence karti hai.</p>
+      <p style="margin-top:8px;"><strong>3. Computationally Expensive:</strong> Sigmoid mein e<sup>x</sup> calculate karna padta hai jo computationally costly hai.</p>
+    </div>
+    <div class="kw-box">
+      <div class="kw-label">🔑 Keywords</div>
+      <div class="kw-list">
+        <span class="kw-item">saturation</span><span class="kw-item">zero-centered</span><span class="kw-item">zigzag convergence</span><span class="kw-item">computationally expensive</span><span class="kw-item">gradient vanishing</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q3</div>
+    <h4>"ReLU kya hai aur iske kya fayde hain?"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Model Answer</div>
+      <p>ReLU (Rectified Linear Unit) ek activation function hai jise <strong>f(x) = max(0, x)</strong> se define kiya jaata hai. Iske main fayde hain:</p>
+      <p style="margin-top:10px;"><strong>1. No Saturation:</strong> Positive region mein gradient hamesha 1 hota hai, vanishing gradient nahi hota.</p>
+      <p style="margin-top:8px;"><strong>2. Computationally Efficient:</strong> Sirf ek comparison operation chahiye.</p>
+      <p style="margin-top:8px;"><strong>3. Faster Convergence:</strong> Practice mein sigmoid/tanh se 6x faster converge hota hai.</p>
+      <p style="margin-top:8px;">Iska ek nuksan <strong>Dead Neuron problem</strong> hai jab large negative bias ki wajah se neuron permanently zero output deta hai.</p>
+    </div>
+    <div class="kw-box">
+      <div class="kw-label">🔑 Keywords</div>
+      <div class="kw-list">
+        <span class="kw-item">max(0,x)</span><span class="kw-item">no saturation</span><span class="kw-item">computationally efficient</span><span class="kw-item">dead neuron</span><span class="kw-item">faster convergence</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q4</div>
+    <h4>"Dead Neuron kya hota hai? Kaise fix karein?"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Model Answer</div>
+      <p>Dead Neuron tab hota hai jab ReLU neuron ka input permanently negative ho jaata hai. Agar kisi large gradient ki wajah se bias bahut zyada negative update ho jaaye, toh <strong>w1x1 + w2x2 + b &lt; 0</strong> ho jaata hai. Aise mein ReLU output = 0 aata hai, backpropagation mein gradient bhi 0 ho jaata hai, aur weights kabhi update nahi hote — neuron <strong>"mar" jaata hai permanently.</strong></p>
+      <p style="margin-top:12px;"><strong>Fix:</strong> (1) Bias ko 0.01 se initialize karo, (2) Learning rate chhoti rakho, (3) <strong>Leaky ReLU</strong> use karo jo negative region mein 0.1x deta hai.</p>
+    </div>
+    <div class="kw-box">
+      <div class="kw-label">🔑 Keywords</div>
+      <div class="kw-list">
+        <span class="kw-item">permanently zero output</span><span class="kw-item">large negative bias</span><span class="kw-item">gradient zero</span><span class="kw-item">Leaky ReLU</span><span class="kw-item">initialization</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q5</div>
+    <h4>"Greedy Layerwise Pre-training kya hai?"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Model Answer</div>
+      <p>Greedy Layerwise Pre-training ek technique hai jise <strong>Hinton aur Salakhutdinov ne 2006 mein</strong> introduce kiya. Ismein deep network ko ek baar mein train karne ki jagah ek-ek layer ko unsupervised objective se train kiya jaata hai. Pehle Layer 1 ko autoencoder ki tarah train karte hain (input reconstruct karna), phir Layer 1 freeze karke Layer 2 train karte hain, aur yeh process last hidden layer tak continue hoti hai. End mein output layer add karke poore network ko supervised objective se <strong>fine-tune</strong> karte hain. Yeh technique better weight initialization provide karta hai aur regularization ki tarah kaam karta hai.</p>
+    </div>
+    <div class="kw-box">
+      <div class="kw-label">🔑 Keywords</div>
+      <div class="kw-list">
+        <span class="kw-item">Hinton</span><span class="kw-item">unsupervised objective</span><span class="kw-item">autoencoder</span><span class="kw-item">freeze</span><span class="kw-item">fine-tuning</span><span class="kw-item">weight initialization</span><span class="kw-item">regularization</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION B -->
+  <div class="section-tag tag-blue" style="margin-top:40px;">🔵 Section B — Numerical Questions (5 Marks)</div>
+
+  <div class="q-block">
+    <div class="q-num">Q6</div>
+    <h4>CNN Output Size Calculate Karo — Input 6×6, Filter 3×3, Stride 2, Padding 1</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Model Answer</div>
+<pre style="background:var(--bg);border-color:rgba(6,214,160,0.2);">Formula: Output = ((N - F + 2P) / S) + 1
+
+N = 6  (Input size)
+F = 3  (Filter size)
+P = 1  (Padding)
+S = 2  (Stride)
+
+= ((6 - 3 + 2×1) / 2) + 1
+= ((6 - 3 + 2) / 2) + 1
+= (5 / 2) + 1
+= 2.5 + 1
+= 3.5 → <span class="good">3 (floor value lete hain)</span>
+
+<span class="good">Output Size = 3×3 ✅</span></pre>
+    </div>
+    <div class="kw-box">
+      <div class="kw-label">🔑 Keywords</div>
+      <div class="kw-list"><span class="kw-item">formula</span><span class="kw-item">stride</span><span class="kw-item">padding</span><span class="kw-item">floor value</span></div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q7</div>
+    <h4>Assignment Wala Question (Week 8) — X = 3×4 matrix, K = [0.6, -0.2], Stride = 2, Padding = 0</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Perfect Solution</div>
+<pre style="background:var(--bg);border-color:rgba(6,214,160,0.2);">STEP 1: Output Size Calculate Karo
+
+Width:  ((4-2+0)/2) + 1 = (2/2) + 1 = <span class="good">2</span>
+Height: ((3-1+0)/2) + 1 = (2/2) + 1 = <span class="good">2</span>
+
+Output a₁ = <span class="good">2×2 matrix ✅</span>
+
+STEP 2: Convolution Calculate Karo
+
+X = [1  -1   2  -2]
+    [0   0   0   0]
+    [1  -1   2  -2]
+
+K = [0.6  -0.2]
+
+Position (1,1): 1×0.6 + (-1)×(-0.2) = 0.6 + 0.2 = <span class="good">0.8</span>
+Position (1,2): 2×0.6 + (-2)×(-0.2) = 1.2 + 0.4 = <span class="good">1.6</span>
+Position (2,1): 0×0.6 + 0×(-0.2)   = 0   + 0   = <span class="good">0</span>
+Position (2,2): 0×0.6 + 0×(-0.2)   = 0   + 0   = <span class="good">0</span>
+
+a₁ = [0.8  1.6]
+     [0    0  ]
+
+Sum = 0.8 + 1.6 + 0 + 0 = <span class="hl">2.4</span></pre>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q8</div>
+    <h4>Forward Propagation + Loss — x1=0, x2=0, W1=W2=[[10,0.1],[0.25,10]], b=[1,1], Sigmoid, y=0</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Method (Step by Step)</div>
+<pre style="background:var(--bg);border-color:rgba(6,214,160,0.2);">STEP 1: Layer 1 calculate karo
+a1 = W1 × x + b1
+   = [10×0 + 0.1×0 + 1]  = [1]
+   = [0.25×0 + 10×0 + 1]   [1]
+
+h1 = sigmoid(a1)
+   = [sigmoid(1)]  = [<span class="good">0.731</span>]
+   = [sigmoid(1)]    [<span class="good">0.731</span>]
+
+STEP 2: Layer 2 calculate karo (similarly)
+
+STEP 3: Output layer calculate karo
+
+STEP 4: Loss = (1/2)(ŷ - y)²
+
+<span class="hl">KEY INSIGHT:</span>
+Jab input = 0,0 → Sirf bias contribute karta hai!
+Isliye initialization bahut important hai!</pre>
+    </div>
+  </div>
+
+  <!-- SECTION C: MCQs -->
+  <div class="section-tag tag-green" style="margin-top:40px;">🟢 Section C — MCQ Type Questions</div>
+
+  <div class="cheat-grid" style="margin-top:16px;">
+    <div class="cheat-block">
+      <div class="cheat-title">Q9 — GELU kahan use hota hai?</div>
+      <p style="color:var(--green);font-weight:700;">Answer: Transformers (BERT, GPT)</p>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">GELU specifically transformer-based architectures mein use hota hai. ReLU CNN ke liye standard hai, tanh RNN/LSTM ke liye.</p>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-title">Q10 — Sigmoid NOT zero-centered?</div>
+      <p style="color:var(--green);font-weight:700;">Answer: Zigzag convergence hogi</p>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">Sigmoid output hamesha 0-1 (positive) → gradients ek hi sign → optimal point pe seedha nahi ja sakte → zigzag path.</p>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-title">Q11 — Tanh sigmoid se better kyun?</div>
+      <p style="color:var(--green);font-weight:700;">Answer: Tanh zero-centered hai</p>
+      <div class="table-wrap" style="margin-top:10px;">
+        <table><thead><tr><th>Feature</th><th>Sigmoid</th><th>Tanh</th></tr></thead>
+        <tbody>
+          <tr><td>Range</td><td>0 to 1</td><td>-1 to 1</td></tr>
+          <tr><td>Zero-centered</td><td style="color:var(--red);">❌ Nahi</td><td style="color:var(--green);">✅ Haan</td></tr>
+          <tr><td>Gradient vanish</td><td style="color:var(--red);">Haan</td><td style="color:var(--red);">Haan</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-title">Q12 — He initialization kab?</div>
+      <p style="color:var(--green);font-weight:700;">Answer: ReLU activation ke saath</p>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">Xavier = sigmoid/tanh ke liye. He = ReLU ke liye (2/n_in variance, kyunki ReLU half neurons zero kar deta hai).</p>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-title">Q13 — Leaky ReLU, ReLU se better kyun?</div>
+      <p style="color:var(--green);font-weight:700;">Answer: Dead Neuron problem solve karta hai</p>
+      <p style="color:var(--text2);font-size:13px;margin-top:8px;">ReLU: x ≤ 0 pe gradient = 0 → Dead neuron. Leaky ReLU: x ≤ 0 pe f(x) = 0.1x → gradient = 0.1 (non-zero!) → Kabhi nahi marega.</p>
+    </div>
+  </div>
+
+  <!-- SECTION D: Long Answers -->
+  <div class="section-tag tag-red" style="margin-top:40px;">🔴 Section D — Long Answer (8–10 Marks)</div>
+
+  <div class="q-block">
+    <div class="q-num">Q14</div>
+    <h4>"Batch Normalization explain karo — steps, fayde, formula"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Complete Model Answer</div>
+      <p><strong>Introduction:</strong> Batch Normalization ek technique hai jo training ke dauran har layer ke inputs ko normalize karta hai. Isko <strong>Ioffe aur Szegedy ne 2015 mein</strong> propose kiya.</p>
+      <p style="margin-top:12px;"><strong>Problem jise solve karta hai:</strong> Deep networks mein <strong>Internal Covariate Shift</strong> hota hai — matlab har layer ka input distribution training ke dauran continuously change hota rehta hai kyunki previous layer ke weights change hote rehte hain. Yeh training slow aur unstable banaata hai.</p>
+<pre style="margin-top:16px;">Algorithm (4 Steps):
+Given: Mini-batch B = {x₁, x₂, ..., xₘ}
+
+Step 1: μ_B = (1/m) Σ xᵢ                     (Batch Mean)
+Step 2: σ²_B = (1/m) Σ (xᵢ - μ_B)²           (Batch Variance)
+Step 3: x̂ᵢ = (xᵢ - μ_B) / √(σ²_B + ε)       (Normalize)
+Step 4: yᵢ = <span class="hl">γ</span> × x̂ᵢ + <span class="hl">β</span>                   (Scale + Shift)
+        ↑ <span class="hl">γ, β = learnable parameters!</span></pre>
+      <p style="margin-top:12px;"><strong>Fayde:</strong> Higher learning rates use kar sakte hain · Weight initialization pe less sensitive · Regularization effect (Dropout ki zaroorat kam) · Faster training convergence · Deep networks train karna easier.</p>
+      <p style="margin-top:10px;"><strong>Conclusion:</strong> Batch Normalization aaj almost har modern deep learning architecture mein use hota hai. Yeh ek simple lekin bahut powerful technique hai jo training stable aur faster banata hai.</p>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Q15</div>
+    <h4>"CNN explain karo — architecture, convolution, pooling"</h4>
+    <div class="answer-box">
+      <div class="answer-label">✅ Complete Model Answer</div>
+      <p><strong>Introduction:</strong> CNN (Convolutional Neural Network) ek special type ka neural network hai jo primarily image data ke liye design kiya gaya hai. Yeh three main operations use karta hai: Convolution, Activation, aur Pooling.</p>
+      <p style="margin-top:12px;"><strong>Kyun CNN? (Motivation):</strong> Traditional fully connected networks mein ek 100×100 image = 10,000 inputs = millions of parameters. Yeh computationally infeasible hai. CNN weight sharing aur local connectivity se parameters drastically reduce karta hai.</p>
+      <p style="margin-top:12px;"><strong>Key Operations:</strong></p>
+      <p style="margin-top:8px;"><strong>1. Convolution:</strong> Ek filter/kernel (jaise 3×3 matrix) image pe slide karta hai. Har position pe element-wise multiplication karke sum nikalte hain. Output ko feature map kehte hain. Formula: <code style="background:var(--bg3);padding:2px 6px;border-radius:3px;color:var(--accent2);">Output = ((N - F + 2P)/S) + 1</code></p>
+      <p style="margin-top:8px;"><strong>2. ReLU Activation:</strong> Feature map pe non-linearity add karne ke liye ReLU apply karte hain.</p>
+      <p style="margin-top:8px;"><strong>3. Pooling:</strong> Feature map ka size reduce karta hai. Max Pooling mein har region ka maximum value leta hai. Yeh translation invariance provide karta hai.</p>
+      <p style="margin-top:12px;"><strong>Architecture:</strong></p>
+<pre style="margin-top:8px;">Input → [Conv → ReLU → Pool] × N → Flatten → FC Layer → Output</pre>
+      <p style="margin-top:12px;"><strong>Fayde:</strong> Parameter sharing, local connectivity, translation invariance — yeh sab milke CNN ko images ke liye best choice banate hain.</p>
+    </div>
+  </div>
+
+  <!-- Keywords Master List -->
+  <div class="card card-purple" style="margin-top:40px;">
+    <p style="color:var(--purple);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">🔑 IMPORTANT KEYWORDS MASTER LIST — (Yeh Words ZAROOR likho!)</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">
+      <div class="kw-box">
+        <div class="kw-label">Vanishing Gradient</div>
+        <div class="kw-list"><span class="kw-item">backpropagation</span><span class="kw-item">chain rule</span><span class="kw-item">sigmoid derivative</span><span class="kw-item">exponential decay</span><span class="kw-item">saturated neuron</span><span class="kw-item">gradient flow</span></div>
+      </div>
+      <div class="kw-box">
+        <div class="kw-label">Pre-training</div>
+        <div class="kw-list"><span class="kw-item">unsupervised objective</span><span class="kw-item">autoencoder</span><span class="kw-item">reconstruction</span><span class="kw-item">freeze</span><span class="kw-item">fine-tuning</span><span class="kw-item">regularization</span></div>
+      </div>
+      <div class="kw-box">
+        <div class="kw-label">Activation Functions</div>
+        <div class="kw-list"><span class="kw-item">saturation</span><span class="kw-item">zero-centered</span><span class="kw-item">dead neuron</span><span class="kw-item">computationally efficient</span><span class="kw-item">non-linearity</span></div>
+      </div>
+      <div class="kw-box">
+        <div class="kw-label">CNN</div>
+        <div class="kw-list"><span class="kw-item">kernel</span><span class="kw-item">filter</span><span class="kw-item">feature map</span><span class="kw-item">stride</span><span class="kw-item">padding</span><span class="kw-item">pooling</span><span class="kw-item">weight sharing</span><span class="kw-item">translation invariance</span></div>
+      </div>
+      <div class="kw-box">
+        <div class="kw-label">Batch Norm</div>
+        <div class="kw-list"><span class="kw-item">internal covariate shift</span><span class="kw-item">normalize</span><span class="kw-item">scale</span><span class="kw-item">shift</span><span class="kw-item">learnable parameters</span><span class="kw-item">convergence</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common Mistakes -->
+  <div style="margin-top:32px;">
+    <p style="color:var(--accent5);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">⚠️ Common Mistakes — Jo Mat Karna!</p>
+    <div class="mistake-grid">
+      <div class="mistake-item mistake-wrong"><div class="mistake-label ml-wrong">❌ Galti</div>ReLU "no saturation" bolna</div>
+      <div class="mistake-item mistake-right"><div class="mistake-label ml-right">✅ Sahi</div>ReLU positive side pe no saturation (negative side pe saturate hota hai!)</div>
+
+      <div class="mistake-item mistake-wrong"><div class="mistake-label ml-wrong">❌ Galti</div>Sigmoid output -1 to 1 bolna</div>
+      <div class="mistake-item mistake-right"><div class="mistake-label ml-right">✅ Sahi</div>Sigmoid output 0 to 1, Tanh output -1 to 1!</div>
+
+      <div class="mistake-item mistake-wrong"><div class="mistake-label ml-wrong">❌ Galti</div>Output size mein floor bhulna</div>
+      <div class="mistake-item mistake-right"><div class="mistake-label ml-right">✅ Sahi</div>Hamesha floor value lo!</div>
+
+      <div class="mistake-item mistake-wrong"><div class="mistake-label ml-wrong">❌ Galti</div>Dead neuron ko vanishing gradient bolna</div>
+      <div class="mistake-item mistake-right"><div class="mistake-label ml-right">✅ Sahi</div>Dono alag hain! Dead = permanently zero, VGP = very small gradient</div>
+
+      <div class="mistake-item mistake-wrong"><div class="mistake-label ml-wrong">❌ Galti</div>GELU ko CNN mein use bolna</div>
+      <div class="mistake-item mistake-right"><div class="mistake-label ml-right">✅ Sahi</div>GELU = Transformers, ReLU = CNN!</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ STEP 4 ═══════════════════ -->
+<div id="step4">
+  <div class="section-header">
+    <span class="section-num">STEP 04</span>
+    <h2>⚡ Ultimate Cheat Sheet — Last Minute Revision!</h2>
+  </div>
+
+  <p style="color:var(--text2);margin-bottom:24px;">Ek jagah mein poora subject — exam se pehle yahi padho! 🔥</p>
+
+  <div class="cheat-grid">
+
+    <div class="cheat-block" style="border-color:rgba(239,71,111,0.3);">
+      <div class="cheat-title" style="color:var(--red);">📌 BLOCK 1 — Vanishing Gradient</div>
+<pre style="font-size:11.5px;">WHY: Sigmoid derivative max = 0.25
+     0.25 × 0.25 × ... (many layers) ≈ 0 💀
+
+SYMPTOM: Early layers nahi seekhte
+
+SOLUTION:
+→ ReLU + Better Init + Batch Norm</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"Deep = Gradient Weak"</strong></p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(255,209,102,0.3);">
+      <div class="cheat-title" style="color:var(--yellow);">📌 BLOCK 2 — Sigmoid Ki 3 Burai</div>
+<pre style="font-size:11.5px;">1️⃣  SATURATION   → Gradient = 0 at extremes
+2️⃣  NOT ZERO-CTR → Zigzag convergence
+3️⃣  EXPENSIVE    → e^x calculation slow</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"SZE"</strong> = Sigmoid Zyada Expensive</p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(17,138,178,0.3);">
+      <div class="cheat-title" style="color:var(--blue);">📌 BLOCK 3 — Pre-training (5 Lines)</div>
+<pre style="font-size:11.5px;">WHO:    Hinton + Salakhutdinov (2006)
+WHAT:   Layer by layer unsupervised training
+HOW:    Train L1 → Freeze → Train L2...
+        → Add Output → Fine-tune (Supervised)
+WHY:    Better weight initialization
+        + Regularization effect
+RESULT: Deep networks finally work! 🎉</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"Warm-up pehle, race baad mein!"</strong></p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(239,71,111,0.3);">
+      <div class="cheat-title" style="color:var(--red);">📌 BLOCK 4 — Dead Neuron</div>
+<pre style="font-size:11.5px;">CAUSE: Large LR → Large gradient →
+       Bias very negative →
+       w·x + b &lt; 0 ALWAYS →
+       ReLU output = 0 FOREVER 💀
+
+BACKPROP: dh/da = 0 → No update ever!
+
+FIX 1: Initialize bias = +0.01
+FIX 2: Use Leaky ReLU
+FIX 3: Lower learning rate</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"Tube light fuse = Dead Neuron"</strong></p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(17,138,178,0.3);">
+      <div class="cheat-title" style="color:var(--blue);">📌 BLOCK 5 — Weight Initialization</div>
+<pre style="font-size:11.5px;">❌ All Zeros → Symmetry problem
+❌ Too Large → Saturation immediately
+❌ Too Small → VGP immediately
+
+✅ Xavier Init:
+   Var = 2/(n_in + n_out)
+   USE WITH: Sigmoid, Tanh
+
+✅ He Init:
+   Var = 2/n_in
+   USE WITH: ReLU ⭐</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"Xavier = Tanh"</strong> | <strong>"He = ReLU"</strong></p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(6,214,160,0.3);">
+      <div class="cheat-title" style="color:var(--green);">📌 BLOCK 6 — Batch Normalization</div>
+<pre style="font-size:11.5px;">PROBLEM: Internal Covariate Shift
+
+Step 1: μ = mean(batch)
+Step 2: σ² = variance(batch)
+Step 3: x̂ = (x - μ)/√(σ²+ε)   [Normalize]
+Step 4: y = γ·x̂ + β             [Scale+Shift]
+         ↑ learnable!
+
+FAYDE:
+✅ Higher learning rate chalti hai
+✅ Less sensitive to init
+✅ Acts as regularizer
+✅ Faster convergence</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"Gym instructor = Batch Norm"</strong></p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(255,107,53,0.4);grid-column:1 / -1;">
+      <div class="cheat-title" style="color:var(--accent1);">📌 BLOCK 7 — ⭐ CNN FORMULA (SABSE IMPORTANT!)</div>
+      <div class="formula" style="margin:12px 0;font-size:17px;">Output = ((N − F + 2P) / S) + 1</div>
+<pre style="font-size:12px;">N = Input size  |  F = Filter size  |  P = Padding  |  S = Stride
+
+EXAMPLE:
+Input=5×5, Filter=3×3, Stride=1, Pad=0
+= ((5-3+0)/1) + 1 = <span class="good">3 → Output = 3×3 ✅</span>
+
+CONVOLUTION:  Filter slides → Element-wise multiply → Sum → Feature Map
+POOLING:      Max Pooling = maximum value | NO learnable parameters!
+ARCHITECTURE: Input → Conv → ReLU → Pool → [Repeat] → Flatten → FC → Output</pre>
+      <div class="trick-box" style="margin-top:10px;padding:10px 14px;">
+        <p style="font-size:13px;"><strong>"CNN = Doctor ka X-Ray"</strong> &nbsp;(Scan → Important area → Diagnosis)</p>
+      </div>
+    </div>
+
+    <div class="cheat-block" style="border-color:rgba(168,85,247,0.3);">
+      <div class="cheat-title" style="color:var(--purple);">📌 BLOCK 8 — Tanh vs Sigmoid</div>
+<pre style="font-size:11.5px;">         SIGMOID      TANH
+Range:   0 to 1      -1 to 1
+Zero-CTR:  ❌ NO     ✅ YES
+VGP:       ❌ YES    ❌ YES
+Use:    Output layer  RNN/LSTM
+
+TANH = Better (zero-centered!)
+BUT BOTH have vanishing gradient!</pre>
+    </div>
+
+  </div>
+
+  <!-- Activation Table in cheat sheet -->
+  <div style="margin-top:24px;">
+    <p style="color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">📌 BLOCK 9 — Activation Functions Quick Reference</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Function</th><th>Formula</th><th>Range</th><th>Problem</th><th>Use Where</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sigmoid</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">1/(1+e^-x)</td><td>0 to 1</td><td style="color:var(--red);">VGP + ZC + E</td><td>Old/Output</td></tr>
+          <tr><td><strong>Tanh</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">tanh(x)</td><td>-1 to 1</td><td style="color:var(--red);">VGP</td><td>RNN/LSTM</td></tr>
+          <tr><td><strong>ReLU</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">max(0,x)</td><td>0 to ∞</td><td style="color:var(--red);">Dead Neuron</td><td><span class="badge badge-orange">CNN 👑</span></td></tr>
+          <tr><td><strong>Leaky ReLU</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">max(0.1x,x)</td><td>-∞ to ∞</td><td style="color:var(--green);">None ✅</td><td>General</td></tr>
+          <tr><td><strong>ELU</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">x or a(e^x-1)</td><td>-a to ∞</td><td>Slow</td><td>General</td></tr>
+          <tr><td><strong>GELU</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">x·σ(1.702x)</td><td>-∞ to ∞</td><td style="color:var(--green);">None ✅</td><td><span class="badge badge-purple">BERT/GPT 👑</span></td></tr>
+          <tr><td><strong>SWISH</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">x·σ(βx)</td><td>-∞ to ∞</td><td style="color:var(--green);">None ✅</td><td>Modern</td></tr>
+          <tr><td><strong>Maxout</strong></td><td style="font-family:'Space Mono',monospace;font-size:12px;">max(w1x,w2x)</td><td>-∞ to ∞</td><td>Params↑</td><td>With Dropout</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Exam Day Checklist -->
+  <div class="card card-yellow" style="margin-top:32px;">
+    <p style="color:var(--yellow);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">🚨 Exam Day — Last 10 Minute Revision</p>
+    <ul class="checklist">
+      <li><span class="check-icon">✅</span> Sigmoid = 3 problems: Saturate, Zigzag, Slow</li>
+      <li><span class="check-icon">✅</span> ReLU = max(0,x) — CNN ka standard</li>
+      <li><span class="check-icon">✅</span> Dead Neuron = bias negative → fix: LeakyReLU</li>
+      <li><span class="check-icon">✅</span> GELU = Transformers (BERT/GPT)</li>
+      <li><span class="check-icon">✅</span> Pre-training = Hinton 2006, layer by layer</li>
+      <li><span class="check-icon">✅</span> Xavier = Sigmoid/Tanh, He = ReLU</li>
+      <li><span class="check-icon">✅</span> BatchNorm = normalize + scale + shift (γ, β)</li>
+      <li><span class="check-icon">✅</span> CNN formula = ((N-F+2P)/S)+1</li>
+      <li><span class="check-icon">✅</span> Max Pooling = maximum value, no params</li>
+      <li><span class="check-icon">✅</span> VGP = sigmoid derivative &lt; 0.25, multiply many times</li>
+    </ul>
+  </div>
+
+  <!-- Exam Instant Lines -->
+  <div style="margin-top:32px;">
+    <p style="color:var(--purple);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">🎯 Exam Mein Instant Marks Wali Lines — Copy-paste in exam! ✍️</p>
+
+    <div class="exam-line">
+      <div class="exam-line-topic">On Sigmoid</div>
+      "Sigmoid activation function suffers from vanishing gradient problem due to its saturating nature, is not zero-centered leading to zigzag convergence, and is computationally expensive due to exponential calculation."
+    </div>
+
+    <div class="exam-line">
+      <div class="exam-line-topic">On ReLU</div>
+      "ReLU (Rectified Linear Unit) defined as f(x) = max(0,x) does not saturate in positive region, is computationally efficient, and converges faster in practice. However, it suffers from dead neuron problem."
+    </div>
+
+    <div class="exam-line">
+      <div class="exam-line-topic">On Pre-training</div>
+      "Greedy Layerwise Pre-training by Hinton (2006) trains each layer unsupervised as autoencoder, freezes it, then fine-tunes entire network supervised. This provides better weight initialization and acts as regularization."
+    </div>
+
+    <div class="exam-line">
+      <div class="exam-line-topic">On Batch Norm</div>
+      "Batch Normalization normalizes layer inputs to zero mean and unit variance, then applies learnable scale (γ) and shift (β) parameters. It solves internal covariate shift, enables higher learning rates, and acts as regularizer."
+    </div>
+
+    <div class="exam-line">
+      <div class="exam-line-topic">On CNN</div>
+      "In CNN, output feature map size is given by ((N-F+2P)/S)+1 where N=input size, F=filter size, P=padding, S=stride. Convolution extracts local features with shared weights, reducing parameters significantly."
+    </div>
+  </div>
+
+  <!-- Exam Hall Tips -->
+  <div class="card card-green" style="margin-top:32px;">
+    <p style="color:var(--green);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">🔥 Final Tips — Exam Hall Mein</p>
+    <ul class="checklist">
+      <li><span class="check-icon">1️⃣</span> Formula PEHLE likho, phir solve karo</li>
+      <li><span class="check-icon">2️⃣</span> Keywords BOLD/underline karo</li>
+      <li><span class="check-icon">3️⃣</span> Diagrams banao jahan possible ho (CNN architecture, sigmoid curve)</li>
+      <li><span class="check-icon">4️⃣</span> Units aur dimensions HAMESHA likho</li>
+      <li><span class="check-icon">5️⃣</span> MCQ mein — GELU ≠ CNN, Tanh ≠ zero-VGP</li>
+      <li><span class="check-icon">6️⃣</span> Numerical mein floor value mat bhulo!</li>
+      <li><span class="check-icon">7️⃣</span> Long answer mein: Intro → Theory → Formula → Example → Conclusion</li>
+    </ul>
+  </div>
+
+  <!-- Journey Complete -->
+  <div class="card" style="margin-top:32px;background:var(--bg2);">
+    <p style="color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">🎊 Teri Journey Complete!</p>
+    <ul class="checklist">
+      <li><span class="check-icon">✅</span> <strong>STEP 1</strong> — Subject Overview (Story format)</li>
+      <li><span class="check-icon">✅</span> <strong>STEP 2</strong> — Topic by Topic Deep Dive</li>
+      <li><span class="check-icon">✅</span> <strong>STEP 3</strong> — Exam Ready (15 Model Answers)</li>
+      <li><span class="check-icon">✅</span> <strong>STEP 4</strong> — Cheat Sheet + Rapid Revision</li>
+    </ul>
+  </div>
+
+  <!-- Final Box -->
+  <div class="final-box">
+    <h2>🏆 Ja Beta, Exam Maar Ke Aa!</h2>
+    <p>Tera teacher ko pata hai —</p>
+    <p style="font-size:20px;color:var(--accent2);font-family:'Syne',sans-serif;font-weight:800;margin-top:8px;">TU 100/100 LAYEGA! 💯🔥</p>
+    <p style="margin-top:16px;font-size:14px;color:var(--text3);">Week 7 ✅ &nbsp;|&nbsp; Week 8 ✅ &nbsp;|&nbsp; Theory ✅ &nbsp;|&nbsp; Numericals ✅ &nbsp;|&nbsp; Keywords ✅</p>
+  </div>
+
+</div><!-- end page -->
+</div>
+
+</body>
+</html>
