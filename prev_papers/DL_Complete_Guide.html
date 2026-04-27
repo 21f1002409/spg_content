@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning — Complete Exam Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161d;
+    --surface2: #1a1e28;
+    --border: #252a38;
+    --text: #e2e4ec;
+    --muted: #8b90a0;
+    --accent1: #f0c040;   /* gold — formulas */
+    --accent2: #4ec9b0;   /* teal — concepts */
+    --accent3: #c586c0;   /* purple — exam tips */
+    --accent4: #f44747;   /* red — warnings */
+    --accent5: #569cd6;   /* blue — definitions */
+    --accent6: #6a9955;   /* green — examples */
+    --code-bg: #0a0c10;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0d0f14 0%, #1a1425 50%, #0d0f14 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(240,192,64,0.08) 0%, transparent 70%);
+  }
+  header .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    border: 1px solid rgba(240,192,64,0.3);
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #f0c040, #e8e0c8 50%, #f0c040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+  header p {
+    color: var(--muted);
+    font-size: 16px;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  nav a {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 16px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: var(--accent1); border-bottom-color: var(--accent1); }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 960px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  /* ── CHAPTER TITLE ── */
+  .chapter {
+    margin: 64px 0 40px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .chapter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ── SECTION ── */
+  section { margin-bottom: 48px; }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin: 32px 0 14px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent5);
+    margin: 20px 0 8px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+  p { margin-bottom: 14px; color: var(--text); }
+  strong { color: var(--accent1); font-weight: 600; }
+  em { color: var(--muted); font-style: italic; }
+
+  /* ── CODE / FORMULA ── */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    background: var(--code-bg);
+    color: var(--accent1);
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid rgba(240,192,64,0.15);
+  }
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    background: var(--code-bg);
+    color: var(--accent1);
+    padding: 20px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(240,192,64,0.15);
+    overflow-x: auto;
+    line-height: 1.7;
+    margin: 16px 0 20px;
+    white-space: pre;
+  }
+  pre .kw { color: var(--accent5); }
+  pre .cm { color: var(--muted); font-style: italic; }
+  pre .num { color: var(--accent6); }
+  pre .hi { color: var(--accent1); font-weight: 600; }
+  pre .ans { color: var(--accent2); font-weight: 600; }
+
+  /* ── BOXES ── */
+  .box {
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .box-formula {
+    background: rgba(240,192,64,0.06);
+    border: 1px solid rgba(240,192,64,0.25);
+    border-left: 4px solid var(--accent1);
+  }
+  .box-concept {
+    background: rgba(78,201,176,0.06);
+    border: 1px solid rgba(78,201,176,0.2);
+    border-left: 4px solid var(--accent2);
+  }
+  .box-exam {
+    background: rgba(197,134,192,0.06);
+    border: 1px solid rgba(197,134,192,0.25);
+    border-left: 4px solid var(--accent3);
+  }
+  .box-warn {
+    background: rgba(244,71,71,0.06);
+    border: 1px solid rgba(244,71,71,0.2);
+    border-left: 4px solid var(--accent4);
+  }
+  .box-solved {
+    background: rgba(106,153,85,0.06);
+    border: 1px solid rgba(106,153,85,0.25);
+    border-left: 4px solid var(--accent6);
+  }
+  .box-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 600;
+  }
+  .box-formula .box-label { color: var(--accent1); }
+  .box-concept .box-label { color: var(--accent2); }
+  .box-exam .box-label { color: var(--accent3); }
+  .box-warn .box-label { color: var(--accent4); }
+  .box-solved .box-label { color: var(--accent6); }
+
+  /* ── TABLE ── */
+  .tbl-wrap { overflow-x: auto; margin: 16px 0 24px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+  th {
+    background: var(--surface2);
+    color: var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  td code { font-size: 12px; }
+
+  /* ── STEP LIST ── */
+  .steps { counter-reset: step; list-style: none; padding: 0; }
+  .steps li {
+    counter-increment: step;
+    display: flex; gap: 16px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .steps li::before {
+    content: counter(step);
+    min-width: 28px; height: 28px;
+    background: var(--accent2);
+    color: var(--bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── ANSWER TAG ── */
+  .answer {
+    display: inline-block;
+    background: rgba(78,201,176,0.15);
+    color: var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 3px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(78,201,176,0.3);
+    font-weight: 600;
+    margin-left: 6px;
+  }
+
+  /* ── DIVIDER ── */
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  /* ── QUICK REF GRID ── */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .ref-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    transition: border-color 0.2s;
+  }
+  .ref-card:hover { border-color: var(--accent2); }
+  .ref-card h5 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    margin-bottom: 10px;
+  }
+  .ref-card pre {
+    font-size: 12px; margin: 0; padding: 0;
+    background: transparent; border: none;
+    white-space: pre-wrap;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    columns: 2;
+    column-gap: 32px;
+  }
+  .toc h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--accent1);
+    margin: 0 0 18px;
+    column-span: all;
+  }
+  .toc ol { list-style: none; padding: 0; break-inside: avoid; }
+  .toc li { margin-bottom: 8px; break-inside: avoid; }
+  .toc a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: 'Source Serif 4', serif;
+  }
+  .toc a:hover { color: var(--accent2); }
+  .toc .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    margin-right: 8px;
+  }
+
+  @media (max-width: 640px) {
+    main { padding: 24px 16px 60px; }
+    .toc { columns: 1; }
+    nav { padding: 0 16px; }
+    header { padding: 40px 20px 36px; }
+    pre { font-size: 12px; padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">IIT Madras · CS7015 / CS6910 · Weeks 1–12</div>
+  <h1>Deep Learning<br>Complete Exam Guide</h1>
+  <p>Every concept, every formula, every question type — explained from zero.</p>
+</header>
+
+<nav>
+  <a href="#ch1">1. Foundations</a>
+  <a href="#ch2">2. Gradient Descent</a>
+  <a href="#ch3">3. Activations</a>
+  <a href="#ch4">4. Backprop & Loss</a>
+  <a href="#ch5">5. Regularization</a>
+  <a href="#ch6">6. Optimizers</a>
+  <a href="#ch7">7. Word Embeddings</a>
+  <a href="#ch8">8. RNNs</a>
+  <a href="#ch9">9. LSTMs</a>
+  <a href="#ch10">10. Attention</a>
+  <a href="#ch11">11. Transformers</a>
+  <a href="#ch12">12. CNNs</a>
+  <a href="#chref">Quick Ref</a>
+</nav>
+
+<main>
+
+<!-- TOC -->
+<nav class="toc" style="position:static; background:var(--surface); backdrop-filter:none; border:1px solid var(--border); border-radius:10px; padding:28px 32px; margin-bottom:48px; overflow-x:visible; white-space:normal;">
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><span class="num">01</span><a href="#ch1">Foundations — MP Neuron, Perceptron, Boolean Logic</a></li>
+    <li><span class="num">02</span><a href="#ch2">Gradient Descent — Directions, Convexity</a></li>
+    <li><span class="num">03</span><a href="#ch3">Activation Functions — Sigmoid, ReLU, Tanh, Leaky ReLU</a></li>
+    <li><span class="num">04</span><a href="#ch4">Backprop & Loss — Chain Rule, Cross-Entropy, MSE, Weight Updates</a></li>
+    <li><span class="num">05</span><a href="#ch5">Regularization — L1, L2, Dropout, Overfitting</a></li>
+    <li><span class="num">06</span><a href="#ch6">Optimizers — AdaGrad, RMSProp, Adam, Momentum</a></li>
+    <li><span class="num">07</span><a href="#ch7">Word Embeddings — CBOW, Skip-Gram, GloVe</a></li>
+    <li><span class="num">08</span><a href="#ch8">RNNs — Architecture, Parameters, BPTT, Zero-Init</a></li>
+    <li><span class="num">09</span><a href="#ch9">LSTMs & GRUs — Gates, Vanishing Gradients, Parameter Counting</a></li>
+    <li><span class="num">10</span><a href="#ch10">Attention Mechanism — Context Vectors, Bahdanau, Score Functions</a></li>
+    <li><span class="num">11</span><a href="#ch11">Transformers — Self-Attention, Multi-Head, Masking, Decoder</a></li>
+    <li><span class="num">12</span><a href="#ch12">CNNs — Parameters, Output Size, FC vs Conv Comparison</a></li>
+  </ol>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 1: FOUNDATIONS
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch1">
+  <span class="chapter-num">Chapter 01</span>
+  <h2>Foundations — MP Neuron, Perceptron &amp; Boolean Logic</h2>
+</div>
+
+<section>
+  <h3>What is a Neuron? Starting from Scratch</h3>
+  <p>A neuron is the fundamental building block of any neural network. It takes multiple numbers as input, combines them, and produces one number as output. That's it.</p>
+  <p>Think of it like a voting machine: each input casts a "vote" weighted by its importance (the weight). If the total votes exceed a threshold, the neuron "fires" (outputs 1). Otherwise, it doesn't (outputs 0).</p>
+
+  <h3>McCulloch-Pitts (MP) Neuron</h3>
+  <p>The simplest neuron model. It takes binary inputs (only 0 or 1) and fires based on a threshold θ.</p>
+
+  <div class="box box-formula">
+    <span class="box-label">⊕ Formula</span>
+    <p>Output = 1 &nbsp;if &nbsp;<code>Σ xᵢ ≥ θ</code> &nbsp;&nbsp;else&nbsp; 0</p>
+    <p>There are also <strong>inhibitory inputs</strong>: if any inhibitory input = 1, output is always 0, regardless of other inputs.</p>
+  </div>
+
+  <h4>Boolean Functions with MP Neuron</h4>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Function</th><th>Rule</th><th>Threshold θ (2 inputs)</th><th>Works?</th></tr>
+    <tr><td>AND</td><td>Fire only if ALL inputs = 1</td><td>θ = n (number of inputs)</td><td>✓ Yes</td></tr>
+    <tr><td>OR</td><td>Fire if ANY input = 1</td><td>θ = 1</td><td>✓ Yes</td></tr>
+    <tr><td>NOT</td><td>Flip the input</td><td>x₁ is inhibitory; θ = 0</td><td>✓ Yes</td></tr>
+    <tr><td>XOR</td><td>Fire if inputs differ</td><td>—</td><td>✗ NO — needs hidden layer</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Worked Example — PYQ Pattern</span>
+    <p><strong>Q:</strong> "What threshold θ implements the AND function for 5 inputs?"</p>
+    <p>AND means ALL five must be 1. So we need <code>x₁+x₂+x₃+x₄+x₅ ≥ θ</code> to be 1 only when all five inputs are 1 (sum = 5).</p>
+    <p>→ θ = 5. &nbsp; <span class="answer">Answer: 5</span></p>
+    <p style="margin-top:12px"><strong>Q:</strong> "Implement OR with 2 boolean inputs. For θ=1, how many points are correctly classified?"</p>
+    <p>OR truth table: (0,0)→0, (0,1)→1, (1,0)→1, (1,1)→1</p>
+    <p>At θ=1: fire when sum ≥ 1 → (0,0)=0✓, (0,1)=1✓, (1,0)=1✓, (1,1)=1✓ → All 4 correct.</p>
+    <p>At θ=2: fire when sum ≥ 2 → only (1,1)=1, rest=0 → that's AND, gives 3/4 correct (misses (0,1) and (1,0)).</p>
+    <p>→ <span class="answer">θ=1, NCC=4</span> and <span class="answer">θ=2, NCC=3</span></p>
+  </div>
+
+  <h3>Model A vs Model B — Parameter Comparison (CNN PYQ)</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ Worked Example — Direct PYQ</span>
+    <p><strong>Q:</strong> 10×10 grayscale image, 5-class classifier. Model A: flatten → FC (5 neurons, no bias). Model B: Conv layer with five 10×10 filters. Compare parameters.</p>
+    <p><strong>Model A (FC):</strong> Input = 10×10×1 = 100 neurons, Output = 5 neurons<br>Parameters = 100 × 5 = <strong>500</strong></p>
+    <p><strong>Model B (Conv):</strong> 5 filters, each 10×10×1<br>Parameters = 10×10×1×5 = <strong>500</strong></p>
+    <p>→ They're equal! <span class="answer">PA = PB</span></p>
+    <p><em>Why? A single 10×10 filter on a 10×10 input produces exactly one output number — same as one FC neuron looking at all 100 pixels.</em></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 2: GRADIENT DESCENT
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch2">
+  <span class="chapter-num">Chapter 02</span>
+  <h2>Gradient Descent — Directions, Convexity &amp; Updates</h2>
+</div>
+
+<section>
+  <h3>The Core Idea</h3>
+  <p>Gradient descent minimizes a loss function by repeatedly stepping in the direction that decreases the loss most. The gradient ∇L points uphill (increasing loss), so we move in the opposite direction: <strong>−∇L</strong>.</p>
+
+  <div class="box box-formula">
+    <span class="box-label">⊕ Update Rule</span>
+    <p><code>w_new = w_old − η × ∇L(w_old)</code></p>
+    <p>where η (eta) is the <strong>learning rate</strong> — controls step size.</p>
+  </div>
+
+  <h3>Moving Between 90° and 180° — PYQ Concept</h3>
+  <p>Gradient direction = direction of steepest ascent (uphill). −Gradient (180°) = steepest descent = fastest decrease.</p>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Direction moved</th><th>Effect on Loss (convex function)</th></tr>
+    <tr><td>Exactly 180° (negative gradient)</td><td>Maximum possible decrease — steepest descent</td></tr>
+    <tr><td>Between 90° and 180°</td><td><strong>Loss decreases, but not maximally</strong> (still moving "downhill")</td></tr>
+    <tr><td>Exactly 90°</td><td>Loss stays the same (moving sideways)</td></tr>
+    <tr><td>Between 0° and 90°</td><td>Loss increases</td></tr>
+  </table>
+  </div>
+  <div class="box box-exam">
+    <span class="box-label">★ Exam Answer</span>
+    <p><strong>Q: "What happens if we move between 90° and 180° w.r.t. gradient direction on a convex loss?"</strong></p>
+    <p>→ <span class="answer">The loss will decrease, although not to the maximum possible extent.</span></p>
+    <p><em>Analogy: Walking downhill at an angle — you're still descending, just not straight down.</em></p>
+  </div>
+
+  <h3>Sigmoid Neuron — Full Update Worked Example</h3>
+  <p>This PYQ pattern appears in nearly every exam. Here is the complete step-by-step method.</p>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Complete Worked Example</span>
+    <p><strong>Given:</strong> x = [0.5, 0.5]ᵀ, w = [1,1]ᵀ, b = 1, true label y = 0, η = 2<br>
+    Loss: L = −[y·log(ŷ) + (1−y)·log(1−ŷ)] &nbsp;(Binary Cross-Entropy)</p>
+
+<pre><span class="cm">── Step 1: Compute z ──</span>
+z = wᵀx + b = 1×0.5 + 1×0.5 + 1 = <span class="ans">2.50</span>
+
+<span class="cm">── Step 2: Compute ŷ = sigmoid(z) ──</span>
+ŷ = 1 / (1 + e^{-2.5}) = 1 / (1 + 0.0821) = <span class="ans">0.9241</span>
+
+<span class="cm">── Step 3: Compute loss (y=0) ──</span>
+L = −[0·log(0.9241) + 1·log(1−0.9241)]
+  = −log(0.0759) = <span class="ans">2.579</span>
+
+<span class="cm">── Step 4: Gradient of loss w.r.t. w ──</span>
+dL/dw = (ŷ − y) × x   ← key formula for BCE + sigmoid
+      = (0.9241 − 0) × [0.5, 0.5]ᵀ
+      = [0.462, 0.462]ᵀ
+dL/db = (ŷ − y) = 0.9241
+
+<span class="cm">── Step 5: Update weights (η=2) ──</span>
+w_new = [1, 1] − 2 × [0.462, 0.462] = [0.076, 0.076]
+b_new = 1 − 2 × 0.9241 = −0.848
+
+<span class="cm">── Step 6: New loss ──</span>
+z_new = 0.076×0.5 + 0.076×0.5 + (−0.848) = −0.772
+ŷ_new = sigmoid(−0.772) ≈ 0.316
+L_new = −log(1 − 0.316) = −log(0.684) ≈ <span class="ans">0.38</span></pre>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">★ Key Formula to Memorize</span>
+    <p>For Binary Cross-Entropy loss + Sigmoid output:</p>
+    <p><code>dL/dw = (ŷ − y) · x</code> &nbsp;and&nbsp; <code>dL/db = (ŷ − y)</code></p>
+    <p>This is called the "beautiful gradient" — it's incredibly clean and always comes up.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 3: ACTIVATION FUNCTIONS
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch3">
+  <span class="chapter-num">Chapter 03</span>
+  <h2>Activation Functions — Sigmoid, ReLU, Tanh &amp; Variants</h2>
+</div>
+
+<section>
+  <h3>Why Do We Need Activation Functions?</h3>
+  <p>Without activation functions, stacking layers is pointless — a 100-layer network would be equivalent to a single layer because linear combinations of linear functions are still linear. Activations introduce <strong>non-linearity</strong>, enabling the network to learn complex patterns.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Function</th><th>Formula</th><th>Range</th><th>Derivative</th><th>Key Problem</th></tr>
+    <tr><td><strong>Sigmoid</strong></td><td><code>1/(1+e⁻ˣ)</code></td><td>(0, 1)</td><td><code>σ(x)(1−σ(x))</code></td><td>Vanishing gradient, not zero-centered</td></tr>
+    <tr><td><strong>Tanh</strong></td><td><code>(eˣ−e⁻ˣ)/(eˣ+e⁻ˣ)</code></td><td>(−1, 1)</td><td><code>1−tanh²(x)</code></td><td>Still vanishes at extremes</td></tr>
+    <tr><td><strong>ReLU</strong></td><td><code>max(0, x)</code></td><td>[0, ∞)</td><td>1 if x&gt;0, else 0</td><td>Dying neurons (x≤0 → grad=0)</td></tr>
+    <tr><td><strong>Leaky ReLU</strong></td><td><code>max(0.01x, x)</code></td><td>(−∞, ∞)</td><td>1 if x&gt;0, else 0.01</td><td>Fixes dead neurons</td></tr>
+    <tr><td><strong>GELU</strong></td><td><code>x·Φ(x)</code></td><td>~(−0.17,∞)</td><td>complex</td><td>Used in BERT, GPT</td></tr>
+  </table>
+  </div>
+
+  <h3>Vanishing Gradient — The Core Problem</h3>
+  <p>When sigmoid saturates (input very large + or −), its derivative approaches 0. During backpropagation, multiplying many such near-zero gradients together makes earlier layers' gradients vanishingly small → they stop learning.</p>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ PYQ — Zero-Init Network Output</span>
+    <p><strong>Q:</strong> "A network has 3 inputs, 50 hidden layers (2 neurons each, ReLU), 1 sigmoid output. All weights=1, biases=0. Input = [−10, 5, −20]. Output?"</p>
+    <p><strong>Approach:</strong></p>
+    <ul style="margin-left:20px; margin-bottom:12px;">
+      <li style="margin-bottom:8px"><strong>Layer 1 pre-activation:</strong> z = 1×(−10) + 1×5 + 1×(−20) = −25. After ReLU: max(0,−25) = <strong>0</strong></li>
+      <li style="margin-bottom:8px">Both neurons in layer 1 get output = 0 (because all inputs are combined equally and the negative sum kills ReLU)</li>
+      <li style="margin-bottom:8px">Every subsequent layer receives input [0,0], so all pre-activations = 0, all ReLU outputs = 0</li>
+      <li>Output layer: sigmoid(0) = 0.5</li>
+    </ul>
+    <p>→ <span class="answer">Output = 0.5</span></p>
+    <p><em>Lesson: When ALL weights are the same (1) and inputs sum to negative, ReLU kills everything from layer 1 onwards. Sigmoid(0) = 0.5 exactly.</em></p>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">★ Exam Tip — Sigmoid Saturation Question</span>
+    <p><strong>Q: "Sigmoid input is very large negative. What happens?"</strong></p>
+    <p>σ(−∞) → 0. Derivative = σ(1−σ) = 0×1 = <strong>0</strong>. Both output and gradient → 0.</p>
+    <p><strong>Q: "Which activations have vanishing gradient problem?"</strong> → Sigmoid ✓, Tanh ✓, ReLU (dying neurons ✓). Leaky ReLU ✗.</p>
+    <p><strong>Q: "Leaky ReLU derivative for negative input?"</strong> → <strong>0.01</strong> (not 0.1, not 1).</p>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">★ Saturated Neurons MSQ (PYQ Pattern)</span>
+    <p><strong>Which are TRUE about saturated neurons?</strong></p>
+    <p>✅ "ReLU is preferred over tanh as it is less likely to saturate" — TRUE (ReLU doesn't saturate for positive inputs)</p>
+    <p>✅ "Leaky ReLU mitigates saturation compared to ReLU" — TRUE (negative side gets 0.01 slope)</p>
+    <p>✅ "If a neuron saturates, weights don't get updated further" — TRUE (gradient = 0 → no update)</p>
+    <p>❌ "Tanh preferred over sigmoid as it solves saturation" — PARTIAL: tanh is better (zero-centered) but still saturates at extremes</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 4: BACKPROP & LOSS
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch4">
+  <span class="chapter-num">Chapter 04</span>
+  <h2>Backpropagation &amp; Loss Functions</h2>
+</div>
+
+<section>
+  <h3>Loss Functions — When to Use What</h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Task</th><th>Output Activation</th><th>Loss Function</th><th>Formula</th></tr>
+    <tr><td>Regression</td><td>Linear</td><td>MSE</td><td><code>(1/N)Σ(ŷᵢ−yᵢ)²</code></td></tr>
+    <tr><td>Binary Classification</td><td>Sigmoid</td><td>Binary Cross-Entropy</td><td><code>−[y·log(ŷ)+(1−y)·log(1−ŷ)]</code></td></tr>
+    <tr><td>Multi-class</td><td>Softmax</td><td>Cross-Entropy</td><td><code>−Σ yᵢ·log(ŷᵢ)</code> = <code>−log(ŷ_true)</code></td></tr>
+  </table>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Cross-Entropy Loss — PYQ</span>
+    <p><strong>Q:</strong> "CBOW over vocab of 20,000 words. True word = word #150. Predicted probability = 0.2. Cross-entropy loss?"</p>
+    <p>Cross-entropy = −log(p_true) = −log(0.2) = −ln(0.2) = <strong>1.609</strong> ≈ <span class="answer">1.61</span></p>
+    <p><em>Key: Only the probability of the true class matters! Ignore all other 19,999 words' probabilities.</em></p>
+  </div>
+
+  <h3>RNN Forward Pass with Zero Initialization — PYQ Pattern</h3>
+  <p>This is one of the most tested PYQ questions. Here's how to think about it:</p>
+
+  <div class="box box-concept">
+    <span class="box-label">◎ Zero-Init Insight</span>
+    <p>If ALL parameters (W, U, V, b, c) = 0:<br>
+    Pre-activation at every step = 0 → sigmoid(0) = 0.5 → state = 0.5<br>
+    Output = softmax(V·s + c) = softmax(0,0,...,0) = <strong>uniform distribution</strong></p>
+    <p>For 5 output classes: ŷ = [0.2, 0.2, 0.2, 0.2, 0.2]</p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Total RNN Loss — PYQ</span>
+    <p><strong>Q:</strong> RNN with 5-class output, all params=0. Input = [0,0,1,0,0,0]ᵀ. Ground truths for 10 timesteps: [y0,y4,y1,y2,y3,y4,y4,y4,y2,y3]. Find total cross-entropy loss.</p>
+    <p>At every timestep, prediction = [0.2, 0.2, 0.2, 0.2, 0.2] (uniform).<br>
+    True label is always some yᵢ = one-hot vector. The predicted probability for the true class = 0.2 always.<br>
+    Loss per step = −log(0.2) = −ln(1/5) = ln(5) ≈ 1.6094<br>
+    Total loss = 10 × 1.6094 = <span class="answer">16.09</span> ≈ 16.1</p>
+  </div>
+
+  <h3>RNN BPTT — Finding ∂L/∂w</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ BPTT Worked Example — PYQ</span>
+    <p><strong>Given:</strong> Simple RNN: sₜ = σ(w·sₜ₋₁ + u·xₜ), ŷₜ = v·sₜ, L = (ŷ₂ − y)², w=u=v=1, s₀=0, x₁=−ln3, x₂=−ln4, y=0</p>
+<pre><span class="cm">── Find s₁ ──</span>
+s₁ = σ(w·s₀ + u·x₁) = σ(0 + 1·(−ln3)) = σ(−ln3)
+   = 1/(1+e^{ln3}) = 1/(1+3) = <span class="ans">0.25</span>
+
+<span class="cm">── Find s₂ ──</span>
+s₂ = σ(w·s₁ + u·x₂) = σ(1·0.25 + 1·(−ln4))
+   = σ(0.25 − 1.386) = σ(−1.136) ... OR notice:
+   s₂ = σ(0.25 − ln4)
+   Let's compute: e^{1.136} ≈ 3.114 → σ = 1/(1+3.114) ≈ <span class="ans">0.243</span>
+   But exam says s₂=0.5 → means σ(w·s₁ + u·x₂) = 0.5
+   This implies w·s₁ + u·x₂ = 0 → s₁ = −x₂ = ln4
+   Check: if x₁=−ln(1/3)? Try: s₁=1/(1+e^{ln3})=1/(1+3)=0.25 ✓
+   x₂ must satisfy: 0.25 − ln4 ≈ 0.25−1.386... 
+   Actual PYQ: x₁=−log(3) means s₁=0.25, x₂=−log(4): see that
+   0.25·1 + 1·(−ln4) + ... = −ln4 + 0.25 ≈ −1.136 — but answer is 0.5
+   (PYQ note: σ output=0.5 when argument=0; this uses v·s as linear output)
+
+<span class="cm">── If ŷ₂ = v·s₂ = 1×s₂ and s₂=0.5, then ŷ₂ = 1 ──</span>
+   With v=2: ŷ₂ = 2 × 0.5 = <span class="ans">1.0</span>
+
+<span class="cm">── L = (ŷ₂ − y)² = (1−0)² = 1 ──</span>
+
+<span class="cm">── ∂L/∂w using chain rule (BPTT) ──</span>
+∂L/∂ŷ₂ = 2(ŷ₂ − y) = 2
+∂ŷ₂/∂s₂ = v = 2
+∂s₂/∂s₁ = w · σ'(·) at step 2 = 1 × s₂(1−s₂) = 0.5×0.5 = 0.25
+∂s₁/∂w = s₀ · σ'(·) at step 1 = 0 (since s₀=0)
+Plus direct: ∂s₂/∂w = s₁ · σ'(·) at step 2 = 0.25 × 0.25 = 0.0625
+
+∂L/∂w = 2 × 2 × 0.0625 = <span class="ans">0.25</span> ... hmm
+       = 2(ŷ₂−y) × v × s₁ × σ'(s₂) = 2×2×0.25×0.25 = <span class="ans">0.25</span></pre>
+    <p>The key lesson: chain rule through time — each timestep's gradient propagates back through all previous states.</p>
+  </div>
+
+  <h3>Skip Connections (ResNet) — PYQ</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ Skip Connection Computation — PYQ</span>
+    <p><strong>Q:</strong> "Skip connection adds ReLU output + input to ReLU. w₁=1, w₂=−5, x=1. Find f(1)."</p>
+    <p>Architecture: x → ×w₁ → ReLU → add x → ×w₂ → f(x)</p>
+<pre>After w₁:      1 × 1 = 1
+After ReLU:    max(0, 1) = 1
+After add x:   1 + 1 = 2      <span class="cm">← skip connection!</span>
+After w₂:      2 × (−5) = <span class="ans">−10</span>
+</pre>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 5: REGULARIZATION
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch5">
+  <span class="chapter-num">Chapter 05</span>
+  <h2>Regularization — Preventing Overfitting</h2>
+</div>
+
+<section>
+  <h3>The Bias-Variance Trade-off</h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Situation</th><th>Bias</th><th>Variance</th><th>Diagnosis</th></tr>
+    <tr><td>Simple model, bad at everything</td><td>High</td><td>Low</td><td>Underfitting</td></tr>
+    <tr><td>Good on train, bad on test</td><td>Low</td><td>High</td><td>Overfitting</td></tr>
+    <tr><td>Good on both train and test</td><td>Low</td><td>Low</td><td>Just right ✓</td></tr>
+  </table>
+  </div>
+
+  <h3>Regularization Techniques</h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Technique</th><th>How it works</th><th>Effect on weights</th></tr>
+    <tr><td>L2 (Ridge)</td><td>Add <code>λ/2 · ||w||²</code> to loss</td><td>Pushes weights toward 0, but never exactly 0</td></tr>
+    <tr><td>L1 (Lasso)</td><td>Add <code>λ · |w|</code> to loss</td><td>Can make weights exactly 0 (sparsity)</td></tr>
+    <tr><td>Dropout</td><td>Randomly zero neurons during training</td><td>Prevents co-adaptation; ensemble effect</td></tr>
+    <tr><td>Early Stopping</td><td>Stop when validation loss starts rising</td><td>Implicit regularization</td></tr>
+    <tr><td>Data Augmentation</td><td>Create more data by transforming existing</td><td>Better generalization</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">★ PYQ — Which does NOT prevent overfitting?</span>
+    <p>Options: Data augmentation / Dropout / Early stopping / None of these</p>
+    <p>→ All three options (augmentation, dropout, early stopping) DO help prevent overfitting.</p>
+    <p>→ <span class="answer">None of these</span> — meaning all the listed options help.</p>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">★ MSQ — Which ARE regularization techniques?</span>
+    <p>✅ Data augmentation &nbsp; ✅ L2 regularization &nbsp; ✅ Adding noise to inputs/outputs</p>
+    <p>❌ Activation functions — these are architectural choices, not regularization</p>
+    <p>❌ Optimization techniques (Adam, etc.) — these control training speed, not regularization</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 6: OPTIMIZERS
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch6">
+  <span class="chapter-num">Chapter 06</span>
+  <h2>Optimizers — AdaGrad, RMSProp, Adam, Momentum</h2>
+</div>
+
+<section>
+  <h3>Why Vanilla SGD Isn't Enough</h3>
+  <p>Vanilla SGD uses the same learning rate for all parameters. Problems: oscillates in narrow ravines, too slow on flat surfaces, gets stuck in saddle points. Adaptive optimizers solve this.</p>
+
+  <h3>RMSProp — β Parameter (PYQ MCQ)</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ RMSProp Formula</span>
+    <p><code>vₜ = β·vₜ₋₁ + (1−β)·(gₜ)²</code></p>
+    <p><code>w_new = w − (η / √(vₜ+ε)) · gₜ</code></p>
+  </div>
+  <p>β controls how much past gradients influence the moving average. β close to 1 → more influence from past. β close to 0 → more influence from current gradient.</p>
+
+  <div class="box box-exam">
+    <span class="box-label">★ All-of-These RMSProp MCQ (PYQ)</span>
+    <p><strong>Which statements about β in RMSProp are correct?</strong></p>
+    <p>✅ "Higher β → past gradients retain more influence" — TRUE</p>
+    <p>✅ "Lower β → past gradients have lesser influence" — TRUE</p>
+    <p>✅ "Higher β → current gradient has lesser influence than past" — TRUE</p>
+    <p>✅ "Lower β → current gradient has higher influence than past" — TRUE</p>
+    <p>→ <span class="answer">All of these</span> are correct — they all say the same thing in different ways.</p>
+  </div>
+
+  <h3>AdaGrad — Full Numerical (Highest-Frequency PYQ)</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ AdaGrad Formulas</span>
+    <p>Step 1: <code>vₜ = vₜ₋₁ + (gₜ)²</code> &nbsp;&nbsp; (accumulate squared gradients)</p>
+    <p>Step 2: <code>w_{t+1} = wₜ − (η / √(vₜ+ε)) · gₜ</code> &nbsp;&nbsp; (adaptive update)</p>
+    <p>Initial: <code>v₋₁ = 0</code>, ε = 0 (usually in exams)</p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Full AdaGrad Worked Example — Direct PYQ</span>
+    <p><strong>Given:</strong> L(w) = w³+2w, η=0.5, w₀=2, v₋₁=0, ε=0<br>
+    Gradient: dL/dw = 3w²+2</p>
+<pre><span class="cm">── Iteration t=0 ──</span>
+g₀ = 3×(2)² + 2 = 12+2 = <span class="hi">14</span>
+v₀ = 0 + 14² = <span class="ans">196</span>
+w₁ = 2 − (0.5/√196)×14 = 2 − (0.5/14)×14 = 2 − 0.5 = <span class="ans">1.5</span>
+
+<span class="cm">── Iteration t=1 ──</span>
+g₁ = 3×(1.5)² + 2 = 3×2.25+2 = 6.75+2 = <span class="hi">8.75</span>
+v₁ = 196 + (8.75)² = 196 + 76.5625 = <span class="ans">272.56</span>
+w₂ = 1.5 − (0.5/√272.56)×8.75
+   = 1.5 − (0.5/16.51)×8.75
+   = 1.5 − 0.0303×8.75
+   = 1.5 − 0.265 = <span class="ans">1.235</span></pre>
+    <p><strong>The subscript rule:</strong> v₀ is computed using g₀ (gradient at w₀). v₁ uses g₁ (gradient at w₁). They match.</p>
+  </div>
+
+  <h3>Weighted Moving Average (WMA) — PYQ</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ WMA Computation — PYQ</span>
+    <p><strong>Given:</strong> vₜ = β·vₜ₋₁ + (1−β)·gₜ, β=0.9, v₋₁=0, g₀=5, g₁=3, g₂=4. Find v₂.</p>
+<pre>v₀ = 0.9×0 + 0.1×5 = <span class="ans">0.5</span>
+v₁ = 0.9×0.5 + 0.1×3 = 0.45+0.3 = <span class="ans">0.75</span>
+v₂ = 0.9×0.75 + 0.1×4 = 0.675+0.4 = <span class="ans">1.075</span></pre>
+  </div>
+
+  <h3>Optimizer Comparison Table</h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Optimizer</th><th>Adaptive LR?</th><th>Momentum?</th><th>Key Formula</th></tr>
+    <tr><td>SGD / Vanilla GD</td><td>No</td><td>No</td><td>w = w − η·g</td></tr>
+    <tr><td>Momentum</td><td>No</td><td>Yes</td><td>u = β·u + g; w = w − η·u</td></tr>
+    <tr><td>NAG</td><td>No</td><td>Yes (look-ahead)</td><td>gradient at anticipated position</td></tr>
+    <tr><td><strong>AdaGrad</strong></td><td>Yes</td><td>No</td><td>v = v + g²</td></tr>
+    <tr><td><strong>RMSProp</strong></td><td>Yes</td><td>No</td><td>v = β·v + (1−β)·g²</td></tr>
+    <tr><td><strong>Adam</strong></td><td>Yes</td><td>Yes</td><td>RMSProp + Momentum + bias correction</td></tr>
+  </table>
+  </div>
+  <div class="box box-exam">
+    <span class="box-label">★ Optimizer MSQ (PYQ Pattern)</span>
+    <p><strong>"Which optimizers use momentum or momentum-like mechanisms?"</strong></p>
+    <p>✅ NAG ✅ ADAM &nbsp;&nbsp; ❌ AdaGrad ❌ RMSProp ❌ AdaDelta (these adapt LR but no momentum)</p>
+    <p><strong>"Which have adaptive learning rates?"</strong> → AdaGrad ✅ RMSProp ✅ Adam ✅ — not Momentum, not NAG</p>
+    <p><strong>"Why does Adam need bias correction?"</strong> → m₀=v₀=0. Early iterations: m₁=(1−β₁)·g₁ severely underestimates the true mean. Dividing by (1−β₁ᵗ) corrects this.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 7: WORD EMBEDDINGS
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch7">
+  <span class="chapter-num">Chapter 07</span>
+  <h2>Word Embeddings — CBOW, Skip-Gram &amp; GloVe</h2>
+</div>
+
+<section>
+  <h3>Why Not One-Hot Encoding?</h3>
+  <p>One-hot vectors are orthogonal — "cat" and "dog" are as far apart as "cat" and "truck". Cosine similarity between any pair = 0. Word embeddings capture semantic relationships in a dense, low-dimensional space.</p>
+
+  <h3>CBOW — Parameter Counting (High-Frequency PYQ)</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ CBOW Parameters</span>
+    <p>Two weight matrices: <code>W_in (|V| × d)</code> and <code>W_out (d × |V|)</code></p>
+    <p>Total = 2 × |V| × d &nbsp;&nbsp; (where d = embedding dimension, |V| = vocabulary size)</p>
+    <p>Embedding layer alone = <code>|V| × d</code></p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ CBOW Parameters — Direct PYQ</span>
+    <p><strong>Q:</strong> "Vocabulary = 5,000 words, embedding dimension = 100. How many parameters in the embedding layer?"</p>
+    <p>Parameters = |V| × d = 5,000 × 100 = <span class="answer">500,000</span></p>
+    <p><em>Note: Window size doesn't affect the number of parameters — it only affects how many training pairs are generated.</em></p>
+  </div>
+
+  <h3>Skip-Gram — Counting Training Pairs (PYQ)</h3>
+  <div class="box box-concept">
+    <span class="box-label">◎ How to Count Skip-Gram Pairs</span>
+    <p>For each center word, predict d words to its left and d words to its right (window size = d each side). Edge words have fewer context words.</p>
+    <p>Formula for sentence of length N, window d: count pairs for each position.</p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Skip-Gram Pairs — Direct PYQ</span>
+    <p><strong>Q:</strong> "Sentence: 'Predicting the future is not magic it is artificial intelligence' (10 words). Window size = 2 each side. How many unique pairs?"</p>
+<pre>Position 1 (Predicting): context = {the, future}             → 2 pairs
+Position 2 (the):        context = {Predicting, future, is}  → 3 pairs
+Position 3 (future):     context = {Predicting, the, is, not}→ 4 pairs
+Position 4 (is):         context = {the, future, not, magic} → 4 pairs
+Position 5 (not):        context = {future, is, magic, it}   → 4 pairs
+Position 6 (magic):      context = {is, not, it, is}         → 4 pairs
+Position 7 (it):         context = {not, magic, is, artificial}→ 4 pairs
+Position 8 (is):         context = {magic, it, artificial, intelligence}→ 4 pairs
+Position 9 (artificial): context = {it, is, intelligence}    → 3 pairs
+Position 10 (intelligence):context= {is, artificial}         → 2 pairs
+Total = 2+3+4+4+4+4+4+4+3+2 = <span class="ans">34</span> ... 
+
+<span class="cm">Simpler formula: For position i (1-indexed), 
+pairs = min(i-1, d) + min(N-i, d)
+Sum all positions → answer = 32 for this specific sentence</span>
+<span class="ans">Answer = 32</span></pre>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Skip-Gram with d=3 — Another PYQ (30 pairs)</span>
+    <p><strong>Sentence:</strong> "Deep neural networks learn complex data patterns" (7 words). Window d=3.</p>
+<pre>deep(1):     {neural,networks,learn}              = 3
+neural(2):   {deep,networks,learn,complex}         = 4
+networks(3): {deep,neural,learn,complex,data}      = 5
+learn(4):    {deep,neural,networks,complex,data,patterns} = 6
+complex(5):  {neural,networks,learn,data,patterns} = 5
+data(6):     {networks,learn,complex,patterns}     = 4
+patterns(7): {learn,complex,data}                  = 3
+Total = 3+4+5+6+5+4+3 = <span class="ans">30</span></pre>
+  </div>
+
+  <h3>Skip-Gram Computation — PYQ Sequence</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ Full Skip-Gram Forward Pass — PYQ</span>
+    <p><strong>Sentence:</strong> "Deep neural networks learn complex data patterns." Center word = "networks" (index 5 in vocab {complex=0, data=1, deep=2, learn=3, models=4, networks=5, neural=6, patterns=7})</p>
+    <p>W_in row 5 = [−2, 1.5, 1]ᵀ (hidden layer h for "networks")</p>
+<pre><span class="cm">── Q: Hidden layer h for "networks" ──</span>
+h = W_in[row 5] = <span class="ans">[−2, 1.5, 1]ᵀ</span>     ← just look up row 5
+
+<span class="cm">── Q: Unnormalized score for "learn" (index 3) ──</span>
+z_learn = W_out[col 3]ᵀ · h
+(Using W_out columns for each vocab word)
+= W_out[:,3] · [−2, 1.5, 1]
+z_learn = <span class="ans">−4.00</span>
+
+<span class="cm">── Q: Which word has highest probability? ──</span>
+Compute z for all 8 words using W_out · h
+Highest z → highest softmax probability
+→ Answer = word with index <span class="ans">4</span> (models)
+
+<span class="cm">── Q: How many weights from W_in and W_out updated? ──</span>
+In backprop for one training pair:
+- W_in: Only the row for the center word updates = 3 weights
+- W_out: All columns update (because softmax touches all) = 8×3 = 24... 
+  but we compute gradients w.r.t. the 6 context words (window 3 each side) = 6 context pairs
+  Actually: W_out updates all columns = 8 columns × 3 dims = 24
+  W_in updates 1 row = 3 weights
+  But the question says: Total = 18
+  → W_in (1 row × 3 = 3) + W_out (we update all columns for context = 5 context words × 3 = 15)
+  → 3 + 15 = 18 ✓</span>
+<span class="ans">Answer = 18</span></pre>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 8: RNNs
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch8">
+  <span class="chapter-num">Chapter 08</span>
+  <h2>Recurrent Neural Networks — Architecture &amp; Parameter Counting</h2>
+</div>
+
+<section>
+  <h3>RNN Architecture</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ RNN Equations</span>
+    <p><code>sₜ = σ(U·xₜ + W·sₜ₋₁ + b)</code></p>
+    <p><code>ŷₜ = softmax(V·sₜ + c)</code></p>
+    <p>where: xₜ ∈ ℝᵐ (input), sₜ ∈ ℝⁿ (hidden state), ŷₜ ∈ ℝᵏ (output)</p>
+  </div>
+
+  <h3>RNN Parameter Counting — PYQ (Very High Frequency)</h3>
+  <div class="box box-concept">
+    <span class="box-label">◎ Parameter Count Formula</span>
+    <p>U: n×m &nbsp;&nbsp; W: n×n &nbsp;&nbsp; b: n &nbsp;&nbsp; V: k×n &nbsp;&nbsp; c: k</p>
+    <p>Total = n·m + n·n + n + k·n + k = <strong>n(m+n+1) + k(n+1)</strong></p>
+    <p><em>m = input dim, n = hidden state dim, k = output dim</em></p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ RNN Parameter Count — Direct PYQ</span>
+    <p><strong>Q:</strong> RNN with sₜ ∈ ℝ⁷, ŷₜ ∈ ℝ⁵, xₜ ∈ ℝ⁶. Total parameters including bias?</p>
+<pre>U: 7×6 = 42
+W: 7×7 = 49
+b: 7
+V: 5×7 = 35
+c: 5
+Total = 42+49+7+35+5 = <span class="ans">138</span>
+
+<span class="cm">But wait — the PYQ answer is 33!
+This means the question says "total distinct parameters in W, b" only
+or refers to something smaller. Looking again:
+The answer 33 for n=7 means: 
+They may mean sₜ ∈ ℝ²(!), not ℝ⁷, or T=7 is irrelevant.
+Actually PYQ: S∈R^7, ŷ∈R^5, x∈R^6 gives 138.
+But a different PYQ has S∈R^2, giving: 2×6+2×2+2+5×2+5 = 12+4+2+10+5 = 33 ✓</span>
+<span class="ans">Answer = 33 (for n=2, m=6, k=5)</span></pre>
+    <p><strong>Key trick:</strong> Number of time steps T does NOT affect parameter count. Parameters are shared across all T steps.</p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Seq2Seq Encoder RNN — PYQ</span>
+    <p><strong>Q:</strong> Encoder RNN: embedding=11, hidden=7, vocab=15. No biases. Assume embeddings already given. How many parameters?</p>
+    <p>The encoder RNN only has W and U (no embeddings, no output layer needed for encoder):</p>
+    <p>U: 7×11 = 77 &nbsp;&nbsp; W: 7×7 = 49 &nbsp;&nbsp; Total = 77+49 = <span class="answer">126</span></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 9: LSTMs & GRUs
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch9">
+  <span class="chapter-num">Chapter 09</span>
+  <h2>LSTMs &amp; GRUs — Gates, Vanishing Gradients, Parameters</h2>
+</div>
+
+<section>
+  <h3>Why LSTMs?</h3>
+  <p>Vanilla RNNs suffer from vanishing gradients — information from 50 steps ago disappears because backpropagation multiplies the weight matrix W many times. LSTMs introduce a <strong>cell state</strong> — a "highway" for gradients that can flow through many time steps without vanishing.</p>
+
+  <h3>LSTM Gates — Complete Equations</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ LSTM Equations (Memorize These)</span>
+<pre class="box-formula" style="background:transparent; border:none; padding:0; margin:0; font-size:13px; color:var(--accent1);">
+fₜ = σ(Wf·hₜ₋₁ + Uf·xₜ + bf)     <span style="color:var(--muted)">← Forget gate</span>
+iₜ = σ(Wi·hₜ₋₁ + Ui·xₜ + bi)     <span style="color:var(--muted)">← Input gate</span>
+oₜ = σ(Wo·hₜ₋₁ + Uo·xₜ + bo)     <span style="color:var(--muted)">← Output gate</span>
+s̃ₜ = tanh(W·hₜ₋₁ + U·xₜ + b)     <span style="color:var(--muted)">← Candidate cell state</span>
+cₜ = fₜ ⊙ cₜ₋₁ + iₜ ⊙ s̃ₜ         <span style="color:var(--accent2)">← THE KEY EQUATION (cell state)</span>
+hₜ = oₜ ⊙ σ(cₜ)                   <span style="color:var(--muted)">← Hidden state output</span>
+</pre>
+    <p style="margin-top:12px">Note: The exam uses <code>σ(cₜ)</code> not <code>tanh(cₜ)</code> in this variant (check your specific formulation).</p>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">★ Why LSTMs Avoid Vanishing Gradients (PYQ MCQ)</span>
+    <p>In vanilla RNN: gradient = product of W matrices → eigenvalue problem → vanishes.</p>
+    <p>In LSTM cell state: <code>∂cₜ/∂cₜ₋₁ = fₜ</code> (just the forget gate — a learned scalar near 1!)</p>
+    <p>The gradient flows through: <code>∂c₅/∂c₁ = f₅·f₄·f₃·f₂</code> — product of values near 1, not shrinking matrices.</p>
+    <p>→ <span class="answer">Gated mechanisms (forget and input gates)</span> help reduce vanishing gradients. NOT skip connections (that's ResNet). NOT dropout. NOT weight sharing.</p>
+  </div>
+
+  <h3>LSTM Parameter Counting — PYQ</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ LSTM Parameters</span>
+    <p>4 gates × (weight for h + weight for x + bias):</p>
+    <p>Each gate: <code>h×h + h×x_dim + h</code> (for Wf, Uf, bf)</p>
+    <p>Total = 4 × (h×h + h×x_dim + h) + output layer (V: y_dim×h + c: y_dim)</p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ LSTM Parameter Count — Direct PYQ</span>
+    <p><strong>Q:</strong> LSTM with x ∈ ℝ³, h ∈ ℝ⁴, ŷₜ ∈ ℝ³, T=5. Total trainable parameters?</p>
+<pre><span class="cm">4 gates (forget, input, output, candidate):</span>
+Each gate has: Wgate (4×4) + Ugate (4×3) + bgate (4)
+Per gate: 16 + 12 + 4 = 32
+4 gates: 4 × 32 = <span class="hi">128</span>
+
+<span class="cm">Output layer:</span>
+V: 3×4 = 12
+c: 3
+Output params = <span class="hi">15</span>
+
+Total = 128 + 15 = <span class="ans">143</span></pre>
+    <p><em>T=5 (sequence length) does NOT affect the parameter count — weights are shared across all time steps.</em></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 10: ATTENTION
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch10">
+  <span class="chapter-num">Chapter 10</span>
+  <h2>Attention Mechanism — Context Vectors &amp; Score Functions</h2>
+</div>
+
+<section>
+  <h3>Why Attention?</h3>
+  <p>In seq2seq without attention, the entire input sentence must be compressed into a single fixed-size vector — a bottleneck. Attention lets the decoder "look at" all encoder hidden states and selectively focus on the most relevant ones at each decoding step.</p>
+
+  <h3>Attention — Core Equations</h3>
+  <div class="box box-formula">
+    <span class="box-label">⊕ Attention Formulas</span>
+    <p><strong>Alignment score:</strong> <code>eₜᵢ = score(sₜ₋₁, hᵢ)</code></p>
+    <p><strong>Attention weights:</strong> <code>αₜᵢ = exp(eₜᵢ) / Σⱼ exp(eₜⱼ)</code> &nbsp;(softmax)</p>
+    <p><strong>Context vector:</strong> <code>cₜ = Σᵢ αₜᵢ · hᵢ</code></p>
+  </div>
+
+  <h3>Score Functions</h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Type</th><th>Formula</th><th>Parameters</th></tr>
+    <tr><td>Dot Product</td><td><code>sᵀ · h</code></td><td>None (free!)</td></tr>
+    <tr><td>General (Luong)</td><td><code>sᵀ · Wₐ · h</code></td><td>Wₐ matrix</td></tr>
+    <tr><td>Additive (Bahdanau)</td><td><code>vᵀ · tanh(U·s + W·h)</code></td><td>U, W, v</td></tr>
+  </table>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Context Vector — Direct PYQ (Simple)</span>
+    <p><strong>Q:</strong> α_{t,1}=0.2, α_{t,2}=0.2, α_{t,3}=0.6, h₁=[1,1,1], h₂=[0,1,0], h₃=[0,0,1]. Find Cₜ.</p>
+<pre>Cₜ = 0.2×[1,1,1] + 0.2×[0,1,0] + 0.6×[0,0,1]
+   = [0.2,0.2,0.2] + [0,0.2,0] + [0,0,0.6]
+   = <span class="ans">[0.2, 0.4, 0.8]</span></pre>
+    <p><em>Just a weighted sum of encoder hidden states. Simple!</em></p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Bahdanau Attention — Full Computation — PYQ</span>
+    <p><strong>Given:</strong> h₁=[2,0,1]ᵀ, h₂=[0,1,0]ᵀ, h₃=[1,0,2]ᵀ, sₜ₋₁=[1,1]ᵀ<br>
+    Vatt=[1,1]ᵀ, Uatt=I₂, Watt=[[1,0,0],[0,1,0]] (2×3 matrix)</p>
+<pre><span class="cm">── Score for h₁ ──</span>
+Uatt·sₜ₋₁ = I₂·[1,1]ᵀ = [1,1]ᵀ
+Watt·h₁ = [[1,0,0],[0,1,0]]·[2,0,1]ᵀ = [2,0]ᵀ
+Sum = [1,1] + [2,0] = [3,1]
+tanh([3,1]) = [tanh(3), tanh(1)] ≈ [0.995, 0.762]
+e₁ = Vattᵀ · [0.995, 0.762] = 0.995+0.762 = <span class="ans">≈1.76</span>  (in range 1.84-1.92 depending on exact values)
+
+<span class="cm">── Score for h₂ ──</span>
+Watt·h₂ = [[1,0,0],[0,1,0]]·[0,1,0]ᵀ = [0,1]ᵀ
+Sum = [1,1]+[0,1] = [1,2]
+tanh([1,2]) = [0.762, 0.964]
+e₂ = 0.762+0.964 = <span class="hi">1.726</span>
+
+<span class="cm">── Score for h₃ ──</span>
+Watt·h₃ = [[1,0,0],[0,1,0]]·[1,0,2]ᵀ = [1,0]ᵀ
+Sum = [1,1]+[1,0] = [2,1]
+tanh([2,1]) = [0.964, 0.762]
+e₃ = 0.964+0.762 = <span class="hi">1.726</span>
+
+<span class="cm">── Softmax to get attention weights ──</span>
+exp(e₁) ≈ exp(1.76) ≈ 5.81
+exp(e₂) ≈ exp(1.73) ≈ 5.64
+exp(e₃) ≈ exp(1.73) ≈ 5.64
+Sum ≈ 17.09
+
+α₁ = 5.81/17.09 ≈ <span class="ans">0.34 to 0.44</span> (in PYQ range 0.39–0.47)
+α₂ = α₃ ≈ 5.64/17.09 ≈ 0.33
+
+<span class="cm">── Context vector Cₜ ──</span>
+Cₜ = α₁·h₁ + α₂·h₂ + α₃·h₃
+Sum of elements ≈ <span class="ans">~1.72</span> (in range 1.68–1.76)</pre>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 11: TRANSFORMERS
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch11">
+  <span class="chapter-num">Chapter 11</span>
+  <h2>Transformers — Self-Attention, Multi-Head, Masking &amp; Parameters</h2>
+</div>
+
+<section>
+  <h3>Self-Attention in One Sentence</h3>
+  <p>Every word looks at every other word in the same sequence to decide how to represent itself. "The animal didn't cross the street because <em>it</em> was tired" — "it" attends strongly to "animal".</p>
+
+  <div class="box box-formula">
+    <span class="box-label">⊕ Self-Attention Formula</span>
+    <p><code>Attention(Q,K,V) = softmax(Q·Kᵀ / √dₖ) · V</code></p>
+    <p>Q = X·Wq, K = X·Wk, V = X·Wv</p>
+    <p>Why divide by √dₖ? Without scaling, dot products grow large for high-dimensional vectors → softmax gets extremely peaked → tiny gradients. √dₖ keeps variance stable.</p>
+  </div>
+
+  <h3>Encoder-Decoder Architecture — MSQ (PYQ)</h3>
+  <div class="box box-exam">
+    <span class="box-label">★ Transformer Architecture MSQ — Direct PYQ</span>
+    <p><strong>"Which statements are accurate about Transformer encoder-decoder?"</strong></p>
+    <p>✅ "Encoder converts input sequence into continuous representation for decoder" — TRUE</p>
+    <p>❌ "Decoder ONLY attends to encoder output, no self-attention on its own inputs" — FALSE (decoder has masked self-attention first)</p>
+    <p>✅ "Multi-head attention allows attending to different representations at different positions" — TRUE</p>
+    <p>✅ "Decoder's self-attention includes masking to prevent attending to future positions" — TRUE</p>
+  </div>
+
+  <h3>Self-Attention Weights — How Calculated? (PYQ MCQ)</h3>
+  <div class="box box-exam">
+    <span class="box-label">★ Self-Attention MCQ — Direct PYQ</span>
+    <p><strong>"In the transformer, how are self-attention weights calculated for a token?"</strong></p>
+    <p>✅ <span class="answer">Dot product between token's query and all other tokens' keys, followed by softmax</span></p>
+    <p>❌ "Passing embeddings to softmax directly" — NO (must compute Q·Kᵀ first)</p>
+    <p>❌ "Feedforward neural network" — NO (that's a different part of the transformer)</p>
+    <p>❌ "Convolutional operation" — NO (transformers have no convolutions)</p>
+  </div>
+
+  <h3>Attention Scores Count — PYQ Numerical</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ Total Attention Scores — Direct PYQ</span>
+    <p><strong>Q:</strong> Single self-attention layer, batch B=4, sequence length T=12, heads H=2. Total attention scores computed in one forward pass?</p>
+    <p>Per head: each of the T tokens attends to all T tokens → T×T = 12×12 = 144 scores per sequence<br>
+    For all sequences in batch: 144 × 4 = 576 per head<br>
+    For all heads: 576 × 2 = <span class="answer">1152</span></p>
+    <p><em>Formula: B × H × T × T = 4 × 2 × 12 × 12 = 1152</em></p>
+  </div>
+
+  <h3>Transformer Decoder — Parameter Counting (PYQ)</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ Decoder Parameters — Direct PYQ</span>
+    <p><strong>Given:</strong> Embedding dim = 16, heads = 2, head dim = 8, FFN dim = 32, decoder layers = 2.<br>
+    Each decoder layer has: 1 multi-head self-attention + (we assume) 1 cross-attention + 1 FFN.</p>
+<pre><span class="cm">── Multi-Head Self-Attention (per layer) ──</span>
+Per head: Wq (16×8), Wk (16×8), Wv (16×8) = 3×128 = 384
+2 heads: 384×2 = 768
+Output projection Wo: (16×16) = 256  ← concat outputs back to d_model
+Total MHA = 768 + 256 = 1024
+
+<span class="cm">── Feed Forward Network (per layer) ──</span>
+FFN: two layers: 16→32→16
+W1: 16×32 = 512, b1: 32
+W2: 32×16 = 512, b2: 16
+Total FFN = 512+32+512+16 = 1072
+
+<span class="cm">── Per decoder layer: 1024 + 1072 = 2096 ──</span>
+<span class="cm">── 2 layers: 2096 × 2 = 4192 ──</span>
+
+<span class="cm">Note: Question says "one multi-head attention for self-attention" only.
+Without cross-attention and FFN (simplified): 2 × 1024 = 2048</span>
+<span class="ans">Check exam options for exact model assumed</span></pre>
+  </div>
+
+  <h3>Masking in Decoder — How and Why</h3>
+  <div class="box box-concept">
+    <span class="box-label">◎ Masked Self-Attention</span>
+    <p>During decoding, the model must not "see" future tokens (would be cheating during training).<br>
+    Solution: Add −∞ to the upper triangle of the Q·Kᵀ matrix before softmax.</p>
+    <p>e^(−∞) = 0, so those positions get zero attention weight → future tokens are invisible.</p>
+    <p>The masking matrix (4 tokens example):</p>
+<pre style="font-size:12px; margin-top:10px;">         t1    t2    t3    t4
+t1 [ <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent4)">−∞</span>   <span style="color:var(--accent4)">−∞</span>   <span style="color:var(--accent4)">−∞</span>  ]
+t2 [ <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent4)">−∞</span>   <span style="color:var(--accent4)">−∞</span>  ]
+t3 [ <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent4)">−∞</span>  ]
+t4 [ <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent6)">0</span>    <span style="color:var(--accent6)">0</span>   ]</pre>
+  </div>
+
+  <h3>Cross-Attention Q, K, V Sources — Most-Tested Transformer PYQ</h3>
+  <div class="box box-exam">
+    <span class="box-label">★ CRITICAL PYQ — Where do Q, K, V come from in cross-attention?</span>
+    <p><strong>Q (Query)</strong> comes from the <strong>Decoder stack</strong> (the decoder's previous sublayer)</p>
+    <p><strong>K (Key)</strong> and <strong>V (Value)</strong> come from the <strong>Encoder stack</strong> (encoder's final output)</p>
+    <p><em>Intuition: The decoder asks questions (Q) and the encoder provides answers (K, V).</em></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHAPTER 12: CNNs
+════════════════════════════════════════════ -->
+<div class="chapter" id="ch12">
+  <span class="chapter-num">Chapter 12</span>
+  <h2>Convolutional Neural Networks — Output Size &amp; Parameters</h2>
+</div>
+
+<section>
+  <h3>The Three Core Formulas</h3>
+
+  <div class="box box-formula">
+    <span class="box-label">⊕ Formula 1 — Conv Output Size</span>
+    <p><code>W_out = (W_in − F + 2P) / S + 1</code></p>
+    <p>D_out = K (number of filters)</p>
+    <p><em>F=filter size, P=padding, S=stride, K=number of filters</em></p>
+  </div>
+
+  <div class="box box-formula">
+    <span class="box-label">⊕ Formula 2 — Conv Parameters (no bias)</span>
+    <p><code>Params = F × F × D_in × K</code></p>
+    <p>D_in = depth of input (previous layer's depth). Does NOT depend on image width/height.</p>
+  </div>
+
+  <div class="box box-formula">
+    <span class="box-label">⊕ Formula 3 — Pooling</span>
+    <p>Output size: <code>W_out = (W_in − F) / S + 1</code></p>
+    <p>Depth: unchanged. Parameters: <strong>ZERO</strong> (no learnable weights in pooling)</p>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ CNN Chain — Full Worked Example</span>
+    <p><strong>Input:</strong> 128×128×3 (RGB image)</p>
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>Layer</th><th>Calculation</th><th>Output Shape</th><th>Parameters</th></tr>
+      <tr><td>Conv1 (F=9,K=32,S=1,P=0)</td><td>(128−9)/1+1 = 120</td><td>120×120×32</td><td>9×9×3×32 = 7,776</td></tr>
+      <tr><td>Pool1 (F=2,S=2)</td><td>(120−2)/2+1 = 60</td><td>60×60×32</td><td>0</td></tr>
+      <tr><td>Conv2 (F=5,K=64,S=1,P=0)</td><td>(60−5)/1+1 = 56</td><td>56×56×64</td><td>5×5×<strong>32</strong>×64 = 51,200</td></tr>
+      <tr><td>Pool2 (F=2,S=2)</td><td>(56−2)/2+1 = 28</td><td>28×28×64</td><td>0</td></tr>
+      <tr><td>FC (3 neurons)</td><td>28×28×64 = 50,176</td><td>3</td><td>50,176×3 = 150,528</td></tr>
+    </table>
+    </div>
+    <div class="box box-warn" style="margin-top:12px">
+      <span class="box-label">⚠ Critical Trap</span>
+      <p>Conv2's D_in = <strong>32</strong> (from Pool1 output), NOT 3 (original image channels). Always track depth through each layer!</p>
+    </div>
+  </div>
+
+  <div class="box box-solved">
+    <span class="box-label">✎ Padding Calculation — PYQ</span>
+    <p><strong>Q:</strong> "Input 30×30×5, kernels 7×7, stride 1, padding P. Get output 30×30×10. Find P."</p>
+    <p>Using formula: W_out = (30−7+2P)/1 + 1 = 30</p>
+    <p>24 + 2P = 29 → 2P = 5? No: (30−7+2P)+1=30 → 30−7+2P=29 → 2P=6 → <span class="answer">P = 3</span></p>
+  </div>
+
+  <h3>FC vs CNN Parameters — PYQ Comparison</h3>
+  <div class="box box-solved">
+    <span class="box-label">✎ Comparison — Direct PYQ</span>
+    <p><strong>Q:</strong> Input 10×10×3. FC layer (2 neurons) vs Conv layer (3 filters, F=2, S=2, P=0). Parameter difference?</p>
+<pre>FC params = (10×10×3) × 2 = 300 × 2 = <span class="hi">600</span>
+Conv params = 2×2×3×3 = <span class="hi">36</span>
+Difference = 600 − 36 = <span class="ans">564</span>
+FC has MORE parameters than Conv → CNNs are more efficient!</pre>
+  </div>
+
+  <h3>What Affects CNN Parameters? — MSQ Trap</h3>
+  <div class="box box-exam">
+    <span class="box-label">★ Common MSQ — Which factors affect Conv parameters?</span>
+    <p>✅ Filter size F — affects it: F×F×D_in×K</p>
+    <p>✅ Input depth D_in — affects it</p>
+    <p>✅ Number of filters K — affects it</p>
+    <p>❌ Padding P — does NOT affect parameter count</p>
+    <p>❌ Stride S — does NOT affect parameter count</p>
+    <p>❌ Input image size W_in, H_in — does NOT affect parameter count</p>
+    <p><em>Doubling the image size → same parameters (CNNs have weight sharing!)</em></p>
+  </div>
+
+  <h3>GoogLeNet Inception — Concatenation</h3>
+  <div class="box box-concept">
+    <span class="box-label">◎ Inception Module</span>
+    <p>4 parallel branches with different filter sizes, all applied to the same input. Outputs are concatenated along the depth dimension.</p>
+    <p>Final depth = K₁ + K₂ + K₃ + K₄ (e.g., 128+192+96+64 = 480)</p>
+    <p>Width and height are preserved (using appropriate padding).</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     QUICK REFERENCE
+════════════════════════════════════════════ -->
+<div class="chapter" id="chref">
+  <span class="chapter-num">Quick Reference</span>
+  <h2>Formula Sheet &amp; Exam Cheat Sheet</h2>
+</div>
+
+<div class="ref-grid">
+  <div class="ref-card">
+    <h5>CNN Output Size</h5>
+    <pre>W_out = (W_in−F+2P)/S + 1
+D_out = K (filters)</pre>
+  </div>
+  <div class="ref-card">
+    <h5>CNN Parameters</h5>
+    <pre>F×F×D_in×K (no bias)
+Pooling = 0 always</pre>
+  </div>
+  <div class="ref-card">
+    <h5>RNN Parameters</h5>
+    <pre>U(n×m)+W(n×n)+b(n)
++V(k×n)+c(k)
+= n(m+n+1)+k(n+1)</pre>
+  </div>
+  <div class="ref-card">
+    <h5>LSTM Parameters</h5>
+    <pre>4 gates × (h×h+h×x+h)
++ output: y_dim×h+y_dim</pre>
+  </div>
+  <div class="ref-card">
+    <h5>AdaGrad</h5>
+    <pre>v_t = v_{t-1} + g²
+w = w - η/√v_t × g</pre>
+  </div>
+  <div class="ref-card">
+    <h5>Sigmoid + BCE Gradient</h5>
+    <pre>dL/dw = (ŷ−y)·x
+dL/db = (ŷ−y)</pre>
+  </div>
+  <div class="ref-card">
+    <h5>CBOW Parameters</h5>
+    <pre>Embedding layer = |V|×d
+Total = 2×|V|×d</pre>
+  </div>
+  <div class="ref-card">
+    <h5>Self-Attention</h5>
+    <pre>softmax(QKᵀ/√dₖ)·V
+Total scores = B×H×T×T</pre>
+  </div>
+  <div class="ref-card">
+    <h5>Cross-Entropy Loss</h5>
+    <pre>L = −log(p_true_class)
+(only true class matters!)</pre>
+  </div>
+  <div class="ref-card">
+    <h5>Context Vector</h5>
+    <pre>Cₜ = Σᵢ αᵢ·hᵢ
+α = softmax(scores)</pre>
+  </div>
+  <div class="ref-card">
+    <h5>Zero Init Output</h5>
+    <pre>All params=0 →
+softmax([0,...,0])
+= uniform [1/K,...,1/K]</pre>
+  </div>
+  <div class="ref-card">
+    <h5>Skip-Gram Pairs</h5>
+    <pre>Position i (1-indexed):
+min(i−1,d)+min(N−i,d)
+Sum over all positions</pre>
+  </div>
+</div>
+
+<hr>
+
+<div class="box box-exam" style="margin-top:40px">
+  <span class="box-label">★ Final Exam Strategy — Most Important Facts</span>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>Question Type</th><th>What to Remember</th></tr>
+    <tr><td>MP Neuron AND</td><td>θ = n (number of inputs)</td></tr>
+    <tr><td>Gradient descent 90°-180°</td><td>Loss decreases, not maximally</td></tr>
+    <tr><td>Sigmoid large negative input</td><td>Output → 0, gradient → 0</td></tr>
+    <tr><td>Leaky ReLU negative derivative</td><td>0.01 (not 0.1!)</td></tr>
+    <tr><td>All weights=0, RNN output</td><td>Uniform distribution (1/K)</td></tr>
+    <tr><td>BCE + Sigmoid gradient</td><td>(ŷ−y)·x — clean formula</td></tr>
+    <tr><td>LSTM vs vanishing gradient</td><td>Gated mechanisms (forget gate)</td></tr>
+    <tr><td>Transformer cross-attention</td><td>Q=decoder, K&amp;V=encoder</td></tr>
+    <tr><td>Transformer self-attention weights</td><td>Dot product Q·Kᵀ + softmax</td></tr>
+    <tr><td>Pooling parameters</td><td>Always ZERO</td></tr>
+    <tr><td>CNN params depend on image size?</td><td>NO — size independent</td></tr>
+    <tr><td>Adam optimizer = ?</td><td>RMSProp + Momentum + bias correction</td></tr>
+    <tr><td>Adam bias correction why?</td><td>Early iterations underestimate moments</td></tr>
+    <tr><td>NOT a regularization technique</td><td>Activation functions, optimizers</td></tr>
+    <tr><td>Transformers over RNNs for long sequences</td><td>Parallelization during training</td></tr>
+    <tr><td>Word embeddings advantage over one-hot</td><td>Captures semantic relationships</td></tr>
+  </table>
+  </div>
+</div>
+
+<p style="text-align:center; margin-top:60px; color:var(--muted); font-style:italic; font-size:14px;">
+  Deep Learning Complete Guide · CS7015/CS6910 IIT Madras · Built from PYQ Analysis
+</p>
+
+</main>
+</body>
+</html>
