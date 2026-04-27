@@ -1,0 +1,1391 @@
+Here is a **from-scratch, exam-focused Deep Learning guide** based on your **DL_prev_ocr previous questions** and the uploaded notes/solutions. Your previous paper pattern clearly mixes **concept MCQs/MSQs** with **calculation-heavy short-answer questions** from MP neurons, gradient descent, optimizers, CNNs, word embeddings, RNN/LSTM, attention, and transformers. The paper also shows **0 negative marks**, so your exam strategy should be: attempt everything, but train yourself to avoid arithmetic mistakes. 
+
+# 1. First understand what Deep Learning is
+
+Deep Learning is a method where a computer learns patterns from data using layers of artificial neurons.
+
+A normal program works like this:
+
+`Rules + Input → Output`
+
+Machine learning works like this:
+
+`Data + Correct answers → Computer learns rules`
+
+Deep learning is machine learning using many layers:
+
+`Input → Hidden layers → Output`
+
+Example: For cat/dog image classification, the model may learn:
+
+Early layers: edges and lines
+Middle layers: shapes and textures
+Deep layers: eyes, ears, face-like patterns
+Output layer: cat or dog
+
+A deep learning model mainly learns **weights** and **biases**. These are numbers that decide how strongly one neuron affects another. Your Hinglish notes explain this training loop clearly: give data, compute prediction, measure error with a loss function, update weights using gradient descent, and repeat many times. 
+
+# 2. The artificial neuron: the base of everything
+
+A neuron takes inputs, multiplies them by weights, adds bias, and applies an activation function.
+
+Formula:
+
+[
+z = w_1x_1 + w_2x_2 + \cdots + w_nx_n + b
+]
+
+or in vector form:
+
+[
+z = w^Tx + b
+]
+
+Then:
+
+[
+a = f(z)
+]
+
+where (f) is an activation function like sigmoid, tanh, or ReLU.
+
+Example:
+
+Suppose:
+
+[
+x = [2, 3], \quad w = [4, 5], \quad b = 1
+]
+
+Then:
+
+[
+z = 4(2) + 5(3) + 1 = 8 + 15 + 1 = 24
+]
+
+If activation is sigmoid:
+
+[
+a = \frac{1}{1 + e^{-24}} \approx 1
+]
+
+So the neuron outputs a value close to 1.
+
+# 3. The complete training loop
+
+Every deep learning model trains using this loop:
+
+1. **Forward pass**: input goes through the network and produces prediction.
+2. **Loss calculation**: compare prediction with true answer.
+3. **Backward pass / backpropagation**: calculate gradients.
+4. **Gradient descent update**: change weights to reduce loss.
+5. Repeat for many batches and epochs.
+
+Main update formula:
+
+[
+w_{\text{new}} = w_{\text{old}} - \eta \frac{\partial L}{\partial w}
+]
+
+where:
+
+[
+\eta
+]
+
+is the learning rate.
+
+If learning rate is too high, the model may overshoot the minimum. If it is too low, training becomes very slow.
+
+# 4. Must-know activation functions
+
+## Sigmoid
+
+[
+\sigma(z)=\frac{1}{1+e^{-z}}
+]
+
+Range: 0 to 1.
+
+Used for binary classification output.
+
+Derivative:
+
+[
+\sigma'(z)=\sigma(z)(1-\sigma(z))
+]
+
+Important exam point: if (z) is very large positive or very large negative, sigmoid saturates and gradient becomes almost 0. This causes vanishing gradients. The uploaded Quiz 2 solutions ask exactly this type of question. 
+
+## Tanh
+
+[
+\tanh(z)
+]
+
+Range: -1 to 1.
+
+Derivative:
+
+[
+1-\tanh^2(z)
+]
+
+It is zero-centered, better than sigmoid for hidden layers, but can still saturate.
+
+## ReLU
+
+[
+ReLU(z)=\max(0,z)
+]
+
+Derivative:
+
+[
+1 \text{ if } z>0,\quad 0 \text{ if } z\leq 0
+]
+
+Important exam point: if ReLU output becomes 0, the neuron may stop learning. This is called the dying ReLU problem.
+
+## Leaky ReLU
+
+[
+f(z)=z \text{ if } z>0
+]
+
+[
+f(z)=0.01z \text{ if } z<0
+]
+
+This reduces the dying ReLU problem.
+
+# 5. Loss functions you must know
+
+## Mean Squared Error
+
+Used for regression.
+
+[
+L=(\hat{y}-y)^2
+]
+
+## Binary Cross-Entropy
+
+Used for binary classification.
+
+[
+L= -[y\log(\hat{y}) + (1-y)\log(1-\hat{y})]
+]
+
+A previous question in DL_prev_ocr gives a sigmoid neuron with binary cross-entropy and asks for (z), (\hat y), and updated loss after one gradient descent step. This is a very common calculation pattern. 
+
+## Multi-class Cross-Entropy
+
+Used when output is softmax.
+
+If true class probability is (p), then:
+
+[
+L=-\log(p)
+]
+
+Example from your previous questions:
+
+If the correct word has predicted probability 0.2:
+
+[
+L=-\log(0.2)=1.609
+]
+
+So the answer is approximately:
+
+[
+1.61
+]
+
+# 6. Gradient descent and optimizers
+
+## Vanilla Gradient Descent
+
+[
+w_{\text{new}} = w - \eta g
+]
+
+where (g) is gradient.
+
+In gradient descent, we move **opposite** to the gradient direction. If we move at 180 degrees to the gradient, loss decreases fastest. If we move between 90 and 180 degrees, loss still decreases, but not as much as the perfect opposite direction.
+
+## Stochastic Gradient Descent
+
+Uses one training example at a time.
+
+[
+\Delta w_j = -\eta(\hat{y}^{(i)}-y^{(i)})h_j^{(i)}
+]
+
+## Mini-batch Gradient Descent
+
+Uses a small batch.
+
+[
+\Delta w_j = -\eta \frac{1}{|B|}\sum_{i\in B}(\hat{y}^{(i)}-y^{(i)})h_j^{(i)}
+]
+
+Your previous paper has an MSQ asking to identify correct GD, SGD, and mini-batch update rules, so this formula pattern is important. 
+
+## Momentum
+
+Momentum keeps a moving average of gradients.
+
+[
+u_t = \beta u_{t-1} + g_t
+]
+
+[
+w_{t+1}=w_t-\eta u_t
+]
+
+It helps speed up movement in consistent directions.
+
+## AdaGrad
+
+[
+v_t = v_{t-1}+g_t^2
+]
+
+[
+w_{t+1}=w_t-\frac{\eta}{\sqrt{v_t+\epsilon}}g_t
+]
+
+AdaGrad gives smaller learning rates to parameters that have received large gradients many times.
+
+## RMSProp
+
+[
+v_t = \beta v_{t-1} + (1-\beta)g_t^2
+]
+
+A higher (\beta) means old gradients have more influence. A lower (\beta) means the current gradient has more influence. Your previous paper directly asks about the meaning of (\beta) in RMSProp. 
+
+## Adam
+
+Adam combines momentum and RMSProp.
+
+[
+m_t=\beta_1m_{t-1}+(1-\beta_1)g_t
+]
+
+[
+v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2
+]
+
+Bias correction:
+
+[
+\hat{m}_t=\frac{m_t}{1-\beta_1^t}
+]
+
+[
+\hat{v}_t=\frac{v_t}{1-\beta_2^t}
+]
+
+Adam needs bias correction because early moving averages are biased toward zero. This exact concept appears in the uploaded Quiz 2 solutions. 
+
+# 7. MP neuron and perceptron
+
+An MP neuron is a simple binary neuron.
+
+[
+f(x)=1 \text{ if } \sum x_i \geq \theta
+]
+
+[
+f(x)=0 \text{ otherwise}
+]
+
+For AND with 5 inputs, output should be 1 only when all five inputs are 1.
+
+So:
+
+[
+\sum x_i = 5
+]
+
+Therefore:
+
+[
+\theta=5
+]
+
+For OR with 2 inputs, output should be 1 if at least one input is 1.
+
+So:
+
+[
+\theta=1
+]
+
+Important: XOR cannot be solved by a single perceptron because XOR is not linearly separable.
+
+# 8. Overfitting, underfitting, and regularization
+
+## Underfitting
+
+Model is too simple.
+
+Training error high.
+Validation error high.
+
+This means high bias.
+
+## Overfitting
+
+Model memorizes training data.
+
+Training error low.
+Validation error high.
+
+This means high variance.
+
+## Good fit
+
+Training error low.
+Validation error also low.
+
+This means low bias and low variance.
+
+## Regularization methods
+
+These help prevent overfitting:
+
+Data augmentation
+Dropout
+Early stopping
+L2 regularization
+Noise injection
+Parameter sharing
+
+Your previous question asks which technique does **not** help prevent overfitting; data augmentation, dropout, and early stopping all help, so the answer is “None of these.” 
+
+## L2 regularization
+
+[
+L_{\text{new}} = L + \frac{\lambda}{2}||w||^2
+]
+
+Gradient becomes:
+
+[
+\frac{\partial L_{\text{new}}}{\partial w} = \frac{\partial L}{\partial w} + \lambda w
+]
+
+L2 pushes weights toward 0, but usually does not make them exactly 0. L1 is the one that encourages exact sparsity.
+
+# 9. CNNs: very important for marks
+
+CNN questions are usually free marks if you memorize the formulas. Your notes emphasize CNN output-size and parameter-count formulas heavily, and the Quiz 2 solutions contain several CNN chain calculations.  
+
+## Convolution output size
+
+[
+W_{\text{out}} = \frac{W_{\text{in}} - F + 2P}{S}+1
+]
+
+[
+H_{\text{out}} = \frac{H_{\text{in}} - F + 2P}{S}+1
+]
+
+[
+D_{\text{out}} = K
+]
+
+where:
+
+(F): filter size
+(P): padding
+(S): stride
+(K): number of filters
+
+## Convolution parameter count
+
+[
+\text{Parameters}=F \times F \times D_{\text{in}} \times K
+]
+
+If bias is included:
+
+[
+F \times F \times D_{\text{in}} \times K + K
+]
+
+Most exam questions say ignore bias.
+
+## Pooling
+
+Pooling has 0 parameters.
+
+Max pooling takes the maximum.
+Average pooling takes the average.
+Pooling usually keeps depth same.
+
+## Fully connected layer parameters
+
+[
+\text{Parameters} = \text{input neurons} \times \text{output neurons}
+]
+
+If previous layer is (W \times H \times D), flatten size is:
+
+[
+WHD
+]
+
+## Example from your previous paper
+
+Input: (10 \times 10) grayscale image.
+Model A: flatten to 100 and connect to 5 neurons without bias.
+
+[
+P_A=100 \times 5 = 500
+]
+
+Model B: convolutional layer with five (10 \times 10) filters.
+
+[
+P_B = 10 \times 10 \times 1 \times 5 = 500
+]
+
+So:
+
+[
+P_A=P_B
+]
+
+This exact type of parameter comparison appears in DL_prev_ocr. 
+
+# 10. Word embeddings: CBOW and Skip-gram
+
+Your Weeks 9–12 notes cover one-hot vectors, CBOW, Skip-gram, negative sampling, GloVe, RNNs, LSTMs, attention, and transformers. 
+
+## One-hot encoding
+
+If vocabulary size is 5000, each word is a vector of length 5000 with one 1 and the rest 0.
+
+Problem: one-hot vectors do not capture meaning. “cat” and “dog” are as unrelated as “cat” and “truck”.
+
+## Word embeddings
+
+Word embeddings are dense vectors like:
+
+[
+dog = [0.2, -0.7, 1.1, \dots]
+]
+
+They capture semantic relationships.
+
+## CBOW
+
+CBOW predicts the center word from context words.
+
+Context:
+
+“the ___ sat”
+
+Target:
+
+“cat”
+
+So CBOW learns:
+
+[
+P(\text{cat}|\text{the, sat})
+]
+
+## Skip-gram
+
+Skip-gram predicts context words from center word.
+
+Center:
+
+“cat”
+
+Context:
+
+“the”, “sat”
+
+So Skip-gram learns:
+
+[
+P(\text{the}|\text{cat}), \quad P(\text{sat}|\text{cat})
+]
+
+## Embedding parameter count
+
+If vocabulary size is (V) and embedding dimension is (d):
+
+[
+\text{Embedding parameters}=V \times d
+]
+
+Example from previous paper:
+
+Vocabulary size = 5000
+Embedding dimension = 100
+
+[
+5000 \times 100 = 500000
+]
+
+Window size does **not** change embedding-layer parameter count.
+
+## Cross-entropy for word prediction
+
+If correct word probability is 0.2:
+
+[
+L=-\log(0.2)=1.61
+]
+
+## Skip-gram pair counting
+
+Sentence:
+
+“Predicting the future is not magic, it is artificial intelligence”
+
+Ignoring punctuation, words are:
+
+Predicting, the, future, is, not, magic, it, is, artificial, intelligence
+
+Window size = 2.
+
+For normal directed pairs, you count each center-context pair within distance 2. Because “is” appears twice, some word pairs repeat. The previous paper asks for **unique** pairs, giving answer 32. 
+
+# 11. RNNs: sequence learning from scratch
+
+A normal feedforward network does not remember previous inputs. RNNs solve this by keeping a hidden state.
+
+At time (t):
+
+[
+s_t = f(Ux_t + Ws_{t-1}+b)
+]
+
+Output:
+
+[
+\hat{y}_t = softmax(Vs_t+c)
+]
+
+where:
+
+(U): input-to-hidden weights
+(W): hidden-to-hidden recurrent weights
+(V): hidden-to-output weights
+
+Your notes explain that RNNs are useful for sequential data such as language, time series, translation, and tagging. 
+
+## RNN parameter count
+
+If:
+
+Input dimension = (d)
+Hidden dimension = (h)
+Output dimension = (o)
+
+Without bias:
+
+[
+U: h \times d
+]
+
+[
+W: h \times h
+]
+
+[
+V: o \times h
+]
+
+Total:
+
+[
+hd+h^2+oh
+]
+
+With bias:
+
+[
+hd+h^2+h+oh+o
+]
+
+## Example from previous paper
+
+Embedding dimension = 11
+Hidden dimension = 7
+No biases
+Already have embeddings, so do not count embedding matrix.
+
+[
+U = 7 \times 11 = 77
+]
+
+[
+W = 7 \times 7 = 49
+]
+
+Total:
+
+[
+77+49=126
+]
+
+Answer:
+
+[
+126
+]
+
+# 12. Vanishing and exploding gradients
+
+RNNs are trained using Backpropagation Through Time.
+
+The problem is that gradients repeatedly multiply through many time steps.
+
+If repeated multiplication gives very small values, gradient vanishes.
+If repeated multiplication gives very large values, gradient explodes.
+
+## Vanishing gradient
+
+Model cannot learn long-range dependencies.
+
+Example:
+
+“The dog that chased the cats near the river ___ tired.”
+
+To predict “was”, model needs old information about “dog”. Vanilla RNN may forget it.
+
+## Exploding gradient
+
+Training becomes unstable.
+
+Solution: gradient clipping.
+
+## LSTM solves vanishing gradient better
+
+LSTM uses gates.
+
+# 13. LSTM from scratch
+
+LSTM has a memory cell and gates.
+
+Main gates:
+
+Forget gate
+Input gate
+Output gate
+Candidate state
+
+Equations:
+
+[
+f_t = \sigma(W_fx_t + U_fh_{t-1}+b_f)
+]
+
+[
+i_t = \sigma(W_ix_t + U_ih_{t-1}+b_i)
+]
+
+[
+o_t = \sigma(W_ox_t + U_oh_{t-1}+b_o)
+]
+
+[
+\tilde{c}*t = \tanh(W_cx_t + U_ch*{t-1}+b_c)
+]
+
+Cell state:
+
+[
+c_t = f_t \odot c_{t-1} + i_t \odot \tilde{c}_t
+]
+
+Hidden state:
+
+[
+h_t = o_t \odot \tanh(c_t)
+]
+
+The key reason LSTMs reduce vanishing gradients is the cell-state path. The network can learn forget gates close to 1, allowing gradients to pass through many time steps. Your notes highlight this as the main reason LSTMs work better than vanilla RNNs for long-range dependencies. 
+
+## LSTM parameter count
+
+For input dimension (d), hidden dimension (h), each gate has:
+
+[
+W: h \times d
+]
+
+[
+U: h \times h
+]
+
+[
+b: h
+]
+
+There are 4 sets: input, forget, output, candidate.
+
+So LSTM internal parameters:
+
+[
+4(hd+h^2+h)
+]
+
+If there is an output layer from hidden to output dimension (o):
+
+[
+oh+o
+]
+
+Total:
+
+[
+4(hd+h^2+h)+oh+o
+]
+
+Example from previous paper:
+
+Input dimension = 3
+Hidden dimension = 4
+Output dimension = 3
+
+Internal LSTM:
+
+[
+4(4\cdot3 + 4\cdot4 + 4)
+]
+
+[
+=4(12+16+4)=4(32)=128
+]
+
+Output layer:
+
+[
+3\cdot4+3=15
+]
+
+Total:
+
+[
+128+15=143
+]
+
+Answer:
+
+[
+143
+]
+
+# 14. GRU
+
+GRU is a simpler version of LSTM.
+
+It has fewer gates and usually fewer parameters.
+
+GRU has:
+
+Update gate
+Reset gate
+Candidate state
+
+It does not have a separate cell state like LSTM.
+
+Exam shortcut:
+
+LSTM: more parameters, separate cell state.
+GRU: fewer parameters, faster, no separate cell state.
+
+# 15. Attention mechanism
+
+Attention lets the decoder focus on different encoder hidden states.
+
+Instead of using only one final encoder vector, attention uses all encoder states.
+
+Main formula:
+
+[
+C_t = \sum_i \alpha_{t,i}h_i
+]
+
+where:
+
+[
+\alpha_{t,i}
+]
+
+is attention weight for encoder state (h_i).
+
+Weights come from softmax:
+
+[
+\alpha_{t,i}=softmax(e_{t,i})
+]
+
+where (e_{t,i}) is an alignment score.
+
+Your notes describe attention as a spotlight: when generating a word, the decoder looks at the most relevant input words. 
+
+## Example from previous paper
+
+Given:
+
+[
+\alpha_{t,1}=0.2,\quad \alpha_{t,2}=0.2,\quad \alpha_{t,3}=0.6
+]
+
+[
+h_1=[1,1,1]
+]
+
+[
+h_2=[0,1,0]
+]
+
+[
+h_3=[0,0,1]
+]
+
+Context vector:
+
+[
+C_t = 0.2[1,1,1] + 0.2[0,1,0] + 0.6[0,0,1]
+]
+
+[
+= [0.2,0.2,0.2] + [0,0.2,0] + [0,0,0.6]
+]
+
+[
+= [0.2,0.4,0.8]
+]
+
+Answer:
+
+[
+[0.2,0.4,0.8]
+]
+
+# 16. Transformers from scratch
+
+Transformers replace recurrence with attention.
+
+RNNs process tokens one by one. Transformers can process tokens in parallel during training. This is why transformer encoders are better suited for long sequences compared to RNN encoders. Your previous paper asks this exact conceptual advantage. 
+
+## Self-attention
+
+Each word attends to every other word in the same sequence.
+
+For each token, we create:
+
+Query (Q)
+Key (K)
+Value (V)
+
+Formula:
+
+[
+Attention(Q,K,V)=softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+]
+
+Important: divide by (\sqrt{d_k}) to prevent dot products from becoming too large and making softmax gradients too small.
+
+## Self-attention weights
+
+For a token, attention weights are calculated by dot products between that token’s query and all keys, followed by softmax. This matches the transformer question in DL_prev_ocr. 
+
+## Multi-head attention
+
+Instead of one attention operation, transformer uses many heads.
+
+Each head can learn different relationships:
+
+One head may learn grammar.
+One head may learn long-distance reference.
+One head may learn position-like patterns.
+
+## Attention score count
+
+If:
+
+Batch size (B=4)
+Sequence length (T=12)
+Heads (H=2)
+
+Each head computes:
+
+[
+T \times T = 12 \times 12 = 144
+]
+
+Across batch and heads:
+
+[
+BHT^2 = 4 \times 2 \times 12 \times 12 = 1152
+]
+
+Answer:
+
+[
+1152
+]
+
+This exact calculation appears in your previous questions. 
+
+# 17. Transformer encoder-decoder architecture
+
+## Encoder
+
+The encoder converts the input sequence into continuous representations.
+
+Each encoder block has:
+
+Self-attention
+Add and layer norm
+Feed-forward network
+Add and layer norm
+
+## Decoder
+
+The decoder generates output sequence.
+
+Each decoder block has:
+
+Masked self-attention
+Cross-attention
+Feed-forward network
+
+## Masked self-attention
+
+The decoder cannot look at future tokens.
+
+Example: while predicting word 3, it can attend only to words 1, 2, and 3, not word 4.
+
+Masking prevents cheating.
+
+## Cross-attention
+
+In decoder cross-attention:
+
+Q comes from decoder.
+K and V come from encoder.
+
+This is a very common transformer exam point, and your notes specifically warn that it is frequently asked. 
+
+# 18. Parameter-count templates you should memorize
+
+## Dense layer
+
+Without bias:
+
+[
+n_{\text{in}} \times n_{\text{out}}
+]
+
+With bias:
+
+[
+n_{\text{in}} \times n_{\text{out}} + n_{\text{out}}
+]
+
+## Convolution layer
+
+Without bias:
+
+[
+F \times F \times D_{\text{in}} \times K
+]
+
+With bias:
+
+[
+F \times F \times D_{\text{in}} \times K + K
+]
+
+## Embedding layer
+
+[
+V \times d
+]
+
+## Vanilla RNN
+
+Without bias:
+
+[
+hd+h^2+oh
+]
+
+With bias:
+
+[
+hd+h^2+h+oh+o
+]
+
+## LSTM
+
+With bias and output layer:
+
+[
+4(hd+h^2+h)+oh+o
+]
+
+## Self-attention parameter count
+
+For one multi-head attention layer:
+
+If input dimension is (d_{\text{model}}), number of heads is (H), and each head dimension is (d_k), then Q, K, V parameters are:
+
+[
+3 \times H \times d_{\text{model}} \times d_k
+]
+
+If output projection is included:
+
+[
+(Hd_k) \times d_{\text{model}}
+]
+
+Your OCR for one transformer decoder parameter-count question appears garbled near the answer field, so use the formula rather than trusting the corrupted answer text. 
+
+# 19. How to solve numerical questions in the exam
+
+## Step 1: Write dimensions first
+
+Before calculating, write:
+
+Input dimension
+Output dimension
+Hidden dimension
+Number of classes
+Filter size
+Stride
+Padding
+
+Most mistakes happen because students use the wrong dimension.
+
+## Step 2: Check whether bias is included
+
+If question says “without bias” or “ignore bias”, do not add bias.
+
+## Step 3: For softmax/cross-entropy
+
+If true class probability is (p):
+
+[
+L=-\log(p)
+]
+
+Do not use all probabilities unless soft labels are given.
+
+## Step 4: For CNN output size
+
+Always use:
+
+[
+\frac{I-F+2P}{S}+1
+]
+
+If result is not integer, something is wrong or the setup is invalid.
+
+## Step 5: For attention context vector
+
+Multiply each hidden state by its attention weight and add.
+
+[
+C_t=\alpha_1h_1+\alpha_2h_2+\alpha_3h_3
+]
+
+## Step 6: For RNN/LSTM parameter count
+
+Do not multiply by number of time steps.
+
+Parameters are shared across time.
+
+This is a major exam trap.
+
+# 20. High-yield previous-question patterns
+
+Based on DL_prev_ocr, these are the question styles you should master:
+
+| Topic            | What they ask                               | How to score                     |
+| ---------------- | ------------------------------------------- | -------------------------------- |
+| MP neuron        | Threshold for AND/OR, NCC                   | Know binary threshold logic      |
+| Gradient descent | Direction, update rules                     | Remember move opposite gradient  |
+| RMSProp/Adam     | Meaning of beta, moving averages            | Know formulas and interpretation |
+| CNN              | Parameters, output shape, pooling           | Memorize formulas                |
+| Sigmoid + BCE    | Compute (z), (\hat y), loss, update         | Practice 1-step GD               |
+| Word embeddings  | CBOW/Skip-gram parameter count and loss     | Use (V \times d), (-\log p)      |
+| RNN              | Parameter count, zero initialization, loss  | Know shape formulas              |
+| LSTM             | Gates, vanishing gradient, parameter count  | Memorize 4-gate formula          |
+| Attention        | Context vector, attention weights           | Weighted sum                     |
+| Transformer      | Self-attention, masking, Q/K/V, score count | Know (QK^T), (BHT^2)             |
+
+# 21. Common mistakes to avoid
+
+Do not confuse CBOW and Skip-gram.
+
+CBOW: context predicts center word.
+Skip-gram: center word predicts context.
+
+Do not include window size in embedding-layer parameter count.
+
+Do not multiply RNN parameters by time steps.
+
+Do not forget (\sqrt{d_k}) in scaled dot-product attention.
+
+Do not say pooling has parameters.
+
+Do not use input image depth for later convolution layers. Use the previous layer’s output depth.
+
+Do not confuse self-attention and cross-attention.
+
+Self-attention: Q, K, V from same sequence.
+Cross-attention: Q from decoder, K and V from encoder.
+
+Do not confuse LSTM cell state and hidden state.
+
+Cell state is memory.
+Hidden state is output representation.
+
+# 22. 10-day study plan for good marks
+
+## Day 1: Absolute basics
+
+Study neuron, weights, bias, activation, loss, forward pass, backward pass.
+
+Practice:
+
+Sigmoid calculation
+ReLU calculation
+Binary cross-entropy
+Softmax cross-entropy
+
+## Day 2: Gradient descent and optimizers
+
+Study:
+
+GD
+SGD
+Mini-batch GD
+Momentum
+RMSProp
+Adam
+AdaGrad
+
+Practice at least 10 numerical update questions.
+
+## Day 3: CNN formulas
+
+Memorize:
+
+Convolution output size
+Convolution parameters
+Pooling output size
+Pooling parameters
+FC parameters
+
+Solve 15 CNN output/parameter questions.
+
+## Day 4: CNN by hand
+
+Practice:
+
+2D convolution
+ReLU after convolution
+Max pooling
+Average pooling
+Basic gradient through pooling and convolution
+
+## Day 5: Word embeddings
+
+Study:
+
+One-hot
+Embedding
+CBOW
+Skip-gram
+Softmax
+Negative sampling basics
+
+Practice:
+
+Embedding parameter count
+Cross-entropy from probability
+Skip-gram pair counting
+
+## Day 6: RNN
+
+Study:
+
+RNN equation
+Hidden state
+Output softmax
+Parameter count
+Vanishing/exploding gradients
+
+Practice:
+
+RNN parameter-count questions
+Zero-initialization softmax questions
+Sequence loss questions
+
+## Day 7: LSTM and GRU
+
+Study:
+
+Forget gate
+Input gate
+Output gate
+Candidate state
+Cell state update
+GRU vs LSTM
+
+Practice:
+
+LSTM parameter count
+Gate interpretation MCQs
+Vanishing gradient explanation
+
+## Day 8: Attention and seq2seq
+
+Study:
+
+Encoder-decoder
+Attention score
+Softmax attention weights
+Context vector
+
+Practice:
+
+Weighted context vector questions
+Attention score questions
+Softmax normalization questions
+
+## Day 9: Transformers
+
+Study:
+
+Q, K, V
+Self-attention
+Multi-head attention
+Masked self-attention
+Cross-attention
+Positional encoding
+Attention score count
+
+Practice:
+
+(QK^T) dimensions
+(BHT^2) attention score count
+Decoder masking MCQs
+Q/K/V source questions
+
+## Day 10: Previous paper simulation
+
+Solve DL_prev_ocr like a mock exam.
+
+For every wrong question, write the reason:
+
+Formula forgotten
+Wrong dimension
+Arithmetic mistake
+Concept confusion
+Misread “bias ignored”
+Misread “unique pairs”
+
+# 23. Final formula sheet
+
+Keep this beside you while revising.
+
+[
+z=w^Tx+b
+]
+
+[
+\sigma(z)=\frac{1}{1+e^{-z}}
+]
+
+[
+\sigma'(z)=\sigma(z)(1-\sigma(z))
+]
+
+[
+ReLU(z)=\max(0,z)
+]
+
+[
+L_{\text{BCE}}=-[y\log\hat y+(1-y)\log(1-\hat y)]
+]
+
+[
+L_{\text{CE}}=-\log(p_{\text{true}})
+]
+
+[
+w_{\text{new}}=w-\eta g
+]
+
+[
+v_t=\beta v_{t-1}+(1-\beta)g_t^2
+]
+
+[
+W_{\text{out}}=\frac{W_{\text{in}}-F+2P}{S}+1
+]
+
+[
+\text{Conv params}=F \times F \times D_{\text{in}} \times K
+]
+
+[
+\text{Embedding params}=V \times d
+]
+
+[
+s_t=f(Ux_t+Ws_{t-1}+b)
+]
+
+[
+\text{RNN params}=hd+h^2+h+oh+o
+]
+
+[
+\text{LSTM params}=4(hd+h^2+h)+oh+o
+]
+
+[
+C_t=\sum_i\alpha_{t,i}h_i
+]
+
+[
+Attention(Q,K,V)=softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+]
+
+[
+\text{Attention scores}=B \times H \times T \times T
+]
+
+# 24. What to focus on first for marks
+
+Your best scoring order should be:
+
+1. CNN calculations
+2. Optimizer numericals
+3. Word embedding numericals
+4. Attention and transformer numericals
+5. RNN/LSTM parameter counts
+6. Concept MCQs: regularization, vanishing gradients, Q/K/V, masking
+7. Long derivations only after formulas are strong
+
+The reason is simple: the previous paper contains many direct numerical and formula-based questions, and these give marks faster than trying to deeply master every theoretical detail first. 
