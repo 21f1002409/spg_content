@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SE Exam PYQ Master Notes - Complete 25-Page Book</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      margin: 0;
+      padding: 2rem 1rem;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .cover-card {
+      background: linear-gradient(135deg, #1e1b4b, #312e81, #4338ca);
+      color: white;
+      border-radius: 1.5rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    }
+    .toc {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .toc-link {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      background: #f8fafc;
+      border-radius: 0.5rem;
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .toc-link:hover { background: #e0e7ff; color: #3730a3; }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { max-width: 100%; }
+      .no-print { display: none !important; }
+      article { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cover-card">
+      <div style="display: inline-block; padding: 0.35rem 1rem; background: rgba(255,255,255,0.2); border-radius: 2rem; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">
+        COMPLETE EXAM PREPARATION GUIDE
+      </div>
+      <h1 style="font-size: 2.5rem; font-weight: 900; margin: 0 0 0.75rem 0; letter-spacing: -0.025em;">Software Engineering & Architecture</h1>
+      <p style="font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">25 Pages of Comprehensive Master Notes, COCOMO & V(G) Formulas, SOLID Code Rules, and PYQ Exam Shortcuts.</p>
+    </div>
+
+    <div class="toc no-print">
+      <h2 style="font-size: 1.1rem; font-weight: 800; margin: 0; color: #0f172a;">Table of Contents (25 Pages)</h2>
+      <div class="toc-grid">
+        <a href="#page-1" class="toc-link">Page 1: Software Engineering Exam Roadmap &amp; PYQ Meta Analysis</a><a href="#page-2" class="toc-link">Page 2: SDLC Models Comparison &amp; PYQ Selection Shortcuts</a><a href="#page-3" class="toc-link">Page 3: Agile Methodology, Scrum Roles &amp; Sprint Velocity Tricks</a><a href="#page-4" class="toc-link">Page 4: User Stories, BDD &amp; SMART Criteria Hacks</a><a href="#page-5" class="toc-link">Page 5: Stakeholder Classification &amp; Identification Matrix</a><a href="#page-6" class="toc-link">Page 6: Requirement Elicitation Methods Decision Tree</a><a href="#page-7" class="toc-link">Page 7: Functional vs Non-Functional Requirements Cheat Sheet</a><a href="#page-8" class="toc-link">Page 8: SOLID Design Principles Master Guide &amp; PYQ Code Recognition</a><a href="#page-9" class="toc-link">Page 9: Module Cohesion Types &amp; 5-Second Identification Tricks</a><a href="#page-10" class="toc-link">Page 10: Module Coupling Spectrum &amp; Identification Rules</a><a href="#page-11" class="toc-link">Page 11: Creational Design Patterns: Builder, Factory &amp; Singleton</a><a href="#page-12" class="toc-link">Page 12: Structural Design Patterns: Adapter &amp; Facade Patterns</a><a href="#page-13" class="toc-link">Page 13: UML Diagrams Quick-Reference Guide</a><a href="#page-14" class="toc-link">Page 14: COCOMO Model Effort &amp; Cost Formulas</a><a href="#page-15" class="toc-link">Page 15: Interactive COCOMO Solver &amp; Step-by-Step Calculator</a><a href="#page-16" class="toc-link">Page 16: Cyclomatic Complexity V(G) Master Hacks &amp; Formulas</a><a href="#page-17" class="toc-link">Page 17: Interactive Cyclomatic Complexity Code Evaluator</a><a href="#page-18" class="toc-link">Page 18: Risk Management, Risk Types &amp; Gold Plating</a><a href="#page-19" class="toc-link">Page 19: Software Testing Spectrum: Unit to Acceptance Testing</a><a href="#page-20" class="toc-link">Page 20: Debugging Strategies &amp; Fault vs Error vs Failure</a><a href="#page-21" class="toc-link">Page 21: Usability Goals &amp; Nielsen&#039;s 10 UI Heuristics</a><a href="#page-22" class="toc-link">Page 22: Version Control Systems &amp; Git Commands Cheat Sheet</a><a href="#page-23" class="toc-link">Page 23: Requirement Flaws: Ambiguity, Inconsistency &amp; Implicit Assumptions</a><a href="#page-24" class="toc-link">Page 24: High-Yield PYQ Flashcard Master Bank</a><a href="#page-25" class="toc-link">Page 25: Full PYQ Practice Test &amp; Solutions Engine</a><a href="#page-26" class="toc-link">Page 26: Software Maintenance &amp; Refactoring: Code Smells &amp; Re-Engineering</a><a href="#page-27" class="toc-link">Page 27: Software Configuration Management (SCM) &amp; Baseline Control</a><a href="#page-28" class="toc-link">Page 28: Formal Methods, Z Notation &amp; Cleanroom Engineering</a><a href="#page-29" class="toc-link">Page 29: DevOps Pipeline, CI/CD &amp; Automated Testing Strategies</a><a href="#page-30" class="toc-link">Page 30: Comprehensive Software Engineering Formula Sheet &amp; PYQ Master Cheat Sheet</a>
+      </div>
+    </div>
+
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-1">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 1 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SDLC &amp; Agile</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Software Engineering Exam Roadmap &amp; PYQ Meta Analysis</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Analyzing 9 PYQ Question Sets: High-Yield Topics, Question Patterns &amp; Marks Weightage</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> A complete structural breakdown of software engineering exam patterns across 9 PYQ sets. Focus on high-frequency questions in COCOMO, SOLID, Cohesion/Coupling, Design Patterns, and Cyclomatic Complexity.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Exam Blueprint &amp; High-Yield Topic Weightage</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Analysis of recent university &amp; competitive Software Engineering question sets reveals a predictable pattern across 7 core domains.</p><p style="margin-bottom: 0.75rem;">Understanding which topics are numerical vs concept-driven is key to scoring 95%+ marks.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Domain Topic</th><th style="padding: 0.75rem 1rem;">PYQ Frequency</th><th style="padding: 0.75rem 1rem;">Question Type</th><th style="padding: 0.75rem 1rem;">Key Focus Areas</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">SDLC &amp; Agile Frameworks</td><td style="padding: 0.75rem 1rem; color: #334155;">9 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Conceptual &amp; Situational</td><td style="padding: 0.75rem 1rem; color: #334155;">Waterfall vs Prototype, Scrum Roles, Velocity, SMART User Stories</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Requirement Engineering</td><td style="padding: 0.75rem 1rem; color: #334155;">8 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Classification &amp; Identification</td><td style="padding: 0.75rem 1rem; color: #334155;">Primary vs Tertiary Users, Elicitation methods, Functional vs Non-functional</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">SOLID &amp; Design Principles</td><td style="padding: 0.75rem 1rem; color: #334155;">9 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Code Recognition &amp; Violations</td><td style="padding: 0.75rem 1rem; color: #334155;">SRP, OCP (Bulb/Fan), LSP, ISP (Digital Order), DIP</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Cohesion &amp; Coupling</td><td style="padding: 0.75rem 1rem; color: #334155;">9 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Identification &amp; Ranking</td><td style="padding: 0.75rem 1rem; color: #334155;">Sequential vs Temporal Cohesion, Control Coupling (operationFlag)</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Design Patterns</td><td style="padding: 0.75rem 1rem; color: #334155;">7 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Pattern Selection Scenarios</td><td style="padding: 0.75rem 1rem; color: #334155;">Builder (telescopic constructor), Adapter (XML-JSON), Facade</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">COCOMO &amp; Cyclomatic Complexity</td><td style="padding: 0.75rem 1rem; color: #334155;">9 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Numerical &amp; Code Analysis</td><td style="padding: 0.75rem 1rem; color: #334155;">Organic/Embedded PM formulas, V(G) = P + 1 shortcut</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Testing &amp; Usability</td><td style="padding: 0.75rem 1rem; color: #334155;">8 / 9 Sets</td><td style="padding: 0.75rem 1rem; color: #334155;">Definitions &amp; Case Studies</td><td style="padding: 0.75rem 1rem; color: #334155;">Fault/Error/Failure, Unit vs Beta testing, Nielsen Heuristics</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The 3-Second Topic Identifier Trick</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Instantly identify question requirements using key trigger words in the problem prompt."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Prompt mentions &quot;telescopic constructor explosion&quot; ➔ Builder Pattern. Prompt mentions &quot;operationFlag passed to choose view/add&quot; ➔ Control Coupling. Prompt mentions &quot;decision loops in python&quot; ➔ V(G) = P + 1.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: TRIGGER WORDS ➔ PATTERN MATCH</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Recurring Question Types Across PYQ Sets</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Type A: Code Violation Identification (e.g. Identifying which SOLID principle or Cohesion level a given snippet violates).</p><p style="margin-bottom: 0.75rem;">Type B: Numerical Calculations (COCOMO Effort/Cost estimation and Cyclomatic Complexity graph paths).</p><p style="margin-bottom: 0.75rem;">Type C: Scenario Elicitation (Selecting the right requirement gathering technique or stakeholder tier for a real-world system like a University ERP or Courier Service).</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-2">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 2 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SDLC &amp; Agile</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">SDLC Models Comparison &amp; PYQ Selection Shortcuts</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Waterfall, Prototype, Spiral, Agile &amp; Build-and-Fix Models Breakdown</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master how to choose the right SDLC model for exam scenarios. Learn paper vs digital prototypes and the &quot;Build &amp; Fix&quot; anti-pattern.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. SDLC Models Decision Matrix</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Every SDLC model solves a specific risk or requirement stability profile. Exams frequently ask you to match system scenarios to the correct model.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">SDLC Model</th><th style="padding: 0.75rem 1rem;">Best Suited For</th><th style="padding: 0.75rem 1rem;">Key Advantage</th><th style="padding: 0.75rem 1rem;">Primary Drawback / Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Classical Waterfall</td><td style="padding: 0.75rem 1rem; color: #334155;">Strict, fully known, unchanging requirements (e.g., Space Shuttle software)</td><td style="padding: 0.75rem 1rem; color: #334155;">Simple stage-gate progression</td><td style="padding: 0.75rem 1rem; color: #334155;">Client dissatisfaction if requirements change late in development</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Prototyping Model</td><td style="padding: 0.75rem 1rem; color: #334155;">Unclear or evolving user requirements</td><td style="padding: 0.75rem 1rem; color: #334155;">Reduces requirement misunderstandings via early user feedback</td><td style="padding: 0.75rem 1rem; color: #334155;">Risk of client treating prototype as final production software</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Spiral Model</td><td style="padding: 0.75rem 1rem; color: #334155;">Large, complex, high-risk mission-critical projects</td><td style="padding: 0.75rem 1rem; color: #334155;">Built-in iterative Risk Analysis at every spiral turn</td><td style="padding: 0.75rem 1rem; color: #334155;">High cost &amp; requires specialized risk expertise</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Agile / Scrum</td><td style="padding: 0.75rem 1rem; color: #334155;">Dynamic startup products with frequent iterations</td><td style="padding: 0.75rem 1rem; color: #334155;">Fast feedback &amp; high customer collaboration</td><td style="padding: 0.75rem 1rem; color: #334155;">Requires constant client availability &amp; scope flexibility</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Build-and-Fix</td><td style="padding: 0.75rem 1rem; color: #334155;">Ad-hoc hacking without architectural design</td><td style="padding: 0.75rem 1rem; color: #334155;">Quick immediate output</td><td style="padding: 0.75rem 1rem; color: #334155;">Severe technical debt, nightmare maintenance (Anti-pattern)</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The SDLC Elimination Hack</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Look for the primary risk factor in the scenario description to pick the model in 5 seconds."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Keywords: &quot;Coding immediately without design&quot; ➔ Build &amp; Fix. &quot;High financial or safety risk&quot; ➔ Spiral. &quot;Client wants early feel of application UI&quot; ➔ Prototyping.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: KNOWN = Waterfall | UNCLEAR = Prototype | RISKY = Spiral | AD-HOC = Build-and-Fix</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Types of Prototypes in Requirement Engineering</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Paper Prototypes: Low-fidelity hand-drawn sketches used for quick initial UI concept validation.</p><p style="margin-bottom: 0.75rem;">Digital Mockups / Wireframes: Medium-fidelity visual layouts created using design software.</p><p style="margin-bottom: 0.75rem;">Interactive Prototypes: Clickable, high-fidelity mockups with simulated workflow logic.</p><p style="margin-bottom: 0.75rem;">Storyboards: Sequential visual illustrations showing how users perform a sequence of tasks.</p>
+      </div>
+      
+      
+      
+    <div style="margin-top: 1rem; background-color: #e0e7ff; border: 1px solid #c7d2fe; border-radius: 0.75rem; padding: 0.875rem; font-size: 0.85rem; color: #3730a3;">
+      <strong style="text-transform: uppercase; font-size: 0.7rem; display: block; color: #4338ca; letter-spacing: 0.05em; margin-bottom: 0.2rem;">Key Takeaway:</strong>
+      In PYQs, &quot;hand-drawn visual representations created on paper to test workflow&quot; refers specifically to Paper Prototypes.
+    </div>
+  
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-3">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 3 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SDLC &amp; Agile</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Agile Methodology, Scrum Roles &amp; Sprint Velocity Tricks</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Scrum Master, Product Owner, Daily Standup 3 Qs, Retrospective &amp; Velocity Math</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Deep dive into Scrum framework roles, ceremonies, and numerical velocity calculations seen in recent PYQs.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Scrum Framework Roles &amp; Ceremonies</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Scrum Master: Enforces Scrum rules, removes impediments, ensures time-boxed meetings, acts as a coach (does NOT assign tasks or manage backlog priorities).</p><p style="margin-bottom: 0.75rem;">Product Owner: Owns the Product Backlog, prioritizes stories based on ROI and customer value.</p><p style="margin-bottom: 0.75rem;">Development Team: Cross-functional, self-organizing group delivering working software increments.</p><p style="margin-bottom: 0.75rem;">Daily Scrum / Standup: 15-minute time-boxed daily meeting where every member answers 3 exact questions: 1) What did I complete yesterday? 2) What will I work on today? 3) What impediments/blockers are in my way?</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Scrum Role Confusion Trap</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Never confuse Product Owner and Scrum Master duties in exam questions!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> If question asks &quot;Who notes missing time-boxes or process breaches?&quot;, answer is Scrum Master. If question asks &quot;Who prioritizes backlog for business value?&quot;, answer is Product Owner.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: PO = WHAT &amp; VALUE | SM = HOW &amp; PROCESS</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Sprint Retrospective vs Sprint Review</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Sprint Review: Focuses on the PRODUCT. Team demonstrates the working increment to stakeholders.</p><p style="margin-bottom: 0.75rem;">Sprint Retrospective: Focuses on the PROCESS &amp; TEAM DYNAMICS. Team evaluates what went well, what failed in collaboration, and how to improve next sprint.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">3. Sprint Velocity Calculation Formula &amp; PYQ Trick</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Velocity = Sum of story points for all COMPLETELY FINISHED user stories in a sprint.</p><p style="margin-bottom: 0.75rem;">CRITICAL EXAM RULE: Partially completed user stories contribute ZERO points to velocity! (e.g., 5 story points task that is 90% done = 0 points).</p>
+      </div>
+      
+      
+    <div style="margin-top: 1rem; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 1rem; color: #c7d2fe; font-family: monospace; font-size: 0.85rem;">
+      <div style="color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;">// Sprint Velocity Calculation Example</div>
+      <pre style="white-space: pre-wrap; margin: 0; font-family: inherit;"><code>// PYQ Problem: Sprint 1 completed: Task A (3 pts, 100%), Task B (5 pts, 100%), Task C (8 pts, 80% done).
+// Calculate Velocity:
+const taskA = 3; // Finished
+const taskB = 5; // Finished
+const taskC = 0; // NOT 100% finished! Contributes 0!
+
+const sprintVelocity = taskA + taskB + taskC; // Velocity = 8 story points!</code></pre>
+      <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.75rem;">
+        <strong style="color: #fbbf24;">Analysis:</strong> Only stories marked as 100% DONE according to Definition of Done count toward Velocity.
+      </div>
+    </div>
+  
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-4">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 4 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SDLC &amp; Agile</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">User Stories, BDD &amp; SMART Criteria Hacks</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Crafting Flawless User Stories &amp; Spotting SMART Flaws in Exam Questions</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master the standard template for User Stories and learn how SMART criteria is evaluated in exam questions.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Standard User Story Template</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Template: &quot;As a &lt;type of user/role&gt;, I want &lt;some goal/action&gt; so that &lt;some reason/benefit&gt;.&quot;</p><p style="margin-bottom: 0.75rem;">Components: 1) Persona/Role (Who), 2) Action/Feature (What), 3) Business Value (Why).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Spotting Flawed User Stories in PYQs</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"A user story is invalid if it lacks a clear user persona, omits the value statement, or specifies backend implementation details."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Bad: &quot;Write SQL database migration table.&quot; ➔ Technical task, not a User Story. Good: &quot;As a student, I want to download my grade card as PDF so that I can submit it for job applications.&quot;
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: WHO + WHAT + WHY = USER STORY</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. SMART Criteria for User Stories &amp; Requirements</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">S - Specific: Clear and unambiguous targeting a single user action.</p><p style="margin-bottom: 0.75rem;">M - Measurable: Objective test criteria exists to verify completion (e.g. response &lt; 2 seconds).</p><p style="margin-bottom: 0.75rem;">A - Achievable: Realistically deliverable within the sprint capacity.</p><p style="margin-bottom: 0.75rem;">R - Relevant: Aligns directly with product goals and user needs.</p><p style="margin-bottom: 0.75rem;">T - Time-boxed: Bound by sprint duration or explicit performance timeout.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">SMART Attribute</th><th style="padding: 0.75rem 1rem;">PYQ Flaw Example</th><th style="padding: 0.75rem 1rem;">Corrected SMART Version</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Specific</td><td style="padding: 0.75rem 1rem; color: #334155;">&quot;System should handle generic user data well&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">&quot;System should accept CSV files of up to 1000 student records&quot;</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Measurable</td><td style="padding: 0.75rem 1rem; color: #334155;">&quot;System should load pages fast&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">&quot;System should render search results within 1.5 seconds under 200 concurrent users&quot;</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Time-boxed</td><td style="padding: 0.75rem 1rem; color: #334155;">&quot;Feature will be tested eventually&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">&quot;Feature must pass acceptance testing within Sprint 4&quot;</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-5">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 5 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Requirements</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Stakeholder Classification &amp; Identification Matrix</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Primary, Secondary, Tertiary &amp; Internal vs External User Tier Breakdown</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Learn how to classify stakeholders into Primary, Secondary, and Tertiary categories using PYQ system examples.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Three-Tier Stakeholder Classification</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Primary Users: Direct hands-on operational users who directly interact with the system interface on a daily basis (e.g., Teachers and Students in an online exam portal).</p><p style="margin-bottom: 0.75rem;">Secondary Users: Intermediate or supervisory users who receive outputs, manage workflows, or digest reports (e.g., Department Heads, System Administrators).</p><p style="margin-bottom: 0.75rem;">Tertiary Users: Indirect stakeholders who affected by the system or govern compliance, auditing, accreditation, or external logistics (e.g., Accreditation Boards, Courier Partners, Government Auditors).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The Tertiary Stakeholder Shortcut</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"If an actor never touches the UI software but receives physical output, audits compliance, or provides regulatory oversight, they are Tertiary!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> In a University ERP PYQ: Faculty = Primary/Internal. Registrar = Secondary. External ISO Audit Body &amp; Delivery Courier = Tertiary.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: DIRECT UI = Primary | MANAGERS = Secondary | AUDITORS/COURIER = Tertiary</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Internal vs External Stakeholders</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Internal Stakeholders: Belonging to the organization producing/operating the system (Employees, Faculty, IT support).</p><p style="margin-bottom: 0.75rem;">External Stakeholders: Third parties, end customers, vendors, regulatory compliance agencies.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-6">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 6 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Requirements</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Requirement Elicitation Methods Decision Tree</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Questionnaires, Structured/Unstructured Interviews, Observation &amp; Focus Groups</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Match real-world scenario requirements to the exact gathering technique required in PYQ exams.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Elicitation Techniques Comparison</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Questionnaires / Surveys: Best for collecting data from a LARGE, geographically distributed user base with well-defined specific questions.</p><p style="margin-bottom: 0.75rem;">Interviews: Best for deep qualitative insights. Structured (fixed pre-planned questions) vs Unstructured (exploratory open-ended conversations) vs Semi-structured.</p><p style="margin-bottom: 0.75rem;">Naturalistic Task Observation: Watching users perform tasks in their actual work environment to reveal implicit hidden workflows that users forget to mention during interviews.</p><p style="margin-bottom: 0.75rem;">Focus Groups: Facilitated group discussions with 6-12 stakeholders to discover conflicting requirements and build consensus.</p><p style="margin-bottom: 0.75rem;">Document Analysis: Studying existing operational manuals, legacy code, regulatory standards, or business policies.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Elicitation Scenario Keyword Matcher</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Scan for target group size and environment context to pick the technique."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Keyword: &quot;Thousands of distributed sellers&quot; ➔ Questionnaire. Keyword: &quot;Uncovering tacit/implicit work habits in natural environment&quot; ➔ Observation. Keyword: &quot;Extracting regulatory rules from bank manuals&quot; ➔ Document Analysis.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: MASSIVE = Questionnaire | DEEP = Interview | REAL WORK = Observation | REGULATION = Document</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-7">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 7 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Requirements</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Functional vs Non-Functional Requirements Cheat Sheet</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">System Behaviors vs Performance, SLAs, Latency, Uptime &amp; Security Constraints</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Distinguish between Functional (What) and Non-Functional (How Well) requirements instantly.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Core Definition &amp; Distinction</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Functional Requirement (FR): Defines a specific behavior, action, output, or calculation the system MUST perform (e.g. &quot;Send OTP to mobile&quot;, &quot;Calculate total tax&quot;, &quot;Display catalog search&quot;).</p><p style="margin-bottom: 0.75rem;">Non-Functional Requirement (NFR): Defines quality attributes, constraints, performance metrics, SLAs, reliability, or security standards (e.g. &quot;Response within 500ms&quot;, &quot;Support 10,000 concurrent users&quot;, &quot;99.99% system availability&quot;).</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Requirement Statement</th><th style="padding: 0.75rem 1rem;">Type</th><th style="padding: 0.75rem 1rem;">Category / Attribute</th><th style="padding: 0.75rem 1rem;">Key Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">&quot;System allows users to filter products by price&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">Functional</td><td style="padding: 0.75rem 1rem; color: #334155;">Feature / Functionality</td><td style="padding: 0.75rem 1rem; color: #334155;">Direct user action &amp; system response</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">&quot;Search results page must load in under 2 seconds&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">Non-Functional</td><td style="padding: 0.75rem 1rem; color: #334155;">Performance / Efficiency</td><td style="padding: 0.75rem 1rem; color: #334155;">Defines speed constraint</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">&quot;All passwords must be hashed using bcrypt before storing&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">Non-Functional</td><td style="padding: 0.75rem 1rem; color: #334155;">Security</td><td style="padding: 0.75rem 1rem; color: #334155;">Defines data protection constraint</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">&quot;System generates monthly PDF invoice on the 1st of every month&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">Functional</td><td style="padding: 0.75rem 1rem; color: #334155;">Automated Functionality</td><td style="padding: 0.75rem 1rem; color: #334155;">Specific system output calculation</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">&quot;System must maintain 99.9% uptime during peak holiday sales&quot;</td><td style="padding: 0.75rem 1rem; color: #334155;">Non-Functional</td><td style="padding: 0.75rem 1rem; color: #334155;">Availability / Reliability</td><td style="padding: 0.75rem 1rem; color: #334155;">Defines SLA quality constraint</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The &quot;What vs How Well&quot; Test</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Ask: Does this describe a feature a user clicks/triggers (What), or a quantitative benchmark/constraint (How Well)?"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> If statement contains units of measurement (seconds, %, users, encryption standard), it is almost ALWAYS Non-Functional!
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: ACTION = Functional | BENCHMARK/METRIC = Non-Functional</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-8">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 8 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SOLID &amp; Design</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">SOLID Design Principles Master Guide &amp; PYQ Code Recognition</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">SRP, OCP, LSP, ISP &amp; DIP Code Examples, Violation Detection &amp; Fixes</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Deep dive into SOLID principles with real code snippets taken directly from exam question sets.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. SRP (Single Responsibility Principle)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">A class should have ONE and only one reason to change.</p><p style="margin-bottom: 0.75rem;">Violation PYQ Example: An `Employee` class that calculates salary, renders HTML representation, AND saves employee records directly to MySQL database.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. OCP (Open-Closed Principle)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Software entities should be OPEN for extension, but CLOSED for modification.</p><p style="margin-bottom: 0.75rem;">Violation PYQ Example: A `SmartDeviceController` containing a giant `switch(deviceType)` block. Adding a new `AC` or `Fan` requires modifying existing switch statements.</p>
+      </div>
+      
+      
+    <div style="margin-top: 1rem; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 1rem; color: #c7d2fe; font-family: monospace; font-size: 0.85rem;">
+      <div style="color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;">// OCP Compliant Refactoring (Strategy / Interface pattern)</div>
+      <pre style="white-space: pre-wrap; margin: 0; font-family: inherit;"><code>interface Switchable {
+  turnOn(): void;
+  turnOff(): void;
+}
+
+class LightBulb implements Switchable {
+  turnOn() { console.log(&quot;Bulb Glowing&quot;); }
+  turnOff() { console.log(&quot;Bulb Off&quot;); }
+}
+
+class AirConditioner implements Switchable {
+  turnOn() { console.log(&quot;AC Cooling&quot;); }
+  turnOff() { console.log(&quot;AC Off&quot;); }
+}
+
+// DeviceManager is CLOSED for modification, OPEN for new Switchable devices!
+class SmartDeviceManager {
+  operate(device: Switchable) {
+    device.turnOn();
+  }
+}</code></pre>
+      <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.75rem;">
+        <strong style="color: #fbbf24;">Analysis:</strong> Adding new devices requires zero changes inside SmartDeviceManager class.
+      </div>
+    </div>
+  
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">3. LSP (Liskov Substitution Principle)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Subtypes must be completely substitutable for their base types without altering program correctness.</p><p style="margin-bottom: 0.75rem;">Violation PYQ Example: `Square` extending `Rectangle` where setting width alters height unexpectedly, or `Ostrich` extending `Bird` throwing `FlyNotSupportedException`.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">4. ISP (Interface Segregation Principle)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Clients should not be forced to depend upon interfaces/methods they do not use.</p><p style="margin-bottom: 0.75rem;">Violation PYQ Example: A fat interface `OrderProcessor` containing `processDigitalDownload()`, `packagePhysicalBox()`, and `shipViaFedEx()`. A `DigitalEbookProcessor` is forced to implement dummy `shipViaFedEx()` methods.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">SOLID Violation Cheat Sheet</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Identify SOLID violation in code snippet within 10 seconds:"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> 1) Class doing DB + UI + Business logic ➔ SRP violation. 2) Giant if/else or switch checking object type ➔ OCP violation. 3) Child class throwing UnsupportedOperationException ➔ LSP violation. 4) Class forced to implement empty/dummy methods ➔ ISP violation. 5) High-level class instantiating concrete low-level class with &quot;new&quot; ➔ DIP violation.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: SRP=1 Job | OCP=No Switch | LSP=No Dummy Exceptions | ISP=Small Interfaces | DIP=Depend on Interfaces</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-9">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 9 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Architecture &amp; Coupling</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Module Cohesion Types &amp; 5-Second Identification Tricks</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Coincidental, Logical, Temporal, Procedural, Communicational, Sequential &amp; Functional</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Rank cohesion from worst to best and learn instant identification rules for exam questions.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Cohesion Spectrum (Worst to Best)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Cohesion measures how strongly related the internal elements of a single module are. High cohesion is GOOD software engineering design.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Cohesion Level</th><th style="padding: 0.75rem 1rem;">Rank (Quality)</th><th style="padding: 0.75rem 1rem;">Key Characteristic</th><th style="padding: 0.75rem 1rem;">PYQ Scenario Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Coincidental</td><td style="padding: 0.75rem 1rem; color: #334155;">1 (Worst)</td><td style="padding: 0.75rem 1rem; color: #334155;">Arbitrary grouping of completely unrelated functions</td><td style="padding: 0.75rem 1rem; color: #334155;">A utility file `MiscUtils.ts` containing `printReport()`, `calcInterest()`, `resizeImage()`</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Logical</td><td style="padding: 0.75rem 1rem; color: #334155;">2 (Poor)</td><td style="padding: 0.75rem 1rem; color: #334155;">Functions logically related by category, selected by a flag</td><td style="padding: 0.75rem 1rem; color: #334155;">A function `handleInput(flag)` containing separate code for mouse, keyboard, touch</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Temporal</td><td style="padding: 0.75rem 1rem; color: #334155;">3 (Fair)</td><td style="padding: 0.75rem 1rem; color: #334155;">Functions executed at the same point in time</td><td style="padding: 0.75rem 1rem; color: #334155;">An `initializeSystem()` function loading config, opening DB connection, showing splash screen</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Procedural</td><td style="padding: 0.75rem 1rem; color: #334155;">4 (Moderate)</td><td style="padding: 0.75rem 1rem; color: #334155;">Functions executed in a specific sequence of steps</td><td style="padding: 0.75rem 1rem; color: #334155;">A function executing `readInput()` ➔ `validateData()` ➔ `writeLog()` in sequence</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Communicational</td><td style="padding: 0.75rem 1rem; color: #334155;">5 (Good)</td><td style="padding: 0.75rem 1rem; color: #334155;">Functions operating on the exact same shared dataset</td><td style="padding: 0.75rem 1rem; color: #334155;">A module operating on `StudentData` to calculate GPA, count credits, print report card</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Sequential</td><td style="padding: 0.75rem 1rem; color: #334155;">6 (Very Good)</td><td style="padding: 0.75rem 1rem; color: #334155;">Output of one step serves as direct input to the next step</td><td style="padding: 0.75rem 1rem; color: #334155;">Data processing pipeline: `rawImage` ➔ `resize()` ➔ `applyFilter()` ➔ `compress()` ➔ `save()`</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Functional</td><td style="padding: 0.75rem 1rem; color: #334155;">7 (Best / Ideal)</td><td style="padding: 0.75rem 1rem; color: #334155;">All elements perform a SINGLE, well-defined essential task</td><td style="padding: 0.75rem 1rem; color: #334155;">A module function `calculateCompoundInterest(principal, rate, time)`</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The Cohesion Flowchart Trick</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Determine cohesion type in 3 questions:"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Q1: Does output of Step A become input to Step B? YES ➔ Sequential. Q2: Do all functions execute at system startup/cleanup? YES ➔ Temporal. Q3: Are functions chosen via a control flag parameter? YES ➔ Logical. Q4: Single clear mathematical/logical task? YES ➔ Functional.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: COIN &lt; LOGIC &lt; TEMP &lt; PROC &lt; COMM &lt; SEQ &lt; FUNC</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-10">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 10 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Architecture &amp; Coupling</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Module Coupling Spectrum &amp; Identification Rules</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Content, Common, Control, Stamp, Data &amp; Uncoupled Modules Ranking</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Understand module dependencies and master PYQ coupling questions involving operationFlags and global state.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Coupling Hierarchy (Worst to Best)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Coupling measures the degree of interdependence between two modules. Low coupling is GOOD software engineering design.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Coupling Type</th><th style="padding: 0.75rem 1rem;">Rank (Quality)</th><th style="padding: 0.75rem 1rem;">Mechanism of Coupling</th><th style="padding: 0.75rem 1rem;">PYQ Exam Code Pattern</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Content Coupling</td><td style="padding: 0.75rem 1rem; color: #334155;">1 (Worst)</td><td style="padding: 0.75rem 1rem; color: #334155;">Module A directly modifies internal data/code of Module B</td><td style="padding: 0.75rem 1rem; color: #334155;">Direct pointer manipulation into another module private memory</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Common Coupling</td><td style="padding: 0.75rem 1rem; color: #334155;">2 (Poor)</td><td style="padding: 0.75rem 1rem; color: #334155;">Modules share global variables or global state</td><td style="padding: 0.75rem 1rem; color: #334155;">Module A and B both reading/writing `global_user_token` variable</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Control Coupling</td><td style="padding: 0.75rem 1rem; color: #334155;">3 (Moderate)</td><td style="padding: 0.75rem 1rem; color: #334155;">Module A passes a flag/control variable to dictate Module B execution path</td><td style="padding: 0.75rem 1rem; color: #334155;">Function call `processUser(user, operationFlag)` where flag 1=view, 2=edit, 3=delete</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Stamp Coupling</td><td style="padding: 0.75rem 1rem; color: #334155;">4 (Good)</td><td style="padding: 0.75rem 1rem; color: #334155;">Modules pass a complex data structure (record/object) but only use a few fields</td><td style="padding: 0.75rem 1rem; color: #334155;">Passing entire `EmployeeRecord` object when function only needs `employee.salary`</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Data Coupling</td><td style="padding: 0.75rem 1rem; color: #334155;">5 (Best)</td><td style="padding: 0.75rem 1rem; color: #334155;">Modules pass only primitive, strictly necessary data items as parameters</td><td style="padding: 0.75rem 1rem; color: #334155;">Function call `calculateTax(salary: number, taxRate: number)`</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Uncoupled</td><td style="padding: 0.75rem 1rem; color: #334155;">6 (Ideal)</td><td style="padding: 0.75rem 1rem; color: #334155;">Modules operate independently with zero communication</td><td style="padding: 0.75rem 1rem; color: #334155;">Self-contained isolated utility function</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The `operationFlag` Control Coupling Trap</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Whenever a function parameter is a flag, integer status code, or boolean controlling switch/if blocks inside the destination function, it is CONTROL COUPLING!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ Question: &quot;Module A calls `processRecord(record, flag)`. If flag==1, it adds; if flag==2, it deletes.&quot; ➔ Answer: Control Coupling.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: GLOBAL VAR = Common | FLAG PARAM = Control | ENTIRE STRUCT = Stamp | PRIMITIVE DATA = Data</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-11">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 11 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SOLID &amp; Design</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Creational Design Patterns: Builder, Factory &amp; Singleton</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Solving Telescopic Constructor Explosion &amp; Object Instantiation Scenarios</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master Creational patterns with direct focus on the Builder pattern explosion problem frequently tested in PYQs.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Builder Pattern &amp; Telescopic Constructors</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Problem: A class has many optional attributes (e.g., `Employee` with name, age, salary, address, phone, TA, HRA, bonus, PF, medicalAllowance). Constructing objects requires creating 10 overloaded constructors with combinations of null values (Telescopic Constructor anti-pattern).</p><p style="margin-bottom: 0.75rem;">Solution: Builder Pattern constructs complex objects step-by-step using a fluent method-chaining API.</p>
+      </div>
+      
+      
+    <div style="margin-top: 1rem; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 1rem; color: #c7d2fe; font-family: monospace; font-size: 0.85rem;">
+      <div style="color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;">// Builder Pattern Example (PYQ Scenario)</div>
+      <pre style="white-space: pre-wrap; margin: 0; font-family: inherit;"><code>class Employee {
+  private name: string;
+  private salary: number;
+  private hra?: number;
+  private ta?: number;
+
+  constructor(builder: EmployeeBuilder) {
+    this.name = builder.name;
+    this.salary = builder.salary;
+    this.hra = builder.hra;
+    this.ta = builder.ta;
+  }
+}
+
+class EmployeeBuilder {
+  name: string;
+  salary: number;
+  hra?: number;
+  ta?: number;
+
+  constructor(name: string, salary: number) {
+    this.name = name;
+    this.salary = salary;
+  }
+
+  setHRA(hra: number) { this.hra = hra; return this; }
+  setTA(ta: number) { this.ta = ta; return this; }
+
+  build(): Employee {
+    return new Employee(this);
+  }
+}
+
+// Usage avoiding telescopic constructor:
+const emp = new EmployeeBuilder(&quot;Alex&quot;, 75000).setHRA(15000).build();</code></pre>
+      <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.75rem;">
+        <strong style="color: #fbbf24;">Analysis:</strong> Step-by-step construction of complex object without telescopic constructors.
+      </div>
+    </div>
+  
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The &quot;Telescopic Constructor&quot; Trigger</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"If exam question prompt mentions &quot;too many optional parameters&quot;, &quot;constructor explosion&quot;, or &quot;building complex object step-by-step&quot;, answer is BUILDER PATTERN!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ: &quot;An Applicant form has 15 optional fields causing constructor overload. Which pattern solves this?&quot; ➔ Builder Pattern.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: MANY OPTIONAL PARAMS ➔ BUILDER PATTERN</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-12">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 12 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: SOLID &amp; Design</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Structural Design Patterns: Adapter &amp; Facade Patterns</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">XML-JSON Format Converters, Legacy Wrappers &amp; Simplified System Interfaces</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Distinguish between Adapter (Interface Converter) and Facade (Unified High-Level Interface) in PYQ scenario questions.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Adapter Pattern (Interface Converter)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Intent: Converts the interface of an existing class into another interface expected by clients. Allows incompatible classes to work together.</p><p style="margin-bottom: 0.75rem;">PYQ Scenario: Integrating a 3rd-party XML payment library into a modern JSON payment gateway system.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Facade Pattern (Unified System Wrapper)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Intent: Provides a single simplified, high-level interface to a complex subsystem of multiple classes.</p><p style="margin-bottom: 0.75rem;">PYQ Scenario: `OrderService.placeOrder()` internally coordinating inventory lookup, payment processing, shipping label creation, and SMS dispatch.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Aspect</th><th style="padding: 0.75rem 1rem;">Adapter Pattern</th><th style="padding: 0.75rem 1rem;">Facade Pattern</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Primary Goal</td><td style="padding: 0.75rem 1rem; color: #334155;">Convert incompatible interface to match target interface</td><td style="padding: 0.75rem 1rem; color: #334155;">Simplify interface of an entire complex subsystem</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Number of Classes Wrapped</td><td style="padding: 0.75rem 1rem; color: #334155;">Typically wraps ONE incompatible class/service</td><td style="padding: 0.75rem 1rem; color: #334155;">Wraps MULTIPLE complex subsystem classes</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Client Perception</td><td style="padding: 0.75rem 1rem; color: #334155;">Client thinks it is talking to target interface</td><td style="padding: 0.75rem 1rem; color: #334155;">Client gets a convenient 1-stop entry point interface</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Adapter vs Facade Distinction Trick</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Focus on intent: Is it resolving INCOMPATIBILITY (Adapter) or REDUCING COMPLEXITY of multiple steps (Facade)?"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Keyword &quot;convert XML format to JSON for legacy DB&quot; ➔ Adapter. Keyword &quot;single method placeOrder hiding 5 backend services&quot; ➔ Facade.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: INCOMPATIBLE FORMAT = Adapter | HIGH-LEVEL WRAPPER = Facade</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-13">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 13 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Architecture &amp; Coupling</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">UML Diagrams Quick-Reference Guide</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Class, Sequence/Interaction, Activity &amp; State Machine Diagram Notation</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master UML relationships, arrow notations, and diagram selection rules for software engineering exams.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. UML Class Diagram Relationships Notation</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Association: Solid line with arrow ──&gt; (Simple relationship between classes).</p><p style="margin-bottom: 0.75rem;">Aggregation: Hollow diamond ──◇ (Weak &quot;has-a&quot; relationship; child can exist independently of parent, e.g., Department and Teacher).</p><p style="margin-bottom: 0.75rem;">Composition: Filled black diamond ──◆ (Strong &quot;part-of&quot; relationship; child cannot exist without parent, e.g., House and Room).</p><p style="margin-bottom: 0.75rem;">Generalization / Inheritance: Hollow triangle arrow ──▷ (Subclass extends superclass).</p><p style="margin-bottom: 0.75rem;">Dependency: Dashed line arrow - - -&gt; (Uses temporary parameter method dependence).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Composition vs Aggregation Diamond Trick</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Filled Diamond = Destroy Parent -&gt; Child Destroyed (Composition). Hollow Diamond = Parent Destroyed -&gt; Child Survives (Aggregation)."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> If Building is demolished, Rooms cease to exist ➔ Composition (Filled Diamond). if University closes, Professors still exist as humans ➔ Aggregation (Hollow Diamond).
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: FILLED DIAMOND = COMPOSITION (DEATH TOGETHER) | HOLLOW = AGGREGATION</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Dynamic UML Diagrams Breakdown</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Sequence / Interaction Diagram: Shows sequence of message exchanges over time among objects. Lifelines &amp; Activation bars.</p><p style="margin-bottom: 0.75rem;">Activity Diagram: Represents workflow control flow, parallel actions (fork/join), and decision nodes.</p><p style="margin-bottom: 0.75rem;">State Machine Diagram: Displays different states of a single object over its lifecycle in response to events.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-14">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 14 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">COCOMO Model Effort &amp; Cost Formulas</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Organic, Semi-Detached &amp; Embedded Modes, EAF Multipliers &amp; Person-Months (PM) Math</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master COCOMO software cost estimation formulas, coefficients, and step-by-step exam calculations.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. COCOMO Model Modes &amp; Coefficients</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">COCOMO (Constructive Cost Model) estimates Effort (Person-Months) based on thousands of delivered lines of code (KLOC).</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Project Mode</th><th style="padding: 0.75rem 1rem;">Team &amp; Project Characteristics</th><th style="padding: 0.75rem 1rem;">Coeff `a`</th><th style="padding: 0.75rem 1rem;">Exponent `b`</th><th style="padding: 0.75rem 1rem;">Basic Effort Formula</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Organic Mode</td><td style="padding: 0.75rem 1rem; color: #334155;">Small team, familiar environment, well-understood flexible requirements</td><td style="padding: 0.75rem 1rem; color: #334155;">2.4</td><td style="padding: 0.75rem 1rem; color: #334155;">1.05</td><td style="padding: 0.75rem 1rem; color: #334155;">Effort = 2.4 × (KLOC)^1.05</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Semi-Detached</td><td style="padding: 0.75rem 1rem; color: #334155;">Medium team, mixed experience, combination of rigid &amp; flexible rules</td><td style="padding: 0.75rem 1rem; color: #334155;">3.0</td><td style="padding: 0.75rem 1rem; color: #334155;">1.12</td><td style="padding: 0.75rem 1rem; color: #334155;">Effort = 3.0 × (KLOC)^1.12</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Embedded Mode</td><td style="padding: 0.75rem 1rem; color: #334155;">Complex system, tight hardware/software constraints, strict compliance</td><td style="padding: 0.75rem 1rem; color: #334155;">3.6</td><td style="padding: 0.75rem 1rem; color: #334155;">1.20</td><td style="padding: 0.75rem 1rem; color: #334155;">Effort = 3.6 × (KLOC)^1.20</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">COCOMO Coefficient Memory Mnemonic</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Remember `a` values: 2.4, 3.0, 3.6 (Increases by +0.6 each level!). Remember `b` values: 1.05, 1.12, 1.20."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Organic `a=2.4`, Semi `a=3.0`, Embedded `a=3.6`. Notice 2.4 + 0.6 = 3.0; 3.0 + 0.6 = 3.6!
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: 2.4 ➔ 3.0 ➔ 3.6 (+0.6 STEP!)</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Intermediate COCOMO &amp; Cost Calculation</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Nominal Effort = a × (KLOC)^b</p><p style="margin-bottom: 0.75rem;">Adjusted Effort (PM) = Nominal Effort × EAF (Effort Adjustment Factor from 15 cost drivers).</p><p style="margin-bottom: 0.75rem;">Total Project Cost = Adjusted Effort (Person-Months) × Monthly Salary per Developer.</p><p style="margin-bottom: 0.75rem;">Development Time (Tdev) = c × (Effort)^d (where c=2.5, d=0.38 for organic).</p>
+      </div>
+      
+      
+    <div style="margin-top: 1rem; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 1rem; color: #c7d2fe; font-family: monospace; font-size: 0.85rem;">
+      <div style="color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;">// PYQ COCOMO Calculation Step-by-Step</div>
+      <pre style="white-space: pre-wrap; margin: 0; font-family: inherit;"><code>// Problem: System size = 32 KLOC, Organic Mode (a=2.4, b=1.05), EAF = 1.15, Salary = $5,000/PM.
+// Step 1: Nominal Effort = 2.4 * (32)^1.05 = 2.4 * 38.05 = 91.32 Person-Months
+// Step 2: Adjusted Effort = 91.32 * 1.15 = 105.02 Person-Months
+// Step 3: Total Cost = 105.02 PM * $5,000 = $525,100</code></pre>
+      <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.75rem;">
+        <strong style="color: #fbbf24;">Analysis:</strong> Step-by-step evaluation of nominal effort, EAF multiplier, and dollar cost.
+      </div>
+    </div>
+  
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-15">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 15 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Interactive COCOMO Solver &amp; Step-by-Step Calculator</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Tool Page: Compute Effort, Development Time &amp; Project Cost for Any KLOC</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Use our built-in interactive COCOMO tool to solve numerical exam problems and verify answers in real-time.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. COCOMO Interactive Calculator</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Select project mode (Organic, Semi-Detached, Embedded), enter project size in KLOC, specify EAF multiplier, and input monthly developer salary to calculate complete effort metrics instantly.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-16">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 16 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Cyclomatic Complexity V(G) Master Hacks &amp; Formulas</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">V(G) = P + 1 Shortcut, Decision Predicates &amp; Independent Control Flow Paths</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master Cyclomatic Complexity calculation shortcuts to solve code snippet PYQs without drawing control flow graphs.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Cyclomatic Complexity Formulas</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Formula 1 (Edges &amp; Nodes): V(G) = E - N + 2P (where E = Edges, N = Nodes, P = Connected components = 1).</p><p style="margin-bottom: 0.75rem;">Formula 2 (Enclosed Regions): V(G) = R (where R = Number of enclosed regions in planar graph + 1 outer region).</p><p style="margin-bottom: 0.75rem;">Formula 3 (Predicate Nodes Shortcut - MOST IMPORTANT FOR EXAMS!): V(G) = P + 1 (where P = number of decision predicate conditions).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The &quot;P + 1&quot; 5-Second Code Hack</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Do NOT draw control flow graphs! Count number of conditional branch statements (`if`, `elif`, `while`, `for`, `case`, `&amp;&amp;`, `||`) and ADD 1!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Python Code with 2 `if` statements and 1 `while` loop ➔ Predicates P = 3 ➔ Cyclomatic Complexity V(G) = 3 + 1 = 4!
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: V(G) = COUNT(if, while, for, and, or) + 1</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Code Snippet PYQ Evaluation Example</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Let us analyze a real PYQ Python function:</p>
+      </div>
+      
+      
+    <div style="margin-top: 1rem; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 1rem; color: #c7d2fe; font-family: monospace; font-size: 0.85rem;">
+      <div style="color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;">// PYQ Code Analysis: classify_number(nums)</div>
+      <pre style="white-space: pre-wrap; margin: 0; font-family: inherit;"><code>def classify_number(nums):
+    for num in nums:          # Predicate 1 (for loop)
+        if num &gt; 0:           # Predicate 2 (if condition)
+            print(&quot;Positive&quot;)
+        elif num &lt; 0:         # Predicate 3 (elif condition)
+            print(&quot;Negative&quot;)
+        else:
+            print(&quot;Zero&quot;)
+
+# Decision Predicates Count P = 3 (for, if, elif)
+# Cyclomatic Complexity V(G) = P + 1 = 3 + 1 = 4</code></pre>
+      <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #1e293b; color: #94a3b8; font-size: 0.75rem;">
+        <strong style="color: #fbbf24;">Analysis:</strong> Counting predicate branch points directly yields V(G) = 4.
+      </div>
+    </div>
+  
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-17">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 17 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Interactive Cyclomatic Complexity Code Evaluator</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Tool Page: Paste Code to Calculate V(G) &amp; Highlight Decision Predicates</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Interactive code evaluator to count predicate nodes and verify control flow graph paths.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Cyclomatic Complexity Live Tool</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Paste any snippet of Python or TypeScript code into our interactive tool to identify predicate statements and compute V(G).</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-18">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 18 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Testing &amp; Debugging</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Risk Management, Risk Types &amp; Gold Plating</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Risk Exposure (Probability x Impact), Technical/Business Risks &amp; Unrequested Scope</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master risk exposure formulas, risk categorization, and the Gold Plating anti-pattern in software projects.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Risk Exposure Formula &amp; Numerical PYQs</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Risk Exposure / Risk Value = Probability of Risk × Impact (Loss in $) or Impact Score.</p><p style="margin-bottom: 0.75rem;">PYQ Problem: Probability of 3rd party API server crash = 0.4. Financial loss if it crashes = $50,000. Risk Exposure = 0.4 × $50,000 = $20,000.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Risk Categories Classification</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Technical Risks: Hardware failures, 3rd party API bugs, performance bottlenecks, unproven technologies.</p><p style="margin-bottom: 0.75rem;">Business Risks: Product fails in market due to competitors, lack of customer demand, legal/regulatory changes.</p><p style="margin-bottom: 0.75rem;">Project Risks: Schedule slippage, budget overruns, staff turnover/personnel shortages.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The Gold Plating Definition</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Gold Plating occurs when developers add unnecessary, extra features NOT requested by the client, wasting effort and introducing untested risk!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ: &quot;Dev team adds complex custom voice-control to a basic library catalog app without client approval.&quot; ➔ Answer: Gold Plating.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: UNREQUESTED EXTRA FEATURES = GOLD PLATING</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-19">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 19 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Testing &amp; Debugging</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Software Testing Spectrum: Unit to Acceptance Testing</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Unit, Integration, System, Alpha, Beta &amp; Regression Testing Rules</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Comprehensive hierarchy of testing levels and matching real-world scenarios to testing types in PYQs.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Testing Levels Hierarchy</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Unit Testing: Testing individual functions, methods, or modules in strict isolation using stubs/mocks.</p><p style="margin-bottom: 0.75rem;">Integration Testing: Testing communication interfaces and data exchange between combined modules.</p><p style="margin-bottom: 0.75rem;">System Testing: End-to-end testing of the fully integrated software system against functional &amp; non-functional specifications.</p><p style="margin-bottom: 0.75rem;">Acceptance / Beta Testing: Conducted by REAL end-customers in their actual operational environment prior to release.</p><p style="margin-bottom: 0.75rem;">Alpha Testing: Conducted by internal test team inside the developer site environment prior to Beta release.</p><p style="margin-bottom: 0.75rem;">Regression Testing: Re-running existing test suites after code changes/bug fixes to ensure existing features remain unbroken.</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Testing Type</th><th style="padding: 0.75rem 1rem;">Target Level</th><th style="padding: 0.75rem 1rem;">Environment</th><th style="padding: 0.75rem 1rem;">Primary Goal</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Unit Testing</td><td style="padding: 0.75rem 1rem; color: #334155;">Individual functions / modules</td><td style="padding: 0.75rem 1rem; color: #334155;">Developer machine (Isolated mocks)</td><td style="padding: 0.75rem 1rem; color: #334155;">Verify internal function logic correctness</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Integration Testing</td><td style="padding: 0.75rem 1rem; color: #334155;">Module interfaces</td><td style="padding: 0.75rem 1rem; color: #334155;">Test Staging environment</td><td style="padding: 0.75rem 1rem; color: #334155;">Detect data contract &amp; interface mismatch bugs</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Alpha Testing</td><td style="padding: 0.75rem 1rem; color: #334155;">Whole System</td><td style="padding: 0.75rem 1rem; color: #334155;">Developer site (Internal QA team)</td><td style="padding: 0.75rem 1rem; color: #334155;">Initial pre-release acceptance validation</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Beta Testing</td><td style="padding: 0.75rem 1rem; color: #334155;">Whole System</td><td style="padding: 0.75rem 1rem; color: #334155;">Customer real environment (Real users)</td><td style="padding: 0.75rem 1rem; color: #334155;">Validate real-world usability &amp; client satisfaction</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Regression Testing</td><td style="padding: 0.75rem 1rem; color: #334155;">Modified Codebase</td><td style="padding: 0.75rem 1rem; color: #334155;">Automated CI/CD Pipeline</td><td style="padding: 0.75rem 1rem; color: #334155;">Ensure bug fixes do not break existing working code</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Beta vs Alpha vs Regression Shortcut</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Beta = REAL CLIENTS in REAL ENVIRONMENT. Alpha = INTERNAL TEAM in DEV SITE. Regression = AFTER CODE CHANGE to check un-brokenness."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ: &quot;Re-testing payment flow after upgrading database library.&quot; ➔ Regression Testing.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: BETA = REAL USERS | ALPHA = INTERNAL QA | REGRESSION = CODE CHANGE CHECK</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-20">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 20 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Testing &amp; Debugging</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Debugging Strategies &amp; Fault vs Error vs Failure</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Terminology Distinction: Human Error ➔ Code Fault ➔ System Failure</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master the precise distinction between Fault, Error, and Failure, plus Blackbox vs Backwards debugging techniques.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Fault vs Error vs Failure Triad</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Error (Human Mistake): A human programmer mistake while typing logic or design (e.g. developer writes `interest = principal * 0.5` instead of `0.05`).</p><p style="margin-bottom: 0.75rem;">Fault / Bug (Static Code Defect): The incorrect static code existing inside the codebase as a consequence of the error.</p><p style="margin-bottom: 0.75rem;">Failure (Observable Dynamic Behavior): The observable incorrect output, crash, or unexpected behavior during execution (e.g. bank customer receives 500% interest payout on screen).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The Error-Fault-Failure Sequence</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Human makes ERROR ➔ Creates code FAULT ➔ Causes system FAILURE during execution!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ: &quot;A developer mistypes variable name `val1` instead of `val2` in source file.&quot; ➔ Answer: Fault in code caused by human Error.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: HUMAN ERROR ➔ CODE FAULT ➔ SYSTEM FAILURE</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Debugging Strategies Comparison</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Forwards Debugging: Tracing execution flow from the initial triggering user event forward to the crash location.</p><p style="margin-bottom: 0.75rem;">Backwards Debugging: Starting at the observed crash point/error state and stepping backwards through call stack to find origin.</p><p style="margin-bottom: 0.75rem;">Blackbox Debugging: Debugging relying solely on inputs, outputs, logs, and API docs without inspecting internal source code.</p><p style="margin-bottom: 0.75rem;">Profiling: Using profiler tools to measure CPU cycle consumption, memory allocations, and performance bottlenecks.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-21">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 21 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: UX &amp; Git</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Usability Goals &amp; Nielsen&#039;s 10 UI Heuristics</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Effectiveness, Efficiency, Learnability, Memorability, Safety &amp; Heuristic Evaluation</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master core UX usability metrics and Jakob Nielsen&#039;s 10 usability heuristics tested in design exams.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Usability Goals (5 Core Metrics)</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">1) Effectiveness: Can users successfully complete tasks accurately?</p><p style="margin-bottom: 0.75rem;">2) Efficiency: How quickly can experienced users perform tasks once learned?</p><p style="margin-bottom: 0.75rem;">3) Learnability: How easy is it for first-time users to accomplish basic tasks?</p><p style="margin-bottom: 0.75rem;">4) Memorability: How easily can returning users re-establish proficiency after time away?</p><p style="margin-bottom: 0.75rem;">5) Safety: Protecting users from errors (e.g., confirmation dialogs before permanent deletion, Undo buttons).</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. High-Yield Nielsen Heuristics for PYQs</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Visibility of System Status: Keeping users informed via feedback within reasonable time (e.g. progress bar during file upload).</p><p style="margin-bottom: 0.75rem;">Recognition Rather Than Recall: Minimizing memory load by making options, actions &amp; objects visible (e.g., auto-complete dropdown, allowing product browsing without forced login).</p><p style="margin-bottom: 0.75rem;">User Freedom &amp; Control: Providing clear &quot;emergency exits&quot; (e.g., Undo, Cancel, Redo buttons).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Recognition over Recall PYQ Rule</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"If app allows users to see options instead of forcing them to memorize IDs or login first, it fulfills RECOGNITION OVER RECALL!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ: &quot;E-commerce app lets buyers view items and add to cart before logging in.&quot; ➔ Fulfills Recognition over Recall.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: SEE OPTIONS = Recognition | REMEMBER FROM MEMORY = Recall</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-22">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 22 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: UX &amp; Git</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Version Control Systems &amp; Git Commands Cheat Sheet</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">git pull vs fetch, Centralized vs Distributed VCS &amp; Workflow Commands</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Understand VCS concepts and exact Git command behaviors tested in software engineering PYQs.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Distributed (Git) vs Centralized (SVN) VCS</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Distributed VCS (Git): Every developer has a complete local repository with full history on their machine.</p><p style="margin-bottom: 0.75rem;">Centralized VCS (SVN): Single central server repository; developers check out files remotely.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. `git pull` vs `git fetch` Formula</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Formula: `git pull` = `git fetch` + `git merge`</p><p style="margin-bottom: 0.75rem;">`git fetch`: Downloads commits and refs from remote repository into local tracking branches without modifying working files.</p><p style="margin-bottom: 0.75rem;">`git pull`: Downloads remote changes AND immediately merges them into the current active local working branch.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The Git Pull Equation</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Never forget: Pull = Fetch + Merge!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ Question: &quot;Which command combines downloading remote refs and updating active local code?&quot; ➔ git pull.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: PULL = FETCH + MERGE</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-23">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 23 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Requirements</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Requirement Flaws: Ambiguity, Inconsistency &amp; Implicit Assumptions</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Spotting Requirement Defect Types in PYQ Specification Documents</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Learn to detect ambiguous, contradictory, and implicit requirements in specification documents.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Requirement Defect Categories</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Ambiguous: Open to multiple interpretations (e.g. &quot;System should process user inputs fast&quot;).</p><p style="margin-bottom: 0.75rem;">Inconsistent / Contradictory: Two requirements conflict (e.g. Req 1: &quot;Passwords expire every 30 days&quot; vs Req 2: &quot;Users cannot change passwords more than once per year&quot;).</p><p style="margin-bottom: 0.75rem;">Implicit / Omitted: Essential user needs taken for granted without being written down (e.g. assuming website works on mobile phones).</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Contradiction Spotter</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"When two statements cannot both be true simultaneously in execution logic, it is INCONSISTENT!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Expiry 30 days + Max 1 change/year = Direct Inconsistency.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: CLASHING RULES = Inconsistent | VAGUE WORDS = Ambiguous</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-24">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 24 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">High-Yield PYQ Flashcard Master Bank</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Interactive Revision Hub: Flip Cards with Core Formulas, Definitions &amp; Exam Hacks</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Flashcard revision tool covering 50+ key definitions, formulas, tricks, and PYQs.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Instant Flashcards Bank</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Use our dedicated Flashcards tab to test your memory across all 7 domain chapters!</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-25">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 25 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Full PYQ Practice Test &amp; Solutions Engine</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Interactive Mock Exam with Instant Feedback, Score Analysis &amp; Trick Callouts</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Simulated practice examination consisting of questions curated directly from the 9 PYQ sets.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Interactive Practice Exam Engine</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Attempt real exam scenarios and check your performance with detailed explanations and trick insights.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-26">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 26 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Maintenance</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Software Maintenance &amp; Refactoring: Code Smells &amp; Re-Engineering</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Corrective, Adaptive, Perfective &amp; Preventive Maintenance with Refactoring Patterns</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Master the 4 Maintenance Types (Corrective, Adaptive, Perfective, Preventive) and learn to identify common Code Smells like Long Method, Feature Envy, and God Class.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. The 4 Types of Software Maintenance</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Maintenance accounts for 60-80% of the total software lifecycle cost.</p><p style="margin-bottom: 0.75rem;">1. Corrective Maintenance: Reactive fixes for bugs and defects discovered in production.</p><p style="margin-bottom: 0.75rem;">2. Adaptive Maintenance: Updating software to work in modified environments (e.g. OS upgrade, new database version).</p><p style="margin-bottom: 0.75rem;">3. Perfective Maintenance: Enhancing performance, maintainability, or adding new user-requested features.</p><p style="margin-bottom: 0.75rem;">4. Preventive Maintenance: Proactively modifying software to prevent future failures (e.g., refactoring messy code).</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Maintenance Type</th><th style="padding: 0.75rem 1rem;">Trigger Event</th><th style="padding: 0.75rem 1rem;">Cost Weight %</th><th style="padding: 0.75rem 1rem;">Example Scenario</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Corrective</td><td style="padding: 0.75rem 1rem; color: #334155;">Bug Report / Crash Log</td><td style="padding: 0.75rem 1rem; color: #334155;">20%</td><td style="padding: 0.75rem 1rem; color: #334155;">Fixing NullPointerException on checkout</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Adaptive</td><td style="padding: 0.75rem 1rem; color: #334155;">Platform / OS Upgrade</td><td style="padding: 0.75rem 1rem; color: #334155;">20%</td><td style="padding: 0.75rem 1rem; color: #334155;">Migrating app from Python 2 to Python 3</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Perfective</td><td style="padding: 0.75rem 1rem; color: #334155;">User Request / Scale</td><td style="padding: 0.75rem 1rem; color: #334155;">50%</td><td style="padding: 0.75rem 1rem; color: #334155;">Optimizing SQL query to reduce latency</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Preventive</td><td style="padding: 0.75rem 1rem; color: #334155;">Code Review / Audit</td><td style="padding: 0.75rem 1rem; color: #334155;">10%</td><td style="padding: 0.75rem 1rem; color: #334155;">Refactoring duplicated code blocks</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Maintenance Classification Formula</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"If fixing a bug ➔ Corrective. If adapting to OS/hardware ➔ Adaptive. If adding features/speed ➔ Perfective. If cleaning internal code for future ➔ Preventive."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ Question: &quot;Migrating a banking system to a new cloud server OS is which type?&quot; ➔ Adaptive Maintenance.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: BUG = Corrective | OS = Adaptive | SPEED = Perfective | CLEAN = Preventive</div>
+    </div>
+  
+    </div>
+  
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">2. Code Smells &amp; Refactoring Solutions</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Code Smell: A surface indication in source code that usually corresponds to a deeper architectural problem.</p><p style="margin-bottom: 0.75rem;">God Class (Blob): A single class that holds too much responsibilities. Fix: Extract Class.</p><p style="margin-bottom: 0.75rem;">Feature Envy: A class that accesses data of another class more than its own. Fix: Move Method.</p><p style="margin-bottom: 0.75rem;">Data Clumps: Groups of parameters passed together repeatedly. Fix: Introduce Parameter Object.</p>
+      </div>
+      
+      
+      
+      
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-27">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 27 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Maintenance</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Software Configuration Management (SCM) &amp; Baseline Control</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Version Control, Configuration Audit, Change Control Board (CCB) &amp; Baselines</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Detailed breakdown of SCM tasks: Identification, Change Control, Status Accounting, and Configuration Audits.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Core SCM Tasks &amp; Baselines</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">SCM is an umbrella activity applied throughout the software engineering process to manage change.</p><p style="margin-bottom: 0.75rem;">Baseline: A specification or product that has been formally reviewed and agreed upon, serving as the basis for further development.</p><p style="margin-bottom: 0.75rem;">Change Control Board (CCB): Authority responsible for approving or rejecting proposed configuration changes.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">The Baseline Rule</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Once a work product becomes a BASELINE, changes can ONLY be made through formal CCB approval!"</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> PYQ Scenario: &quot;A developer wants to modify a committed requirements spec after client signoff.&quot; ➔ Requires CCB Change Request approval.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: BASELINE = FORMAL CHANGE CONTROL ONLY</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-28">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 28 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Testing &amp; Quality</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Formal Methods, Z Notation &amp; Cleanroom Engineering</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Mathematical Verification, Pre/Post-Conditions, State Invariants &amp; Cleanroom Process</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Understand mathematical specifications using Z Notation, pre/post-conditions, and the statistical quality assurance of Cleanroom Software Engineering.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Formal Specifications &amp; Z Notation</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Formal Methods use mathematical techniques to specify, develop, and verify software.</p><p style="margin-bottom: 0.75rem;">Pre-condition: What must be true before a operation executes.</p><p style="margin-bottom: 0.75rem;">Post-condition: What is guaranteed to be true after the operation finishes.</p><p style="margin-bottom: 0.75rem;">Invariant: A condition that holds true before and after any state transformation.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Pre vs Post-Condition Distinction</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Pre-condition = INPUT ASSERTION. Post-condition = OUTPUT GUARANTEE."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Pre: Balance &gt;= Withdrawal. Post: Balance_new = Balance_old - Withdrawal.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: PRE = BEFORE | POST = AFTER | INVARIANT = CONSTANT</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-29">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 29 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Testing &amp; Quality</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">DevOps Pipeline, CI/CD &amp; Automated Testing Strategies</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">Continuous Integration, Continuous Deployment, Test Automation Pyramid &amp; Quality Gates</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> Modern continuous delivery pipelines, test automation pyramids (Unit, Integration, E2E), and automated quality gates.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. The Testing Pyramid &amp; Quality Gates</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Unit Tests (70%): Fast, isolated tests for individual functions or methods.</p><p style="margin-bottom: 0.75rem;">Integration Tests (20%): Verifying interaction between components (e.g. Service + DB).</p><p style="margin-bottom: 0.75rem;">End-to-End Tests (10%): Simulating real user flows through UI or public API.</p>
+      </div>
+      
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">CI vs CD Rule</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"Continuous Integration = Build + Test automatically on merge. Continuous Deployment = Auto-release to production."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> CI catches regression bugs early; CD ensures release readiness at all times.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: CI = AUTOMATED TEST | CD = AUTOMATED RELEASE</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+      <article style="background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);" id="page-30">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: #4f46e5; color: white; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 0.375rem;">PAGE 30 OF 30</span>
+          <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Category: Metrics &amp; COCOMO</span>
+        </div>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">Comprehensive Software Engineering Formula Sheet &amp; PYQ Master Cheat Sheet</h2>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1.25rem;">All COCOMO, Cyclomatic V(G), Function Point, Reliability &amp; Cohesion Formulas on 1 Page</p>
+        <div style="background: #f8fafc; border-left: 4px solid #4f46e5; padding: 0.875rem; border-radius: 0.375rem; font-size: 0.85rem; color: #334155; margin-bottom: 1.5rem;">
+          <strong style="color: #0f172a; text-transform: uppercase; font-size: 0.7rem;">Summary:</strong> The ultimate exam day formula reference sheet summarizing every mathematical equation, metric, and shortcut required for 100% score.
+        </div>
+        
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <span style="background: #fef3c7; color: #92400e; font-size: 0.65rem; font-weight: 900; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">Core Topic</span>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.5rem 0 0.25rem 0;">1. Master Exam Formula Table</h2>
+      
+      <div style="color: #475569; font-size: 0.925rem; line-height: 1.6;">
+        <p style="margin-bottom: 0.75rem;">Quickly review all critical equations before entering the exam room:</p>
+      </div>
+      
+    <div style="margin-top: 1rem; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+        <thead style="background-color: #0f172a; color: white;">
+          <tr>
+            <th style="padding: 0.75rem 1rem;">Metric / Concept</th><th style="padding: 0.75rem 1rem;">Formula / Equation</th><th style="padding: 0.75rem 1rem;">Variables Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Cyclomatic Complexity V(G)</td><td style="padding: 0.75rem 1rem; color: #334155;">V(G) = E - N + 2P  OR  V(G) = P_nodes + 1</td><td style="padding: 0.75rem 1rem; color: #334155;">E = Edges, N = Nodes, P = Components, P_nodes = Decision Nodes</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Basic COCOMO Effort</td><td style="padding: 0.75rem 1rem; color: #334155;">PM = a * (KLOC)^b</td><td style="padding: 0.75rem 1rem; color: #334155;">PM = Person-Months, a &amp; b = Mode Constants</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Basic COCOMO Development Time</td><td style="padding: 0.75rem 1rem; color: #334155;">Tdev = c * (PM)^d</td><td style="padding: 0.75rem 1rem; color: #334155;">Tdev = Months, c &amp; d = Mode Constants</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Unadjusted Function Points</td><td style="padding: 0.75rem 1rem; color: #334155;">UFP = Sum(Count * Weight)</td><td style="padding: 0.75rem 1rem; color: #334155;">Inputs, Outputs, Inquiries, Files, Interfaces</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Adjusted Function Points</td><td style="padding: 0.75rem 1rem; color: #334155;">FP = UFP * (0.65 + 0.01 * Sum(Fi))</td><td style="padding: 0.75rem 1rem; color: #334155;">Fi = 14 General System Characteristics (0 to 5)</td>
+            </tr>
+          
+            <tr style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Software Availability</td><td style="padding: 0.75rem 1rem; color: #334155;">Availability = MTBF / (MTBF + MTTR)</td><td style="padding: 0.75rem 1rem; color: #334155;">MTBF = Mean Time Between Failures, MTTR = Mean Time To Repair</td>
+            </tr>
+          
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <td style="padding: 0.75rem 1rem; color: #334155;">Defect Density</td><td style="padding: 0.75rem 1rem; color: #334155;">Defect Density = Total Defective Code / Size (KLOC)</td><td style="padding: 0.75rem 1rem; color: #334155;">Measures software quality per 1000 lines</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+      
+      
+      
+    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);">
+      <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; font-weight: 800;">⚡ PYQ SECRET EXAM TRICK</div>
+      <h3 style="font-size: 1.1rem; font-weight: 900; margin: 0.25rem 0 0.5rem 0; color: #ffffff;">Exam Day Golden Commandments</h3>
+      <p style="margin-bottom: 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #e0e7ff;">"1. Always write formula first before numbers. 2. State units (Person-Months, KLOC, Days). 3. Convert decision predicates accurately."</p>
+      <div style="background-color: rgba(255,255,255,0.15); border-radius: 0.5rem; padding: 0.75rem; font-size: 0.75rem;">
+        <strong style="color: #fef08a;">Exam Scenario:</strong> Writing units and step-by-step substitution secures partial marks even if arithmetic calculation has typos.
+      </div>
+      <div style="margin-top: 0.75rem; background-color: #facc15; color: #0f172a; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 900; font-family: monospace; font-size: 0.75rem;">💡 MNEMONIC: FORMULA ➔ UNITS ➔ SUBSTITUTION ➔ RESULT</div>
+    </div>
+  
+    </div>
+  
+      </article>
+    
+  </div>
+</body>
+</html>
